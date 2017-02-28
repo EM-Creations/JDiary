@@ -75,8 +75,9 @@ div.contentBackground {
     background-color: #bfbfbf;
 }
 
-/* Navigation Box */
-div.navBox {
+/* Navigation Buttons */
+input[type=submit].navButton, input[type=submit].navButtonSmall {
+    display: block;
     padding: 15px;
     background-color: #b3b3b3;
     border-radius: 3px;
@@ -84,9 +85,21 @@ div.navBox {
     text-align: center;
     font-weight: bold;
     font-size: 14pt;
+    margin: 2% 0;
+    white-space: normal;
+    word-wrap: normal;
 }
 
-div.navBox:hover {
+input[type=submit].navButton {
+    width: 100%;
+}
+
+input[type=submit].navButtonSmall {
+    margin: auto;
+    width: 50%;
+}
+
+input[type=submit].navButton:hover, input[type=submit].navButtonSmall:hover {
     border: 1px solid black;
     cursor: pointer;
     text-decoration: underline;
