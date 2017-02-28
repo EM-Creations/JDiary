@@ -12,13 +12,10 @@ import javax.enterprise.context.RequestScoped;
 @Named(value = "time")
 @RequestScoped
 public class Time {
-    /**
-     * date
-     */
     private String date;
-
+    
     /**
-     * Get date
+     * Get date in YYYY format
      * 
      * @return String
      */
@@ -26,9 +23,9 @@ public class Time {
         date = Calendar.getInstance().get(Calendar.YEAR) + "";
         return date;
     }
-
+    
     /**
-     * Set date
+     * Set the date
      * 
      * @param date String
      */

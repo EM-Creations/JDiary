@@ -1,0 +1,94 @@
+
+#top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#bottom {
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+#right {
+    float: right;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    margin: auto;
+    width: 50%;
+}
+
+.left_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+/* Header */
+div#header {
+    margin-bottom: 20px;
+}
+
+/* Footer */
+div#footer {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 9pt;
+}
+
+/* Content */
+div.contentBackground {
+    background-color: #bfbfbf;
+}
+
+/* Navigation Box */
+div.navBox {
+    padding: 15px;
+    background-color: #b3b3b3;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px #888888;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+div.navBox:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
