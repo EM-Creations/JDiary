@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
 
     	<ui:composition template="./resources/template/commonLayout.xhtml">
@@ -12,15 +12,13 @@
                 <h1>Login</h1>
     		</ui:define>
             <ui:define name="content">
-                <!--<div class="contentBackground">
-                    fdfddf
-                </div>-->
-                <h:form>
-                    <h:commandButton class="navButton" value="Normal Nav Button" />
-                </h:form>
-                <h:form>
-                    <h:commandButton class="navButtonSmall" value="Small Nav Button" />
-                </h:form>
+                <b:row>
+                    <b:column span="12">
+                        <div class="contentBackground">
+                            Test content background
+                        </div>
+                    </b:column>
+                </b:row>
     		</ui:define>
     	</ui:composition>
     </h:body>

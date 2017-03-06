@@ -1,4 +1,3 @@
-
 #top {
     position: relative;
     background-color: #036fab;
@@ -73,10 +72,12 @@ div#footer {
 /* Content */
 div.contentBackground {
     background-color: #bfbfbf;
+    padding: 1%;
+    border-radius: 3px;
 }
 
 /* Navigation Buttons */
-input[type=submit].navButton, input[type=submit].navButtonSmall {
+input[type=submit].navButton {
     display: block;
     padding: 15px;
     background-color: #b3b3b3;
@@ -94,14 +95,8 @@ input[type=submit].navButton {
     width: 100%;
 }
 
-input[type=submit].navButtonSmall {
-    margin: auto;
-    width: 50%;
-}
-
-input[type=submit].navButton:hover, input[type=submit].navButtonSmall:hover {
+input[type=submit].navButton:hover {
     border: 1px solid black;
     cursor: pointer;
     text-decoration: underline;
 }
-
