@@ -2,9 +2,10 @@ package com.emcreations.courseworkup608985.controller;
 
 import com.emcreations.courseworkup608985.business.ClientService;
 import com.emcreations.courseworkup608985.entity.Client;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -14,8 +15,9 @@ import javax.faces.context.FacesContext;
  * @author Edward McKnight (UP608985)
  */
 @Named(value = "loginController")
-@RequestScoped
-public class LoginController {
+@SessionScoped
+public class LoginController implements Serializable {
+    private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cs;
     private Client loggedInClient = new Client();
@@ -66,6 +68,33 @@ public class LoginController {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    /**
+     * Users button pressed
+     * 
+     * @return String
+     */
+    public String goUsers() {
+        return "users";
+    }
+    
+    /**
+     * Add new user button pressed
+     * 
+     * @return String
+     */
+    public String goAddUser() {
+        return "addUser";
+    }
+    
+    /**
+     * Browse users button pressed
+     * 
+     * @return String
+     */
+    public String goBrowseUsers() {
+        return "browseUsers";
+    }
 
     /**
      * Login button pressed
@@ -80,13 +109,12 @@ public class LoginController {
             FacesContext.getCurrentInstance().addMessage(null, 
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged in",
                     "Welcome " + this.loggedInClient.getFirstName() + "!"));
-            // TODO: Redirect to home screen
+            return "welcome";
         } else { // If the login was unsuccessful
             FacesContext.getCurrentInstance().addMessage(null, 
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Failed login",
                     "Incorrect username / password"));
         }
-        
         return "index";
     }
     

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+
+    	<ui:composition template="./resources/template/commonLayout.xhtml">
+            <ui:define name="header">
+                <h1>Welcome back #{loginController.loggedInClient.firstName}!</h1>
+    		</ui:define>
+            <ui:define name="content">
+                    <h:form>
+                        <b:row>
+                            <b:column span="12">
+                                <h:commandButton styleClass="navButton" action="#{loginController.goUsers()}" value="Users" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="12">
+                                <h:commandButton styleClass="navButton" value="(Coming Soon) Appointments" disabled="true"/>
+                            </b:column>
+                        </b:row>
+                    </h:form>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
