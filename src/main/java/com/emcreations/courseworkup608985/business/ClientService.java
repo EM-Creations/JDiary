@@ -37,6 +37,16 @@ public class ClientService {
         cF.remove(client);
         return client;
     }
+    
+    /**
+     * Check whether a client exists or not by username
+     * 
+     * @param userName String
+     * @return boolean
+     */
+    public boolean clientExists(String userName) {
+        return cF.find(userName) != null;
+    }
 
     public List<Client> getAll() {
         return cF.findAll();

@@ -15,12 +15,12 @@
                     <h:form>
                         <b:row>
                             <b:column span="12">
-                                <h:commandButton class="navButton" value="TODO - Home" />
+                                <h:commandButton class="navButton" value="Home" action="#{startController.goHome()}" />
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="6" offset="3">
-                                <h:commandButton class="navButton" value="TODO - Setup" />
+                                <h:commandButton class="navButton" action="#{startController.doSetup()}" value="Setup" />
                             </b:column>
                         </b:row>
                     </h:form>

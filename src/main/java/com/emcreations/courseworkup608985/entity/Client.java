@@ -27,6 +27,12 @@ public class Client implements Serializable {
     private String email;
     
     /**
+     * Constructor
+     */
+    public Client() {
+    }
+    
+    /**
      * Get the value of email
      *
      * @return the value of email

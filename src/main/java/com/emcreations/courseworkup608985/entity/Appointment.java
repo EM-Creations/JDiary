@@ -32,6 +32,12 @@ public class Appointment implements Serializable {
     private Client creator;
     @OneToMany(targetEntity=Client.class)
     private List<?> attendees;
+    
+    /**
+     * Constructor
+     */
+    public Appointment() {
+    }
 
     /**
      * Get the value of attendees

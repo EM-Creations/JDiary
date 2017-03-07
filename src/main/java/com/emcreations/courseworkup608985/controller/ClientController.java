@@ -8,7 +8,8 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
 /**
- *
+ * ClientController
+ * 
  * @author Edward McKnight (UP608985)
  */
 @Named(value = "clientController")
