@@ -38,6 +38,26 @@ public class ClientFacade extends AbstractFacade<Client> {
             return null; // Return null - no client found
         return clients.get(0); // Otherwise return the found client
     }
+    
+    /**
+     * Find a client by username and password
+     * 
+     * @param userName String
+     * @param password String
+     * @return Client
+     */
+    public Client find(String userName, String password) {
+        List<Client> clients = this.getEntityManager().createQuery(
+                "SELECT c FROM Client c WHERE c.username = :userName AND c.password = :password")
+                .setParameter("userName", userName)
+                .setParameter("password", password)
+                .setMaxResults(1)
+                .getResultList();
+        
+        if (clients.isEmpty()) // If the list is empty
+            return null; // Return null - no client found
+        return clients.get(0); // Otherwise return the found client
+    }
 
     public ClientFacade() {
         super(Client.class);

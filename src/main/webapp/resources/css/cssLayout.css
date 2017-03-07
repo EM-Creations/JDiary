@@ -100,3 +100,10 @@ input[type=submit].navButton:hover {
     cursor: pointer;
     text-decoration: underline;
 }
+
+/* Controls */
+input[type=submit].actionButton {
+    margin: 2% 0 0 0;
+    font-size: 14pt;
+    font-weight: bold;
+}

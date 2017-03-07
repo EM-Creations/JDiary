@@ -47,6 +47,17 @@ public class ClientService {
     public boolean clientExists(String userName) {
         return cF.find(userName) != null;
     }
+    
+    /**
+     * Check whether a client should be able to login with the provided credentials, returns null if failed login
+     * 
+     * @param userName String
+     * @param password String
+     * @return Client
+     */
+    public Client checkLogin(String userName, String password) {
+        return cF.find(userName, password); // Return whether we can find a client with that username and password or not
+    }
 
     public List<Client> getAll() {
         return cF.findAll();

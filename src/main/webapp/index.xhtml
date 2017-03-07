@@ -14,13 +14,23 @@
             <ui:define name="content">
                 <b:row>
                     <b:column styleClass="contentBackground" span="12">
-                        <h:form>
+                        <h:form id="loginForm">
                             <b:row>
-                                <b:column offset="2" span="4">
+                                <b:column offset="1" span="3">
                                     <h:outputLabel for="userName">Username</h:outputLabel>
                                 </b:column>
                                 <b:column span="4">
-                                    <h:inputText id="userName"></h:inputText>
+                                    <h:inputText id="userName" value="#{loginController.userName}">
+                                        <f:validateLength minimum="3" />
+                                    </h:inputText>
+                                </b:column>
+                                <b:column span="4">
+                                    DEV - Use "admin" as user
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column offset="4" span="4">
+                                    <h:commandButton value="Login" action="#{loginController.doLogin()}" styleClass="actionButton" />
                                 </b:column>
                             </b:row>
                         </h:form>
