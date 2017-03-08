@@ -14,7 +14,35 @@
             <ui:define name="content">
                 <b:row>
                     <b:column styleClass="contentBackground" span="12">
-                        TODO
+                        <b:row>
+                            <b:column offset="1" span="10">
+                                - Search to go here -
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column offset="1" span="10">
+                                <table class="list">
+                                    <tr class="headerRow">
+                                        <td>User</td>
+                                        <td>First Name</td>
+                                        <td>Last Name</td>
+                                        <td>Email address</td>
+                                        <td>Actions</td>
+                                    </tr>
+                                    <ui:repeat var="client" value="#{clientController.allClients}">
+                                        <tr>
+                                            <td>#{client.username}</td>
+                                            <td>#{client.firstName}</td>
+                                            <td>#{client.lastName}</td>
+                                            <td><h:outputLink value="mailto:#{client.email}">#{client.email}</h:outputLink></td>
+                                            <td><h:form><h:commandButton value="View" disabled="true" styleClass="submit"/></h:form></td>
+                                            <td><h:form><h:commandButton value="Edit" action="#{clientController.goToEditClient(client)}" styleClass="submit"/></h:form></td>
+                                            <td><h:form><h:commandButton value="Delete" action="#{clientController.doDeleteClient(client)}" styleClass="submit"/></h:form></td>
+                                        </tr>
+                                    </ui:repeat>
+                                </table>
+                            </b:column>
+                        </b:row>
                     </b:column>
                 </b:row>
     		</ui:define>

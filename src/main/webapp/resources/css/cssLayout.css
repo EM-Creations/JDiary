@@ -119,3 +119,20 @@ input[type=submit]:disabled {
 form>div.row {
     margin: 1% 0;
 }
+
+/* Tables */
+table.list {
+    width: 100%;
+}
+
+table.list>tbody>tr>td {
+    padding: 3px;
+}
+
+table.list>tbody>tr:nth-child(even) {
+    background-color: grey;
+}
+
+table.list>tbody>tr.headerRow {
+    font-weight: bold;
+}

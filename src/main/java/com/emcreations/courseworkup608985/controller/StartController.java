@@ -47,7 +47,7 @@ public class StartController {
      * 
      * @return String
      */
-    public String goHome() {
+    public String goToHome() {
         return "index";
     }
     

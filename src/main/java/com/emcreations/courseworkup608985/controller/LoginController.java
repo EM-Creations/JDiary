@@ -74,7 +74,7 @@ public class LoginController implements Serializable {
      * 
      * @return String
      */
-    public String goUsers() {
+    public String goToUsers() {
         return "users";
     }
     
@@ -83,7 +83,7 @@ public class LoginController implements Serializable {
      * 
      * @return String
      */
-    public String goAddUser() {
+    public String goToAddUser() {
         return "addEditUser";
     }
     
@@ -92,7 +92,7 @@ public class LoginController implements Serializable {
      * 
      * @return String
      */
-    public String goBrowseUsers() {
+    public String goToBrowseUsers() {
         return "browseUsers";
     }
 
