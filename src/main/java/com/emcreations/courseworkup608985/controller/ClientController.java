@@ -29,15 +29,28 @@ public class ClientController implements Serializable {
     }
     
     /**
-     * Process adding or editing a client
+     * Process adding a client
      * 
      * @return String
      */
-    public String doAddEditClient() {
+    public String doAddClient() {
         // TODO check client doesn't already exist
+        // TODO validation
         cS.createClient(this.editingClient);
         this.clearEditingClient(); // Reset the client
         return "users"; // Load the users page
+    }
+    
+    /**
+     * Processing editing a client
+     * 
+     * @return String
+     */
+    public String doEditClient() {
+        // TODO validation
+        cS.editClient(this.editingClient);
+        this.clearEditingClient();
+        return "users"; // Go back to the users page
     }
 
     /**
@@ -63,13 +76,6 @@ public class ClientController implements Serializable {
      */
     public ClientController() {
         this.editingClient = new Client(); // Instantiate new client object
-        
-        // THIS WORKS THE PROBLEM IS IN GETTING THE DATA OUT OF THE DATABASE
-        Client c2 = new Client();
-        c2.setUsername("tester");
-        
-        //Client c2 = cF.find("admin");
-        this.setEditingClient(c2);
     }
     
     /**
