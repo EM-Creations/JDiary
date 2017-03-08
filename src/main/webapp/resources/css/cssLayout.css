@@ -69,6 +69,10 @@ div#footer {
     font-size: 9pt;
 }
 
+div.extra {
+    font-size: 7pt;
+}
+
 /* Content */
 div.contentBackground {
     background-color: #bfbfbf;
@@ -104,8 +108,14 @@ input[type=submit].actionButton {
     margin: 2% 0 0 0;
     font-size: 14pt;
     font-weight: bold;
+    border-radius: 3px;
+    padding: 2% 5%;
 }
 
 input[type=submit]:disabled {
     color: #d5d3d3;
+}
+
+form>div.row {
+    margin: 1% 0;
 }

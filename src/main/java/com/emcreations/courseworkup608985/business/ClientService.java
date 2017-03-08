@@ -27,6 +27,16 @@ public class ClientService {
     public Client getClient(Client client) {
         return cF.find(client.getId());
     }
+    
+    /**
+     * Get a client by their username
+     * 
+     * @param userName String
+     * @return Client
+     */
+    public Client getClient(String userName) {
+        return cF.find(userName);
+    }
 
     public Client createClient(Client client) {
         cF.create(client);

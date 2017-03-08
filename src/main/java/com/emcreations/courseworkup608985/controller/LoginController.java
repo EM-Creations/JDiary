@@ -84,7 +84,7 @@ public class LoginController implements Serializable {
      * @return String
      */
     public String goAddUser() {
-        return "addUser";
+        return "addEditUser";
     }
     
     /**
