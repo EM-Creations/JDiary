@@ -3,8 +3,11 @@ package com.emcreations.courseworkup608985.controller;
 import com.emcreations.courseworkup608985.business.ClientService;
 import com.emcreations.courseworkup608985.business.ClientService.SearchType;
 import com.emcreations.courseworkup608985.entity.Client;
+import com.emcreations.courseworkup608985.exception.InvalidSearchTypeException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -90,7 +93,14 @@ public class ClientController implements Serializable {
         // TODO: Validate inputs
         this.setSearchText(searchText);
         this.setSearchTypeText(searchType);
-        this.setSearchResults(cS.searchClient(this.getSearchTypeFromString(searchType), searchText));
+        SearchType sT;
+        try {
+            sT = this.getSearchTypeFromString(searchType);
+        } catch (InvalidSearchTypeException ex) {
+            Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
+            sT = SearchType.username; // Default to username if illegal input was given
+        }
+        this.setSearchResults(cS.searchClient(sT, searchText));
         return ""; // Reload the same page
     }
     
@@ -100,7 +110,7 @@ public class ClientController implements Serializable {
      * @param searchType String
      * @return SearchType
      */
-    private SearchType getSearchTypeFromString(String searchType) {
+    private SearchType getSearchTypeFromString(String searchType) throws InvalidSearchTypeException {
         switch (searchType) {
             case "username":
                 return SearchType.username;
@@ -124,7 +134,7 @@ public class ClientController implements Serializable {
                 return SearchType.email;
             
             default:
-                return SearchType.username; // TODO: Throw exception
+                throw new InvalidSearchTypeException(searchType);
         }
     }
     

@@ -38,6 +38,7 @@ public class ClientFacade extends AbstractFacade<Client> {
         List<Client> clients;
         
         switch (searchType) {
+            default:
             case username:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName")
@@ -86,9 +87,6 @@ public class ClientFacade extends AbstractFacade<Client> {
                         .setParameter("email", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
-            
-            default: // If no valid search type is provided
-                return null; // Return null - TODO create exception
         }
         
         if (clients.isEmpty()) // If the list is empty
