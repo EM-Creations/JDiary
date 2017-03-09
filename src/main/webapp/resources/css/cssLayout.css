@@ -76,7 +76,7 @@ div.extra {
 /* Content */
 div.contentBackground {
     background-color: #bfbfbf;
-    padding: 1%;
+    padding: 2% 0;
     border-radius: 3px;
 }
 
@@ -116,6 +116,16 @@ input[type=submit]:disabled {
     color: #d5d3d3;
 }
 
+input[type=text].searchBar {
+    width: 90%;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+div.searchBarContainer>input[type=submit] {
+    height: 30px;
+}
+
 form>div.row {
     margin: 1% 0;
 }
@@ -123,6 +133,7 @@ form>div.row {
 /* Tables */
 table.list {
     width: 100%;
+    margin-top: 10px;
 }
 
 table.list>tbody>tr>td {

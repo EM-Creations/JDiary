@@ -10,14 +10,17 @@
     	<ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h1>Browse users</h1>
-    		</ui:define>
+            </ui:define>
             <ui:define name="content">
                 <b:row>
                     <b:column styleClass="contentBackground" span="12">
                         <b:row>
-                            <b:column offset="1" span="10">
-                                - Search to go here -
-                            </b:column>
+                            <h:form id="searchUsers">
+                                <b:column offset="1" span="10" styleClass="searchBarContainer">
+                                        <h:inputText styleClass="searchBar" />
+                                        <h:commandButton value="Search" disabled="true"/>
+                                </b:column>
+                            </h:form>
                         </b:row>
                         <b:row>
                             <b:column offset="1" span="10">
@@ -35,7 +38,7 @@
                                             <td>#{client.firstName}</td>
                                             <td>#{client.lastName}</td>
                                             <td><h:outputLink value="mailto:#{client.email}">#{client.email}</h:outputLink></td>
-                                            <td><h:form><h:commandButton value="View" disabled="true" styleClass="submit"/></h:form></td>
+                                            <td><h:form><h:commandButton value="View" action="#{clientController.goToViewClient(client)}" styleClass="submit"/></h:form></td>
                                             <td><h:form><h:commandButton value="Edit" action="#{clientController.goToEditClient(client)}" styleClass="submit"/></h:form></td>
                                             <td><h:form><h:commandButton value="Delete" action="#{clientController.doDeleteClient(client)}" styleClass="submit"/></h:form></td>
                                         </tr>

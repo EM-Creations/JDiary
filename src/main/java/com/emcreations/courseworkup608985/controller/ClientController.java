@@ -33,6 +33,17 @@ public class ClientController implements Serializable {
     }
     
     /**
+     * Load the view to view a client
+     * 
+     * @param c Client
+     * @return String
+     */
+    public String goToViewClient(Client c) {
+        this.setEditingClient(c);
+        return "viewUser"; // Go to the view page
+    }
+    
+    /**
      * Delete a client
      * 
      * @param c Client
@@ -46,9 +57,12 @@ public class ClientController implements Serializable {
     
     /**
      * Clear data concerning the client currently being edited
+     * 
+     * @return Client
      */
-    private void clearEditingClient() {
+    public Client clearEditingClient() {
         this.editingClient = new Client(); // Instantiate new client object (clears any existing data)
+        return this.editingClient;
     }
     
     /**

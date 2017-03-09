@@ -52,6 +52,33 @@ public class StartController {
     }
     
     /**
+     * Users button pressed
+     * 
+     * @return String
+     */
+    public String goToUsers() {
+        return "users";
+    }
+    
+    /**
+     * Add new user button pressed
+     * 
+     * @return String
+     */
+    public String goToAddUser() {
+        return "addEditUser";
+    }
+    
+    /**
+     * Browse users button pressed
+     * 
+     * @return String
+     */
+    public String goToBrowseUsers() {
+        return "browseUsers";
+    }
+    
+    /**
      * Creates a new instance of StartController
      */
     public StartController() {

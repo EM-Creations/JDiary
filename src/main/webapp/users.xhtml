@@ -15,12 +15,15 @@
                     <h:form>
                         <b:row>
                             <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{loginController.goToAddUser()}" value="Add new user" />
+                                <h:commandButton styleClass="navButton" action="#{startController.goToAddUser()}" value="Add new user" immediate="true">
+                                    <!-- OscarSan. (2012). JSF - How to pass parameters from one controller to another controller action events? Retrieved from http://stackoverflow.com/questions/12040870/jsf-how-to-pass-parameters-from-one-controller-to-another-controller-action-ev -->
+                                    <f:setPropertyActionListener target="#{clientController.editingClient}" value="#{clientController.clearEditingClient()}" />
+                                </h:commandButton>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{loginController.goToBrowseUsers()}" value="Browse users" />
+                                <h:commandButton styleClass="navButton" action="#{startController.goToBrowseUsers()}" value="Browse users" />
                             </b:column>
                         </b:row>
                     </h:form>
