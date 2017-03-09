@@ -19,87 +19,111 @@
                     <b:column styleClass="contentBackground" span="12">
                         <h:form id="newUserForm">
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="userName">Username</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="userName" value="#{clientController.editingClient.username}">
+                                <b:column span="3">
+                                    <h:inputText id="userName" label="Username" value="#{clientController.editingClient.username}">
                                         <f:validateLength minimum="3" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="userName"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="password">Password</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputSecret id="password" value="#{clientController.editingClient.password}">
+                                <b:column span="3">
+                                    <h:inputSecret id="password" label="Password" value="#{clientController.editingClient.password}">
                                         <f:validateLength minimum="3" />
                                     </h:inputSecret>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="password"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="firstName">First name</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="firstName" value="#{clientController.editingClient.firstName}">
+                                <b:column span="3">
+                                    <h:inputText id="firstName" label="First name" value="#{clientController.editingClient.firstName}">
                                         <f:validateLength minimum="1" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="firstName"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="lastName">Last name</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="lastName" value="#{clientController.editingClient.lastName}">
+                                <b:column span="3">
+                                    <h:inputText id="lastName" label="Last name" value="#{clientController.editingClient.lastName}">
                                         <f:validateLength minimum="1" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="lastName"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="address">Address</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="address" value="#{clientController.editingClient.address}">
+                                <b:column span="3">
+                                    <h:inputText id="address" label="Address" value="#{clientController.editingClient.address}">
                                         <f:validateLength minimum="3" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="address"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="postcode">Postcode</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="postcode" value="#{clientController.editingClient.postcode}">
+                                <b:column span="3">
+                                    <h:inputText id="postcode" label="Postcode" value="#{clientController.editingClient.postcode}">
                                         <f:validateLength minimum="6" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="postcode"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="phone">Phone number</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="phone" value="#{clientController.editingClient.phone}">
+                                <b:column span="3">
+                                    <h:inputText id="phone" label="Phone" value="#{clientController.editingClient.phone}">
                                         <f:validateRegex pattern="^([a-zA-Z,#/ \.\(\)\-\+\*]*[0-9]){7}[0-9a-zA-Z,#/ \.\(\)\-\+\*]*$" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="phone" show-detail="false"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="1" span="3">
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="email">Email</h:outputLabel>
                                 </b:column>
-                                <b:column span="4">
-                                    <h:inputText id="email" value="#{clientController.editingClient.email}">
+                                <b:column span="3">
+                                    <h:inputText id="email" label="Email" value="#{clientController.editingClient.email}">
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                     </h:inputText>
                                 </b:column>
+                                <b:column span="5">
+                                    <b:message for="email" show-detail="false"/>
+                                </b:column>
                             </b:row>
                             <b:row>
-                                <b:column offset="4" span="4">
+                                <b:column offset="3" span="3">
                                     <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient()}" rendered="#{clientController.editingClient.id eq null}" />
                                     <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient()}" rendered="#{clientController.editingClient.id ne null}" />
                                 </b:column>

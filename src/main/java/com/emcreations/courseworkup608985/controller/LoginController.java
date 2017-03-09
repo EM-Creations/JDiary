@@ -79,13 +79,15 @@ public class LoginController implements Serializable {
         
         if (c != null) { // If the login was successful
             this.loggedInClient = c;
-            FacesContext.getCurrentInstance().addMessage(null, 
+            /*
+            FacesContext.getCurrentInstance().addMessage("loginForm:userName", 
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged in",
                     "Welcome " + this.loggedInClient.getFirstName() + "!"));
+            */
             return "welcome";
         } else { // If the login was unsuccessful
-            FacesContext.getCurrentInstance().addMessage(null, 
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Failed login",
+            FacesContext.getCurrentInstance().addMessage("loginForm:userName", 
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed login",
                     "Incorrect username / password"));
         }
         return "index";
