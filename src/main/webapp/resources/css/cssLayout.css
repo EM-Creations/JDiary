@@ -69,10 +69,6 @@ div#footer {
     font-size: 9pt;
 }
 
-div.extra {
-    font-size: 7pt;
-}
-
 /* Content */
 div.contentBackground {
     background-color: #bfbfbf;
@@ -132,6 +128,13 @@ div.searchBarContainer>input[type=submit] {
 
 form>div.row {
     margin: 1% 0;
+}
+
+div#header>form>a { /* Header back links */
+    float: left;
+    padding-right: 10px;
+    color: #FFF;
+    font-size: 25px;
 }
 
 /* Tables */

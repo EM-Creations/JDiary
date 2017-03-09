@@ -9,6 +9,9 @@
 
     	<ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
+                <h:form>
+                    <h:commandLink action="browseUsers"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
                 <h1>
                     <h:outputText value="Viewing user: #{clientController.editingClient.username}"/>
                 </h1>

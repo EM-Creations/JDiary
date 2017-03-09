@@ -10,6 +10,9 @@
             <ui:define name="header">
                 <!-- Fixes problem of AJAX updated buttons not working the first time they're clicked -->
                 <h:outputScript name="js/ajaxFix.js" target="head" />
+                <h:form>
+                    <h:commandLink action="users"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
                 <h1>Browse users</h1>
             </ui:define>
             <ui:define name="content">

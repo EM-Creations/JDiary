@@ -9,6 +9,12 @@
 
     	<ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
+                <h:form rendered="#{clientController.editingClient.id eq null}">
+                    <h:commandLink action="users"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
+                <h:form rendered="#{clientController.editingClient.id ne null}">
+                    <h:commandLink action="browseUsers"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
                 <h1>
                     <h:outputText value="Add new user" rendered="#{clientController.editingClient.id eq null}" />
                     <h:outputText value="Editing user: #{clientController.editingClient.username}" rendered="#{clientController.editingClient.id ne null}" />

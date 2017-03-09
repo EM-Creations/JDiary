@@ -9,8 +9,11 @@
 
     	<ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
+                <h:form>
+                    <h:commandLink action="welcome"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
                 <h1>Users</h1>
-    		</ui:define>
+            </ui:define>
             <ui:define name="content">
                     <h:form>
                         <b:row>
