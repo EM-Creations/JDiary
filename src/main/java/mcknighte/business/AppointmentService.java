@@ -1,9 +1,9 @@
-package com.emcreations.courseworkup608985.business;
+package mcknighte.business;
 
-import com.emcreations.courseworkup608985.entity.Appointment;
-import com.emcreations.courseworkup608985.persistence.AppointmentFacade;
-import com.emcreations.courseworkup608985.entity.Client;
-import com.emcreations.courseworkup608985.persistence.ClientFacade;
+import mcknighte.entity.Appointment;
+import mcknighte.persistence.AppointmentFacade;
+import mcknighte.entity.Client;
+import mcknighte.persistence.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

@@ -1,6 +1,6 @@
-package com.emcreations.courseworkup608985.exception;
+package mcknighte.exception;
 
-import com.emcreations.courseworkup608985.entity.Client;
+import mcknighte.entity.Client;
 
 /**
  * UserIncorrectPasswordException

@@ -1,7 +1,7 @@
-package com.emcreations.courseworkup608985.persistence;
+package mcknighte.persistence;
 
-import com.emcreations.courseworkup608985.business.ClientService.SearchType;
-import com.emcreations.courseworkup608985.entity.Client;
+import mcknighte.business.ClientService.SearchType;
+import mcknighte.entity.Client;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ClientFacade extends AbstractFacade<Client> {
-    @PersistenceContext(unitName = "com.emcreations_CourseworkUP608985_war_1.0PU")
+    @PersistenceContext(unitName = "mcknighte_war_1.0PU")
     private EntityManager em;
 
     /**

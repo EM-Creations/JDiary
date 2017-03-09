@@ -1,8 +1,8 @@
-package com.emcreations.courseworkup608985.controller;
+package mcknighte.controller;
 
-import com.emcreations.courseworkup608985.business.ClientService;
-import com.emcreations.courseworkup608985.entity.Client;
-import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
+import mcknighte.business.ClientService;
+import mcknighte.entity.Client;
+import mcknighte.exception.UserAlreadyExistsException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;

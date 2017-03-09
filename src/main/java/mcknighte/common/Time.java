@@ -1,4 +1,4 @@
-package com.emcreations.courseworkup608985.common;
+package mcknighte.common;
 
 import java.util.Calendar;
 import javax.inject.Named;

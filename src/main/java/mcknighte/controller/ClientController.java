@@ -1,11 +1,11 @@
-package com.emcreations.courseworkup608985.controller;
+package mcknighte.controller;
 
-import com.emcreations.courseworkup608985.business.ClientService;
-import com.emcreations.courseworkup608985.business.ClientService.SearchType;
-import com.emcreations.courseworkup608985.entity.Client;
-import com.emcreations.courseworkup608985.exception.InvalidSearchTypeException;
-import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
-import com.emcreations.courseworkup608985.exception.UserIncorrectPasswordException;
+import mcknighte.business.ClientService;
+import mcknighte.business.ClientService.SearchType;
+import mcknighte.entity.Client;
+import mcknighte.exception.InvalidSearchTypeException;
+import mcknighte.exception.UserAlreadyExistsException;
+import mcknighte.exception.UserIncorrectPasswordException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;

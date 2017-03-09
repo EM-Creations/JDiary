@@ -1,6 +1,6 @@
-package com.emcreations.courseworkup608985.persistence;
+package mcknighte.persistence;
 
-import com.emcreations.courseworkup608985.entity.Appointment;
+import mcknighte.entity.Appointment;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class AppointmentFacade extends AbstractFacade<Appointment> {
-    @PersistenceContext(unitName = "com.emcreations_CourseworkUP608985_war_1.0PU")
+    @PersistenceContext(unitName = "mcknighte_war_1.0PU")
     private EntityManager em;
 
     /**

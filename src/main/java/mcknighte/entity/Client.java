@@ -1,4 +1,4 @@
-package com.emcreations.courseworkup608985.entity;
+package mcknighte.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

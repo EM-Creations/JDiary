@@ -1,7 +1,7 @@
-package com.emcreations.courseworkup608985.controller;
+package mcknighte.controller;
 
-import com.emcreations.courseworkup608985.business.ClientService;
-import com.emcreations.courseworkup608985.entity.Client;
+import mcknighte.business.ClientService;
+import mcknighte.entity.Client;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;

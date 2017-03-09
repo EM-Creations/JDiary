@@ -1,4 +1,4 @@
-package com.emcreations.courseworkup608985.exception;
+package mcknighte.exception;
 
 /**
  * InvalidInputException

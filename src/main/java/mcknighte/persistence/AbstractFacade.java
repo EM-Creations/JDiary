@@ -1,4 +1,4 @@
-package com.emcreations.courseworkup608985.persistence;
+package mcknighte.persistence;
 
 import java.util.List;
 import javax.persistence.EntityManager;

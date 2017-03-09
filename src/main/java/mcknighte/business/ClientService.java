@@ -1,11 +1,11 @@
-package com.emcreations.courseworkup608985.business;
+package mcknighte.business;
 
-import com.emcreations.courseworkup608985.entity.Appointment;
-import com.emcreations.courseworkup608985.persistence.AppointmentFacade;
-import com.emcreations.courseworkup608985.entity.Client;
-import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
-import com.emcreations.courseworkup608985.exception.UserIncorrectPasswordException;
-import com.emcreations.courseworkup608985.persistence.ClientFacade;
+import mcknighte.entity.Appointment;
+import mcknighte.persistence.AppointmentFacade;
+import mcknighte.entity.Client;
+import mcknighte.exception.UserAlreadyExistsException;
+import mcknighte.exception.UserIncorrectPasswordException;
+import mcknighte.persistence.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -50,7 +50,7 @@ public class ClientService {
      * @param client Client
      * @param providedPassword String
      * @return Client
-     * @throws com.emcreations.courseworkup608985.exception.UserIncorrectPasswordException
+     * @throws mcknighte.exception.UserIncorrectPasswordException
      */
     public Client editClient(Client client, String providedPassword) throws UserIncorrectPasswordException {
         if (this.checkLogin(client.getUsername(), providedPassword) != null) { // If the correct password has been provided
@@ -86,7 +86,7 @@ public class ClientService {
      * 
      * @param client Client
      * @return Client
-     * @throws com.emcreations.courseworkup608985.exception.UserAlreadyExistsException
+     * @throws mcknighte.exception.UserAlreadyExistsException
      */
     public Client createClient(Client client) throws UserAlreadyExistsException {
         if (!this.clientExists(client.getUsername())) { // If this client doesn't already exist
