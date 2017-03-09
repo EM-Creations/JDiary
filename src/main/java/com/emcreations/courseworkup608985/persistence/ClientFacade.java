@@ -1,5 +1,6 @@
 package com.emcreations.courseworkup608985.persistence;
 
+import com.emcreations.courseworkup608985.business.ClientService.SearchType;
 import com.emcreations.courseworkup608985.entity.Client;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -29,57 +30,57 @@ public class ClientFacade extends AbstractFacade<Client> {
     /**
      * Search for clients based on search type and search text
      * 
-     * @param searchType String
+     * @param searchType SearchType
      * @param searchText String
      * @return List
      */
-    public List<Client> search(String searchType, String searchText) {
+    public List<Client> search(SearchType searchType, String searchText) {
         List<Client> clients;
         
         switch (searchType) {
-            case "username":
+            case username:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName")
                         .setParameter("userName", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case "firstName":
+            case firstName:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.firstName) LIKE :firstName")
                         .setParameter("firstName", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case "lastName":
+            case lastName:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.lastName) LIKE :lastName")
                         .setParameter("lastName", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case "address":
+            case address:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.address) LIKE :address")
                         .setParameter("address", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case "postcode":
+            case postcode:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.postcode) LIKE :postcode")
                         .setParameter("postcode", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case "phone":
+            case phone:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.phone) LIKE :phone")
                         .setParameter("phone", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case "email":
+            case email:
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.email) LIKE :email")
                         .setParameter("email", "%" + searchText.toLowerCase() + "%")

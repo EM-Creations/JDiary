@@ -1,6 +1,7 @@
 package com.emcreations.courseworkup608985.controller;
 
 import com.emcreations.courseworkup608985.business.ClientService;
+import com.emcreations.courseworkup608985.business.ClientService.SearchType;
 import com.emcreations.courseworkup608985.entity.Client;
 import java.io.Serializable;
 import java.util.List;
@@ -22,24 +23,24 @@ public class ClientController implements Serializable {
     private Client editingClient;
     private List<Client> searchResults;
     private String searchText;
-    private String searchType;
+    private String searchTypeText;
 
     /**
-     * Get the value of searchType
+     * Get the value of searchTypeText
      *
-     * @return the value of searchType
+     * @return the value of searchTypeText
      */
-    public String getSearchType() {
-        return searchType;
+    public String getSearchTypeText() {
+        return searchTypeText;
     }
 
     /**
-     * Set the value of searchType
+     * Set the value of searchTypeText
      *
-     * @param searchType new value of searchType
+     * @param searchTypeText String
      */
-    public void setSearchType(String searchType) {
-        this.searchType = searchType;
+    public void setSearchTypeText(String searchTypeText) {
+        this.searchTypeText = searchTypeText;
     }
 
     /**
@@ -88,9 +89,43 @@ public class ClientController implements Serializable {
     public String doSearchClient(String searchType, String searchText) {
         // TODO: Validate inputs
         this.setSearchText(searchText);
-        this.setSearchType(searchType);
-        this.setSearchResults(cS.searchClient(searchType, searchText));
+        this.setSearchTypeText(searchType);
+        this.setSearchResults(cS.searchClient(this.getSearchTypeFromString(searchType), searchText));
         return ""; // Reload the same page
+    }
+    
+    /**
+     * Convert strings from the view to valid SearchType values
+     * 
+     * @param searchType String
+     * @return SearchType
+     */
+    private SearchType getSearchTypeFromString(String searchType) {
+        switch (searchType) {
+            case "username":
+                return SearchType.username;
+                
+            case "firstName":
+                return SearchType.firstName;
+                
+            case "lastName":
+                return SearchType.lastName;
+                
+            case "address":
+                return SearchType.address;
+                
+            case "postcode":
+                return SearchType.postcode;
+                
+            case "phone":
+                return SearchType.phone;
+                
+            case "email":
+                return SearchType.email;
+            
+            default:
+                return SearchType.username; // TODO: Throw exception
+        }
     }
     
     /**
@@ -190,7 +225,7 @@ public class ClientController implements Serializable {
     /**
      * Get all clients
      * 
-     * @return List<Client>
+     * @return List
      */
     public List<Client> getAllClients() {
         return cS.getAll();

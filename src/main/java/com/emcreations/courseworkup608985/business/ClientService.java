@@ -18,15 +18,16 @@ public class ClientService {
     private ClientFacade cF;
     @EJB
     private AppointmentFacade aF;
-    
+    public enum SearchType {username, firstName, lastName, address, postcode, phone, email};
+
     /**
      * Search for clients based on a search type and search text
      * 
-     * @param searchType String
+     * @param searchType SearchType
      * @param searchText String
      * @return List
      */
-    public List<Client> searchClient(String searchType, String searchText) {
+    public List<Client> searchClient(SearchType searchType, String searchText) {
         return cF.search(searchType, searchText);
     }
     
