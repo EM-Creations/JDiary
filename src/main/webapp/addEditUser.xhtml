@@ -122,10 +122,23 @@
                                     <b:message for="email" show-detail="false"/>
                                 </b:column>
                             </b:row>
+                            <b:row rendered="#{clientController.editingClient.id ne null}">
+                                <b:column offset="1" span="2">
+                                    <h:outputLabel for="currPassword">Current Password</h:outputLabel>
+                                </b:column>
+                                <b:column span="3">
+                                    <h:inputSecret id="currPassword" label="Current Password">
+                                        <f:validateLength minimum="3" />
+                                    </h:inputSecret>
+                                </b:column>
+                                <b:column span="5">
+                                    <b:message for="currPassword"/>
+                                </b:column>
+                            </b:row>
                             <b:row>
                                 <b:column offset="3" span="3">
                                     <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient()}" rendered="#{clientController.editingClient.id eq null}" />
-                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient()}" rendered="#{clientController.editingClient.id ne null}" />
+                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient(param['newUserForm:currPassword'])}" rendered="#{clientController.editingClient.id ne null}" />
                                 </b:column>
                             </b:row>
                         </h:form>

@@ -4,6 +4,7 @@ import com.emcreations.courseworkup608985.entity.Appointment;
 import com.emcreations.courseworkup608985.persistence.AppointmentFacade;
 import com.emcreations.courseworkup608985.entity.Client;
 import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
+import com.emcreations.courseworkup608985.exception.UserIncorrectPasswordException;
 import com.emcreations.courseworkup608985.persistence.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
@@ -40,6 +41,23 @@ public class ClientService {
      */
     public Client editClient(Client client) {
         cF.edit(client);
+        return client;
+    }
+    
+    /**
+     * Edit client, requiring a password
+     * 
+     * @param client Client
+     * @param providedPassword String
+     * @return Client
+     * @throws com.emcreations.courseworkup608985.exception.UserIncorrectPasswordException
+     */
+    public Client editClient(Client client, String providedPassword) throws UserIncorrectPasswordException {
+        if (this.checkLogin(client.getUsername(), providedPassword) != null) { // If the correct password has been provided
+            cF.edit(client);
+        } else { // If the incorrect password has been provided
+            throw new UserIncorrectPasswordException(client);
+        }
         return client;
     }
 

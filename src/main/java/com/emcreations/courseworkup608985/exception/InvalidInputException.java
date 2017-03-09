@@ -3,7 +3,7 @@ package com.emcreations.courseworkup608985.exception;
 /**
  * InvalidInputException
  * 
- * @author Edward McKnight UP608985
+ * @author Edward McKnight (UP608985)
  */
 public abstract class InvalidInputException extends Exception {
     

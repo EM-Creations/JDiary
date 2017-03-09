@@ -5,6 +5,7 @@ import com.emcreations.courseworkup608985.business.ClientService.SearchType;
 import com.emcreations.courseworkup608985.entity.Client;
 import com.emcreations.courseworkup608985.exception.InvalidSearchTypeException;
 import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
+import com.emcreations.courseworkup608985.exception.UserIncorrectPasswordException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -208,11 +209,20 @@ public class ClientController implements Serializable {
     /**
      * Processing editing a client
      * 
+     * @param currPassword String
      * @return String
      */
-    public String doEditClient() {
+    public String doEditClient(String currPassword) {
         // TODO validation
-        cS.editClient(this.editingClient);
+        try {
+            cS.editClient(this.editingClient, currPassword);
+        } catch (UserIncorrectPasswordException ex) {
+            Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
+            FacesContext.getCurrentInstance().addMessage("newUserForm:currPassword", 
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Incorrect",
+                    "Incorrect password given.")); // Output error message
+            return "addEditUser";
+        }
         this.clearEditingClient();
         return "users"; // Go back to the users page
     }

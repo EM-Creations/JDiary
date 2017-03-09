@@ -6,7 +6,7 @@ package com.emcreations.courseworkup608985.exception;
  * @author Edward McKnight (UP608985)
  */
 public class InvalidSearchTypeException extends InvalidInputException {
-    private String inputProvided;
+    private final String inputProvided;
     
     /**
      * Constructor

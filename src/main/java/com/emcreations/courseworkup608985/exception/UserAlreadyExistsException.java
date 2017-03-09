@@ -5,8 +5,8 @@ package com.emcreations.courseworkup608985.exception;
  * 
  * @author Edward McKnight (UP608985)
  */
-public class UserAlreadyExistsException extends Exception {
-    private String userName;
+public class UserAlreadyExistsException extends UserException {
+    private final String userName;
     
     /**
      * Constructor
