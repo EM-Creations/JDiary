@@ -19,6 +19,15 @@ public class ClientService {
     @EJB
     private AppointmentFacade aF;
     
+    /**
+     * Search for clients based on specified parameter
+     * 
+     * @return List
+     */
+    public List<Client> searchClient(String userName) {
+        return cF.search(userName);
+    }
+    
     public Client editClient(Client client) {
         cF.edit(client);
         return client;

@@ -20,6 +20,31 @@ public class ClientController implements Serializable {
     @EJB
     private ClientService cS;
     private Client editingClient;
+    private List<Client> searchResults;
+
+    /**
+     * Get the value of searchResults
+     *
+     * @return the value of searchResults
+     */
+    public List<Client> getSearchResults() {
+        return searchResults;
+    }
+
+    /**
+     * Set the value of searchResults
+     *
+     * @param searchResults new value of searchResults
+     */
+    public void setSearchResults(List<Client> searchResults) {
+        this.searchResults = searchResults;
+    }
+
+    
+    public String doSearchClient(String userName) {
+        this.setSearchResults(cS.searchClient(userName));
+        return ""; // Reload the same page
+    }
     
     /**
      * Load the view to edit a client

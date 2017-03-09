@@ -140,7 +140,11 @@ table.list>tbody>tr>td {
     padding: 3px;
 }
 
-table.list>tbody>tr:nth-child(even) {
+table.list>tbody>tr>td>form>input[type=submit] { /* Buttons within cells */
+    margin: 0;
+}
+
+table.list>tbody>tr:nth-child(odd) {
     background-color: grey;
 }
 

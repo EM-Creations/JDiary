@@ -20,6 +20,19 @@ public class ClientFacade extends AbstractFacade<Client> {
     protected EntityManager getEntityManager() {
         return em;
     }
+
+    public List<Client> search(String userName) {
+        List<Client> clients;
+        
+        clients = this.getEntityManager().createQuery(
+                "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName")
+                .setParameter("userName", "%" + userName.toLowerCase() + "%")
+                .getResultList();
+        
+        if (clients.isEmpty()) // If the list is empty
+            return null; // Return null - no clients found
+        return clients; // Otherwise return the list of clients
+    }
     
     /**
      * Find a client by username

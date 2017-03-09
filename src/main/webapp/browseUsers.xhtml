@@ -15,35 +15,52 @@
                 <b:row>
                     <b:column styleClass="contentBackground" span="12">
                         <b:row>
+                            <b:column offset="1" span="1">
+                                <h2>Search</h2>
+                            </b:column>
+                        </b:row>
+                        <b:row>
                             <h:form id="searchUsers">
                                 <b:column offset="1" span="10" styleClass="searchBarContainer">
-                                        <h:inputText styleClass="searchBar" />
-                                        <h:commandButton value="Search" disabled="true"/>
+                                        <h:inputText id="searchBar" styleClass="searchBar">
+                                            <f:ajax event="keyup" execute="@this" render="searchResults" listener="#{clientController.doSearchClient(param['searchUsers:searchBar'])}" />
+                                        </h:inputText>
+                                        <h:commandButton value="Search" action="#{clientController.doSearchClient(param['searchUsers:searchBar'])}"/>
                                 </b:column>
                             </h:form>
                         </b:row>
                         <b:row>
                             <b:column offset="1" span="10">
-                                <table class="list">
-                                    <tr class="headerRow">
-                                        <td>User</td>
-                                        <td>First Name</td>
-                                        <td>Last Name</td>
-                                        <td>Email address</td>
-                                        <td>Actions</td>
-                                    </tr>
-                                    <ui:repeat var="client" value="#{clientController.allClients}">
-                                        <tr>
-                                            <td>#{client.username}</td>
-                                            <td>#{client.firstName}</td>
-                                            <td>#{client.lastName}</td>
-                                            <td><h:outputLink value="mailto:#{client.email}">#{client.email}</h:outputLink></td>
-                                            <td><h:form><h:commandButton value="View" action="#{clientController.goToViewClient(client)}" styleClass="submit"/></h:form></td>
-                                            <td><h:form><h:commandButton value="Edit" action="#{clientController.goToEditClient(client)}" styleClass="submit"/></h:form></td>
-                                            <td><h:form><h:commandButton value="Delete" action="#{clientController.doDeleteClient(client)}" styleClass="submit"/></h:form></td>
-                                        </tr>
-                                    </ui:repeat>
-                                </table>
+                                <h:dataTable id="searchResults" 
+                                             value="#{clientController.searchResults}" 
+                                             var="client" 
+                                             styleClass="list" 
+                                             headerClass="headerRow"
+                                             cellspacing="0"
+                                             cellpadding="0">
+                                    <h:column>
+                                        <f:facet name="header">User</f:facet>
+                                        #{client.username}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">First Name</f:facet>
+                                        #{client.firstName}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Last Name</f:facet>
+                                        #{client.lastName}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Email Address</f:facet>
+                                        #{client.email}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Actions</f:facet>
+                                        <h:form><h:commandButton value="View" action="#{clientController.goToViewClient(client)}" styleClass="submit"/></h:form>
+                                        <td><h:form><h:commandButton value="Edit" action="#{clientController.goToEditClient(client)}" styleClass="submit"/></h:form></td>
+                                        <td><h:form><h:commandButton value="Delete" action="#{clientController.doDeleteClient(client)}" styleClass="submit"/></h:form></td>
+                                    </h:column>
+                                </h:dataTable>
                             </b:column>
                         </b:row>
                     </b:column>

@@ -15,6 +15,11 @@ h1 {
     color: #D20005;
 }
 
+h2 {
+    font-size: 16pt;
+    margin-top: 0;
+}
+
 a:link, a:visited {
   color: #045491;
   font-weight : bold;
