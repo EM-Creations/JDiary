@@ -22,6 +22,7 @@ public class Client implements Serializable {
     private String firstName;
     private String lastName;
     private String address;
+    private String country;
     private String postcode;
     private String phone;
     private String email;
@@ -30,6 +31,24 @@ public class Client implements Serializable {
      * Constructor
      */
     public Client() {
+    }
+    
+    /**
+     * Get the value of country
+     *
+     * @return the value of country
+     */
+    public String getCountry() {
+        return country;
+    }
+
+    /**
+     * Set the value of country
+     *
+     * @param country new value of country
+     */
+    public void setCountry(String country) {
+        this.country = country;
     }
     
     /**

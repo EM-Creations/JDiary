@@ -137,6 +137,10 @@ div#header>form>a { /* Header back links */
     font-size: 25px;
 }
 
+form#viewUserForm>div>div>input[type=text], form#newUserForm>div>div>input[type=text], form#newUserForm>div>div>input[type=password], form#newUserForm>div>div>select {
+    width: 100%;
+}
+
 /* Tables */
 table.list {
     width: 100%;

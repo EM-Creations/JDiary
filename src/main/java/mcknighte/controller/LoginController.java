@@ -98,7 +98,7 @@ public class LoginController implements Serializable {
      */
     public LoginController() {
         this.userName = "";
-        this.password = "admin"; // DEVELOPMENT PURPOSES ONLY (pre-set the password for admin user)
+        this.password = "adminadmin"; // TODO: DEVELOPMENT PURPOSES ONLY (pre-set the password for admin user)
     }
     
 }

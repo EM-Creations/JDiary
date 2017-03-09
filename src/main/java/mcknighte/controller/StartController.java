@@ -30,10 +30,11 @@ public class StartController {
         // Create client(s)
         Client c = new Client();
         c.setUsername("adminadmin");
-        c.setPassword("admin");
+        c.setPassword("adminadmin");
         c.setFirstName("admin");
         c.setLastName("admin");
         c.setAddress("admin");
+        c.setCountry("United Kingdom");
         c.setPostcode("admin");
         c.setPhone("123456789");
         c.setEmail("admin@admin.com");

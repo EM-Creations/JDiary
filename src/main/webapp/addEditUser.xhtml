@@ -91,6 +91,19 @@
                             </b:row>
                             <b:row>
                                 <b:column offset="1" span="2">
+                                    <h:outputLabel for="country">Country</h:outputLabel>
+                                </b:column>
+                                <b:column span="3">
+                                    <h:selectOneMenu id="country" required="true" value="#{clientController.editingClient.country}">
+                                        <f:selectItems value="#{clientController.getCountries()}"/>
+                                    </h:selectOneMenu>
+                                </b:column>
+                                <b:column span="5">
+                                    <b:message for="country"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="postcode">Postcode</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">

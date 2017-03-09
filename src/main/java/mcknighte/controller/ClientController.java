@@ -33,6 +33,14 @@ public class ClientController implements Serializable {
     private String searchTypeText;
 
     /**
+     * Get the value of countries
+     *
+     * @return List
+     */
+    public List<String> getCountries() {
+        return cS.getCountries();
+    }
+    /**
      * Get the value of searchTypeText
      *
      * @return the value of searchTypeText

@@ -1,5 +1,6 @@
 package mcknighte.business;
 
+import java.util.ArrayList;
 import mcknighte.entity.Appointment;
 import mcknighte.persistence.AppointmentFacade;
 import mcknighte.entity.Client;
@@ -7,6 +8,7 @@ import mcknighte.exception.UserAlreadyExistsException;
 import mcknighte.exception.UserIncorrectPasswordException;
 import mcknighte.persistence.ClientFacade;
 import java.util.List;
+import java.util.Locale;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -22,6 +24,24 @@ public class ClientService {
     private AppointmentFacade aF;
     public enum SearchType {username, firstName, lastName, address, postcode, phone, email};
 
+    /**
+     * Get a list of country names
+     * 
+     * @return List
+     */
+    public List<String> getCountries() {
+        // mkyong. (2013). Display a list of countries in Java. Retrieved from http://www.mkyong.com/java/display-a-list-of-countries-in-java/
+        ArrayList<String> countries = new ArrayList<>();
+        String[] countryCodes = Locale.getISOCountries();
+        
+        for (String countryCode : countryCodes) { // For each country code
+            Locale locale = new Locale("", countryCode);
+            countries.add(locale.getDisplayCountry()); // Add this country's display name to the ArrayList
+        }
+        
+        return countries; // Return the ArrayList of display country names
+    }
+    
     /**
      * Search for clients based on a search type and search text
      * 
