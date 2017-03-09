@@ -1,3 +1,4 @@
+// BalusC. (2016). commandButton/commandLink/ajax action/listener method not invoked or input value not updated. Retrieved from http://stackoverflow.com/questions/2118656/commandbutton-commandlink-ajax-action-listener-method-not-invoked-or-input-value
 jsf.ajax.addOnEvent(function(data) {
     if (data.status == "success") {
         fixViewState(data.responseXML);
