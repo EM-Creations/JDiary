@@ -20,19 +20,33 @@ public class ClientService {
     private AppointmentFacade aF;
     
     /**
-     * Search for clients based on specified parameter
+     * Search for clients based on a search type and search text
      * 
+     * @param searchType String
+     * @param searchText String
      * @return List
      */
-    public List<Client> searchClient(String userName) {
-        return cF.search(userName);
+    public List<Client> searchClient(String searchType, String searchText) {
+        return cF.search(searchType, searchText);
     }
     
+    /**
+     * Edit client
+     * 
+     * @param client Client
+     * @return Client
+     */
     public Client editClient(Client client) {
         cF.edit(client);
         return client;
     }
 
+    /**
+     * Get client
+     * 
+     * @param client Client
+     * @return Client
+     */
     public Client getClient(Client client) {
         return cF.find(client.getId());
     }
@@ -47,11 +61,23 @@ public class ClientService {
         return cF.find(userName);
     }
 
+    /**
+     * Create client
+     * 
+     * @param client Client
+     * @return Client
+     */
     public Client createClient(Client client) {
         cF.create(client);
         return client;
     }
 
+    /**
+     * Remove client
+     * 
+     * @param client Client
+     * @return Client
+     */
     public Client removeClient(Client client) {
         cF.remove(client);
         return client;
@@ -78,6 +104,11 @@ public class ClientService {
         return cF.find(userName, password); // Return whether we can find a client with that username and password or not
     }
 
+    /**
+     * Get all clients
+     * 
+     * @return List
+     */
     public List<Client> getAll() {
         return cF.findAll();
     }

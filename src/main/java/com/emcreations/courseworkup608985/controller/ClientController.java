@@ -21,7 +21,45 @@ public class ClientController implements Serializable {
     private ClientService cS;
     private Client editingClient;
     private List<Client> searchResults;
+    private String searchText;
+    private String searchType;
 
+    /**
+     * Get the value of searchType
+     *
+     * @return the value of searchType
+     */
+    public String getSearchType() {
+        return searchType;
+    }
+
+    /**
+     * Set the value of searchType
+     *
+     * @param searchType new value of searchType
+     */
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
+
+    /**
+     * Get the value of searchText
+     *
+     * @return the value of searchText
+     */
+    public String getSearchText() {
+        return searchText;
+    }
+
+    /**
+     * Set the value of searchText
+     *
+     * @param searchText new value of searchText
+     */
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+    
     /**
      * Get the value of searchResults
      *
@@ -40,9 +78,18 @@ public class ClientController implements Serializable {
         this.searchResults = searchResults;
     }
 
-    
-    public String doSearchClient(String userName) {
-        this.setSearchResults(cS.searchClient(userName));
+    /**
+     * Search for clients by search type and search text
+     * 
+     * @param searchType String
+     * @param searchText String
+     * @return String
+     */
+    public String doSearchClient(String searchType, String searchText) {
+        // TODO: Validate inputs
+        this.setSearchText(searchText);
+        this.setSearchType(searchType);
+        this.setSearchResults(cS.searchClient(searchType, searchText));
         return ""; // Reload the same page
     }
     

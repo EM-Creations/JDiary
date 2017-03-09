@@ -7,27 +7,88 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ * Client facade
+ * 
  * @author Edward McKnight (UP608985)
  */
 @Stateless
 public class ClientFacade extends AbstractFacade<Client> {
-
     @PersistenceContext(unitName = "com.emcreations_CourseworkUP608985_war_1.0PU")
     private EntityManager em;
 
+    /**
+     * Get entity manager
+     * 
+     * @return EntityManager
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public List<Client> search(String userName) {
+    /**
+     * Search for clients based on search type and search text
+     * 
+     * @param searchType String
+     * @param searchText String
+     * @return List
+     */
+    public List<Client> search(String searchType, String searchText) {
         List<Client> clients;
         
-        clients = this.getEntityManager().createQuery(
-                "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName")
-                .setParameter("userName", "%" + userName.toLowerCase() + "%")
-                .getResultList();
+        switch (searchType) {
+            case "username":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName")
+                        .setParameter("userName", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case "firstName":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.firstName) LIKE :firstName")
+                        .setParameter("firstName", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case "lastName":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.lastName) LIKE :lastName")
+                        .setParameter("lastName", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case "address":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.address) LIKE :address")
+                        .setParameter("address", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case "postcode":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.postcode) LIKE :postcode")
+                        .setParameter("postcode", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case "phone":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.phone) LIKE :phone")
+                        .setParameter("phone", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case "email":
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.email) LIKE :email")
+                        .setParameter("email", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+            
+            default: // If no valid search type is provided
+                return null; // Return null - TODO create exception
+        }
         
         if (clients.isEmpty()) // If the list is empty
             return null; // Return null - no clients found
@@ -72,6 +133,9 @@ public class ClientFacade extends AbstractFacade<Client> {
         return clients.get(0); // Otherwise return the found client
     }
 
+    /**
+     * Constructor
+     */
     public ClientFacade() {
         super(Client.class);
     }

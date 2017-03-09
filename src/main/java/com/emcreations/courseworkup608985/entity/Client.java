@@ -7,12 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
+ * Client entity class
+ * 
  * @author Edward McKnight (UP608985)
  */
 @Entity
 public class Client implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -176,14 +176,29 @@ public class Client implements Serializable {
         this.password = password;
     }
 
+    /**
+     * Get ID
+     * 
+     * @return Long 
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Set ID
+     * 
+     * @param id Long
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Hash code
+     * 
+     * @return int
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -191,6 +206,12 @@ public class Client implements Serializable {
         return hash;
     }
 
+    /**
+     * Equals
+     * 
+     * @param object Object
+     * @return boolean
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -204,6 +225,11 @@ public class Client implements Serializable {
         return true;
     }
 
+    /**
+     * To string
+     * 
+     * @return String
+     */
     @Override
     public String toString() {
         return "com.emcreations.courseworkup608985.entity.User[ id=" + id + " ]";

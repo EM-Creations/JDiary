@@ -13,12 +13,12 @@ import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 /**
- *
+ * Appointment entity class
+ * 
  * @author Edward McKnight (UP608985)
  */
 @Entity
 public class Appointment implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -129,14 +129,29 @@ public class Appointment implements Serializable {
         this.startTime = start;
     }
 
+    /**
+     * Get ID
+     * 
+     * @return Long 
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Set ID
+     * 
+     * @param id Long
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Hash code
+     * 
+     * @return int
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -144,6 +159,12 @@ public class Appointment implements Serializable {
         return hash;
     }
 
+    /**
+     * Equals
+     * 
+     * @param object Object
+     * @return boolean
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -157,6 +178,9 @@ public class Appointment implements Serializable {
         return true;
     }
 
+    /**
+     * To string
+     */
     @Override
     public String toString() {
         return "com.emcreations.courseworkup608985.entity.Appointment[ id=" + id + " ]";

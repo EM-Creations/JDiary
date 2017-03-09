@@ -117,9 +117,13 @@ input[type=submit]:disabled {
 }
 
 input[type=text].searchBar {
-    width: 90%;
+    width: 75%;
     padding: 3px;
     border-radius: 3px;
+}
+
+select#searchUsers\:searchType {
+    height: 30px;
 }
 
 div.searchBarContainer>input[type=submit] {
