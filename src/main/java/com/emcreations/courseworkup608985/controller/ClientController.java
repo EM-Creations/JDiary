@@ -4,6 +4,7 @@ import com.emcreations.courseworkup608985.business.ClientService;
 import com.emcreations.courseworkup608985.business.ClientService.SearchType;
 import com.emcreations.courseworkup608985.entity.Client;
 import com.emcreations.courseworkup608985.exception.InvalidSearchTypeException;
+import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -11,6 +12,8 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  * ClientController
@@ -188,9 +191,16 @@ public class ClientController implements Serializable {
      * @return String
      */
     public String doAddClient() {
-        // TODO check client doesn't already exist
         // TODO validation
-        cS.createClient(this.editingClient);
+        try {
+            cS.createClient(this.editingClient);
+        } catch (UserAlreadyExistsException ex) { // If the user already exists
+            Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
+            FacesContext.getCurrentInstance().addMessage("newUserForm:userName", 
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Already exists",
+                    "A user with this username already exists.")); // Output error message
+            return "addEditUser"; // Reload the page
+        }
         this.clearEditingClient(); // Reset the client
         return "users"; // Load the users page
     }

@@ -3,6 +3,7 @@ package com.emcreations.courseworkup608985.business;
 import com.emcreations.courseworkup608985.entity.Appointment;
 import com.emcreations.courseworkup608985.persistence.AppointmentFacade;
 import com.emcreations.courseworkup608985.entity.Client;
+import com.emcreations.courseworkup608985.exception.UserAlreadyExistsException;
 import com.emcreations.courseworkup608985.persistence.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
@@ -67,9 +68,14 @@ public class ClientService {
      * 
      * @param client Client
      * @return Client
+     * @throws com.emcreations.courseworkup608985.exception.UserAlreadyExistsException
      */
-    public Client createClient(Client client) {
-        cF.create(client);
+    public Client createClient(Client client) throws UserAlreadyExistsException {
+        if (!this.clientExists(client.getUsername())) { // If this client doesn't already exist
+            cF.create(client);
+        } else { // If this client does exist
+            throw new UserAlreadyExistsException(client.getUsername());
+        }
         return client;
     }
 
