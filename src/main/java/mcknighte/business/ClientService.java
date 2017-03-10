@@ -1,6 +1,7 @@
 package mcknighte.business;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import mcknighte.entity.Appointment;
 import mcknighte.persistence.AppointmentFacade;
 import mcknighte.entity.Client;
@@ -13,7 +14,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
- *
+ * ClientService
+ * 
  * @author Edward McKnight (UP608985)
  */
 @Stateless
@@ -38,6 +40,8 @@ public class ClientService {
             Locale locale = new Locale("", countryCode);
             countries.add(locale.getDisplayCountry()); // Add this country's display name to the ArrayList
         }
+        
+        Collections.sort(countries); // Sort the list of countries alphabetically
         
         return countries; // Return the ArrayList of display country names
     }

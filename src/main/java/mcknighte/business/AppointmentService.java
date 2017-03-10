@@ -9,7 +9,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
- *
+ * AppointmentService
+ * 
  * @author Edward McKnight (UP608985)
  */
 @Stateless

@@ -35,6 +35,7 @@ public class ClientFacade extends AbstractFacade<Client> {
      * @return List
      */
     public List<Client> search(SearchType searchType, String searchText) {
+        // TODO: Implement search by all
         List<Client> clients;
         
         switch (searchType) {

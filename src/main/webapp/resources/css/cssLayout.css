@@ -59,6 +59,11 @@
 /* Header */
 div#header {
     margin-bottom: 20px;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 /* Footer */
