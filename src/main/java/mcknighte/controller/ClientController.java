@@ -204,6 +204,7 @@ public class ClientController implements Serializable {
      * @return String
      */
     public String doDeleteClient(Client c) {
+        // TODO: Refresh the view properly
         cS.removeClient(c);
         this.clearEditingClient();
         return ""; // Reload the same page
@@ -243,10 +244,14 @@ public class ClientController implements Serializable {
      * Processing editing a client
      *
      * @param currPassword String
+     * @param newPassword String
      * @return String
      */
-    public String doEditClient(String currPassword) {
+    public String doEditClient(String currPassword, String newPassword) {
         // TODO validation
+        if (!newPassword.equals("")) // If the user opted to change the password
+            this.editingClient.setPassword(newPassword); // Set the new password
+        
         try {
             cS.editClient(this.editingClient, currPassword);
         } catch (UserIncorrectPasswordException ex) {

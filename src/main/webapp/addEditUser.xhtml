@@ -4,7 +4,8 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
 
     	<ui:composition template="./resources/template/commonLayout.xhtml">
@@ -40,12 +41,22 @@
                             </b:row>
                             <b:row>
                                 <b:column offset="1" span="2">
-                                    <h:outputLabel for="password">Password</h:outputLabel>
+                                    <h:outputLabel for="password" rendered="#{clientController.editingClient.id eq null}">Password</h:outputLabel>
+                                    <h:outputLabel for="password" rendered="#{clientController.editingClient.id ne null}">New password (if changing)</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
-                                    <h:inputSecret id="password" label="Password" value="#{clientController.editingClient.password}">
-                                        <f:validateLength minimum="3" />
-                                    </h:inputSecret>
+                                    <c:choose>
+                                        <c:when test="#{clientController.editingClient.id eq null}">
+                                            <h:inputSecret id="password" label="Password" value="#{clientController.editingClient.password}">
+                                                <f:validateLength minimum="3" />
+                                            </h:inputSecret>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h:inputSecret id="password" label="New password" required="false">
+                                                <f:validator validatorId="mcknighte.NewPasswordValidator" />
+                                            </h:inputSecret>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </b:column>
                                 <b:column span="5">
                                     <b:message for="password"/>
@@ -158,7 +169,7 @@
                             <b:row>
                                 <b:column offset="3" span="3">
                                     <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient()}" rendered="#{clientController.editingClient.id eq null}" />
-                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient(param['newUserForm:currPassword'])}" rendered="#{clientController.editingClient.id ne null}" />
+                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient(param['newUserForm:currPassword'], param['newUserForm:password'])}" rendered="#{clientController.editingClient.id ne null}" />
                                 </b:column>
                             </b:row>
                         </h:form>
