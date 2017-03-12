@@ -35,54 +35,66 @@ public class ClientFacade extends AbstractFacade<Client> {
      * @return List
      */
     public List<Client> search(SearchType searchType, String searchText) {
-        // TODO: Implement search by all
         List<Client> clients;
         
         switch (searchType) {
             default:
-            case username:
+            case all: // Search by all parameters
+                clients = this.getEntityManager().createQuery(
+                        "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName OR LOWER(c.firstName) LIKE :firstName OR LOWER(c.lastName) LIKE :lastName OR LOWER(c.address) LIKE :address OR LOWER(c.postcode) LIKE :postcode OR LOWER(c.phone) LIKE :phone OR LOWER(c.email) LIKE :email")
+                        .setParameter("userName", "%" + searchText.toLowerCase() + "%")
+                        .setParameter("firstName", "%" + searchText.toLowerCase() + "%")
+                        .setParameter("lastName", "%" + searchText.toLowerCase() + "%")
+                        .setParameter("address", "%" + searchText.toLowerCase() + "%")
+                        .setParameter("postcode", "%" + searchText.toLowerCase() + "%")
+                        .setParameter("phone", "%" + searchText.toLowerCase() + "%")
+                        .setParameter("email", "%" + searchText.toLowerCase() + "%")
+                        .getResultList();
+                break;
+                
+            case username: // Search by username
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.username) LIKE :userName")
                         .setParameter("userName", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case firstName:
+            case firstName: // Search by first name
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.firstName) LIKE :firstName")
                         .setParameter("firstName", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case lastName:
+            case lastName: // Search by last name
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.lastName) LIKE :lastName")
                         .setParameter("lastName", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case address:
+            case address: // Search by address
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.address) LIKE :address")
                         .setParameter("address", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case postcode:
+            case postcode: // Search by postcode
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.postcode) LIKE :postcode")
                         .setParameter("postcode", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case phone:
+            case phone: // Search by phone number
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.phone) LIKE :phone")
                         .setParameter("phone", "%" + searchText.toLowerCase() + "%")
                         .getResultList();
                 break;
                 
-            case email:
+            case email: // Search by email
                 clients = this.getEntityManager().createQuery(
                         "SELECT c FROM Client c WHERE LOWER(c.email) LIKE :email")
                         .setParameter("email", "%" + searchText.toLowerCase() + "%")

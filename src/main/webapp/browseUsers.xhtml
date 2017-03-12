@@ -30,6 +30,7 @@
                                             <f:ajax event="keyup" execute="@this" render="searchResults" listener="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
                                         </h:inputText>
                                         <h:selectOneMenu id="searchType" value="#{clientController.searchTypeText}">
+                                            <f:selectItem itemValue="all" itemLabel="All" />
                                             <f:selectItem itemValue="username" itemLabel="Username" />
                                             <f:selectItem itemValue="firstName" itemLabel="First Name" />
                                             <f:selectItem itemValue="lastName" itemLabel="Last Name" />

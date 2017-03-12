@@ -24,7 +24,7 @@ public class ClientService {
     private ClientFacade cF;
     @EJB
     private AppointmentFacade aF;
-    public enum SearchType {username, firstName, lastName, address, postcode, phone, email};
+    public enum SearchType {all, username, firstName, lastName, address, postcode, phone, email};
 
     /**
      * Get a list of country names

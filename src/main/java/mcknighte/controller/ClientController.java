@@ -132,7 +132,7 @@ public class ClientController implements Serializable {
             sT = this.getSearchTypeFromString(searchType);
         } catch (InvalidSearchTypeException ex) {
             Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
-            sT = SearchType.username; // Default to username if illegal input was given
+            sT = SearchType.all; // Default to all if illegal input was given
         }
         this.setSearchResults(cS.searchClient(sT, searchText));
         return ""; // Reload the same page
@@ -146,6 +146,9 @@ public class ClientController implements Serializable {
      */
     private SearchType getSearchTypeFromString(String searchType) throws InvalidSearchTypeException {
         switch (searchType) {
+            case "all":
+                return SearchType.all;
+            
             case "username":
                 return SearchType.username;
 
