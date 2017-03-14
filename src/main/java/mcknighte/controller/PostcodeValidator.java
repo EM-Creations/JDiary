@@ -8,21 +8,22 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 /**
- * New password validator
+ * Postcode validator
  *
  * @author Edward McKnight (UP608985)
  */
-@FacesValidator("mcknighte.NewPasswordValidator")
-public class NewPasswordValidator implements Validator {
+@FacesValidator("mcknighte.PostcodeValidator")
+public class PostcodeValidator implements Validator {
+    private final String postcodeRegex = "^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$";
 
     /**
      * Constructor
      */
-    public NewPasswordValidator() {
+    public PostcodeValidator() {
     }
 
     /**
-     * Validate the new password
+     * Validate the postcode
      * 
      * @param context FacesContext
      * @param component UIComponent
@@ -31,11 +32,14 @@ public class NewPasswordValidator implements Validator {
      */
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        if (value == null || value.toString().equals("")) return; // If there is no new password set, let it through!
+        if (!"United Kingdom".equals(component.getAttributes().get("country"))) { // If the country isn't set to United Kingdom
+            return; // No need to validate the post code
+        }
+        
         // Otherwise
-        if (value.toString().length() < 3) { // If the length isn't longer than 3
-            FacesMessage msg = new FacesMessage("Regex invalid",
-                            "Regex invalid");
+        if (!value.toString().matches(this.postcodeRegex)) { // If the postcode isn't valid
+            FacesMessage msg = new FacesMessage("",
+                            "Postcode: A valid postcode must be provided for UK addresses");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }
