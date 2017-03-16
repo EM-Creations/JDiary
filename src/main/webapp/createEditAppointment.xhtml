@@ -65,7 +65,7 @@
                                     <h:outputLabel for="attendees">Attendees</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
-                                    <h:selectManyListbox id="attendees" label="Attendees" value="#{appointmentController.editingAppointment.attendees}" required="true">
+                                    <h:selectManyListbox id="attendees" label="Attendees" value="#{appointmentController.attendeeUsers}" required="true">
                                         <f:selectItems value="#{clientController.allClients}"/>
                                     </h:selectManyListbox>
                                 </b:column>

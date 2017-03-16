@@ -251,7 +251,7 @@ public class Client implements Serializable {
      */
     @Override
     public String toString() {
-        return "com.emcreations.courseworkup608985.entity.User[ id=" + id + " ]";
+        return this.username;
     }
 
 }

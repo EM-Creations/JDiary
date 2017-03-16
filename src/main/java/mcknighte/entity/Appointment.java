@@ -31,7 +31,7 @@ public class Appointment implements Serializable {
     @ManyToOne(targetEntity=Client.class)
     private Client creator;
     @OneToMany(targetEntity=Client.class)
-    private List<?> attendees;
+    private List<Client> attendees;
     
     /**
      * Constructor
@@ -44,7 +44,7 @@ public class Appointment implements Serializable {
      *
      * @return the value of attendees
      */
-    public List<?> getAttendees() {
+    public List<Client> getAttendees() {
         return attendees;
     }
 
@@ -53,7 +53,7 @@ public class Appointment implements Serializable {
      *
      * @param attendees new value of attendees
      */
-    public void setAttendees(List<?> attendees) {
+    public void setAttendees(List<Client> attendees) {
         this.attendees = attendees;
     }
 
@@ -172,10 +172,7 @@ public class Appointment implements Serializable {
             return false;
         }
         Appointment other = (Appointment) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     /**
@@ -183,7 +180,7 @@ public class Appointment implements Serializable {
      */
     @Override
     public String toString() {
-        return "com.emcreations.courseworkup608985.entity.Appointment[ id=" + id + " ]";
+        return "mcknighte.entity.Appointment[ id=" + id + " ]";
     }
     
 }
