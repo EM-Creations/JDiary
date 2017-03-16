@@ -94,15 +94,60 @@ public class AppointmentController implements Serializable {
             creator = cS.getClient("adminadmin");
         }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
-        // Go through list of attendees and convert to client objects
-        ArrayList<Client> attendees = new ArrayList<>();
-        for (String attendeeUser : this.attendeeUsers) {
-            attendees.add(cS.getClient(attendeeUser));
-        }
-        this.editingAppointment.setAttendees(attendees);
+        this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
         aS.createAppointment(this.editingAppointment);
         this.clearEditingAppointment(); // Reset the appointment
         return "appointments"; // Load the appointments page
+    }
+    
+    /**
+     * Process editing an appointment
+     *
+     * @param creator Client
+     * @return String
+     */
+    public String doEditAppointment(Client creator) {
+        // TODO validation
+        if (creator == null || creator.getId() == null) { // Temp
+            creator = cS.getClient("adminadmin");
+        }
+        this.editingAppointment.setCreator(creator); // Set the creator for this appointment
+        this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
+        aS.editAppointment(this.editingAppointment);
+        this.clearEditingAppointment(); // Reset the appointment
+        return "appointments"; // Load the appointments page
+    }
+    
+    /**
+     * Convert an array of client user names to client objects
+     * 
+     * @param userNames List
+     * @return List
+     */
+    public List<Client> convertClientNamesToClients(List<String> userNames) {
+        ArrayList<Client> clients = new ArrayList<>();
+        
+        for (String userName : userNames) { // For each user
+            clients.add(cS.getClient(userName)); // Get them and add them to the array of clients
+        }
+        
+        return clients;
+    }
+    
+    /**
+     * Convert an array of client user names to client objects
+     * 
+     * @param clients List
+     * @return List
+     */
+    public List<String> convertClientsToClientNames(List<Client> clients) {
+        ArrayList<String> names = new ArrayList<>();
+        
+        for (Client client : clients) { // For each user
+            names.add(client.toString());
+        }
+        
+        return names;
     }
     
     /**
@@ -112,6 +157,18 @@ public class AppointmentController implements Serializable {
      */
     public List<Appointment> getAllAppointments() {
         return aS.getAll();
+    }
+    
+    /**
+     * Do edit appointment
+     * 
+     * @param appointment Appointment
+     * @return String
+     */
+    public String doEditAppointment(Appointment appointment) {
+        this.setEditingAppointment(appointment);
+        this.setAttendeeUsers(this.convertClientsToClientNames(this.editingAppointment.getAttendees()));
+        return "createEditAppointment";
     }
 
 }
