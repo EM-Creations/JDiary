@@ -83,6 +83,33 @@ public class StartController {
     public String goToBrowseUsers() {
         return "browseUsers";
     }
+    
+    /**
+     * Appointments button pressed
+     *
+     * @return String
+     */
+    public String goToAppointments() {
+        return "appointments";
+    }
+    
+    /**
+     * Create appointment button pressed
+     *
+     * @return String
+     */
+    public String goToCreateAppointment() {
+        return "createEditAppointment";
+    }
+    
+    /**
+     * Browse appointments button pressed
+     *
+     * @return String
+     */
+    public String goToBrowseAppointments() {
+        return "browseAppointments";
+    }
 
     /**
      * Creates a new instance of StartController

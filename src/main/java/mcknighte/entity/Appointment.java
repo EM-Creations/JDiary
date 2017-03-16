@@ -1,7 +1,7 @@
 package mcknighte.entity;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +24,9 @@ public class Appointment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(TIMESTAMP)
-    private Calendar startTime;
+    private Date startTime;
     @Temporal(TIMESTAMP)
-    private Calendar endTime;
+    private Date endTime;
     private String description;
     @ManyToOne(targetEntity=Client.class)
     private Client creator;
@@ -98,7 +98,7 @@ public class Appointment implements Serializable {
      *
      * @return the value of end
      */
-    public Calendar getEnd() {
+    public Date getEndTime() {
         return endTime;
     }
 
@@ -107,7 +107,7 @@ public class Appointment implements Serializable {
      *
      * @param end new value of end
      */
-    public void setEnd(Calendar end) {
+    public void setEndTime(Date end) {
         this.endTime = end;
     }
 
@@ -116,7 +116,7 @@ public class Appointment implements Serializable {
      *
      * @return the value of start
      */
-    public Calendar getStart() {
+    public Date getStartTime() {
         return startTime;
     }
 
@@ -125,7 +125,7 @@ public class Appointment implements Serializable {
      *
      * @param start new value of start
      */
-    public void setStart(Calendar start) {
+    public void setStartTime(Date start) {
         this.startTime = start;
     }
 
