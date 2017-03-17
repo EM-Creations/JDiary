@@ -1,20 +1,21 @@
 package mcknighte.controller;
 
-import mcknighte.business.ClientService;
-import mcknighte.business.ClientService.SearchType;
-import mcknighte.entity.Client;
-import mcknighte.exception.InvalidSearchTypeException;
-import mcknighte.exception.UserAlreadyExistsException;
-import mcknighte.exception.UserIncorrectPasswordException;
-import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import mcknighte.entity.Client;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import mcknighte.business.ClientService;
+import mcknighte.business.ClientService.SearchType;
+import mcknighte.common.AbstractController;
+import mcknighte.exception.InvalidSearchTypeException;
+import mcknighte.exception.UserAlreadyExistsException;
+import mcknighte.exception.UserIncorrectPasswordException;
+import mcknighte.persistence.ClientFacade;
 
 /**
  * ClientController
@@ -23,16 +24,19 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "clientController")
 @SessionScoped
-public class ClientController implements Serializable {
-
+public class ClientController extends AbstractController<Client, ClientFacade> {
     private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cS;
+    @EJB
+    private ClientFacade cF;
     private Client editingClient;
     private List<Client> searchResults;
     private String searchText;
     private String searchTypeText;
-
+    
+    // TODO: Add new password again field
+    
     /**
      * Check whether a client exists and output a Faces message if it does to the specified element
      * 
@@ -287,6 +291,7 @@ public class ClientController implements Serializable {
      * Creates a new instance of ClientController
      */
     public ClientController() {
+        super(Client.class);
         this.editingClient = new Client(); // Instantiate new client object
     }
 
@@ -297,6 +302,16 @@ public class ClientController implements Serializable {
      */
     public List<Client> getAllClients() {
         return cS.getAll();
+    }
+
+    /**
+     * Get the facade for this object
+     * 
+     * @return AbstractFacade
+     */
+    @Override
+    public ClientFacade getFacade() {
+        return cF;
     }
 
 }

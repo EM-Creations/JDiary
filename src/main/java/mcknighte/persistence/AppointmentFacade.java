@@ -1,5 +1,6 @@
 package mcknighte.persistence;
 
+import mcknighte.common.AbstractFacade;
 import mcknighte.entity.Appointment;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

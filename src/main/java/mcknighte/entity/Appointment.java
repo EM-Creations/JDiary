@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.TIMESTAMP;
+import mcknighte.common.Convertable;
 
 /**
  * Appointment entity class
@@ -18,7 +19,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
  * @author Edward McKnight (UP608985)
  */
 @Entity
-public class Appointment implements Serializable {
+public class Appointment implements Serializable, Convertable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

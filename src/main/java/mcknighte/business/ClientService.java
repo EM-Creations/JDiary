@@ -2,7 +2,6 @@ package mcknighte.business;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import mcknighte.entity.Appointment;
 import mcknighte.persistence.AppointmentFacade;
 import mcknighte.entity.Client;
 import mcknighte.exception.UserAlreadyExistsException;

@@ -1,5 +1,6 @@
 package mcknighte.persistence;
 
+import mcknighte.common.AbstractFacade;
 import mcknighte.business.ClientService.SearchType;
 import mcknighte.entity.Client;
 import java.util.List;

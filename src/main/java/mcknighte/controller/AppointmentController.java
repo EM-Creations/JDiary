@@ -1,6 +1,5 @@
 package mcknighte.controller;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -8,8 +7,10 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import mcknighte.business.AppointmentService;
 import mcknighte.business.ClientService;
+import mcknighte.common.AbstractController;
 import mcknighte.entity.Appointment;
 import mcknighte.entity.Client;
+import mcknighte.persistence.AppointmentFacade;
 
 /**
  * AppointmentController
@@ -18,12 +19,14 @@ import mcknighte.entity.Client;
  */
 @Named(value = "appointmentController")
 @SessionScoped
-public class AppointmentController implements Serializable {
+public class AppointmentController extends AbstractController<Appointment, AppointmentFacade> {
     private static final long serialVersionUID = 1L;
     @EJB
     private AppointmentService aS;
     @EJB
     private ClientService cS;
+    @EJB
+    private AppointmentFacade aF;
     private Appointment editingAppointment;
     private List<String> attendeeUsers;
 
@@ -49,6 +52,7 @@ public class AppointmentController implements Serializable {
      * Constructor
      */
     public AppointmentController() {
+        super(Appointment.class);
         this.editingAppointment = new Appointment(); // Instantiate new appointment object
         this.attendeeUsers = new ArrayList<>();
     }
@@ -169,6 +173,16 @@ public class AppointmentController implements Serializable {
         this.setEditingAppointment(appointment);
         this.setAttendeeUsers(this.convertClientsToClientNames(this.editingAppointment.getAttendees()));
         return "createEditAppointment";
+    }
+
+    /**
+     * Get the facade for this object
+     * 
+     * @return AppointmentFacade
+     */
+    @Override
+    public AppointmentFacade getFacade() {
+        return aF;
     }
 
 }

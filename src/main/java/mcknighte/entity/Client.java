@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import mcknighte.common.Convertable;
 
 /**
  * Client entity class
@@ -12,7 +13,7 @@ import javax.persistence.Id;
  * @author Edward McKnight (UP608985)
  */
 @Entity
-public class Client implements Serializable {
+public class Client implements Serializable, Convertable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

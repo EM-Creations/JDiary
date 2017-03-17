@@ -1,4 +1,4 @@
-package mcknighte.persistence;
+package mcknighte.common;
 
 import java.util.List;
 import javax.persistence.EntityManager;

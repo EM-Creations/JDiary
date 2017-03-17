@@ -146,6 +146,10 @@ form#viewUserForm>div>div>input[type=text], form#newUserForm>div>div>input[type=
     width: 100%;
 }
 
+form>div>div>input[type=text], form>div>div>select {
+    width: 100%;
+}
+
 /* Tables */
 table.list {
     width: 100%;

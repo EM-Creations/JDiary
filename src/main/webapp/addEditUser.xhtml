@@ -134,11 +134,11 @@
                                 </b:column>
                                 <b:column span="3">
                                     <h:inputText id="phone" label="Phone" value="#{clientController.editingClient.phone}">
-                                        <f:validateRegex pattern="^([a-zA-Z,#/ \.\(\)\-\+\*]*[0-9]){7}[0-9a-zA-Z,#/ \.\(\)\-\+\*]*$" />
+                                        <f:validator validatorId="mcknighte.PhoneValidator" />
                                     </h:inputText>
                                 </b:column>
                                 <b:column span="5">
-                                    <b:message for="phone" show-detail="false"/>
+                                    <b:message for="phone"/>
                                 </b:column>
                             </b:row>
                             <b:row>
