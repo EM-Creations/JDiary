@@ -4,8 +4,7 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
 
     	<ui:composition template="./resources/template/commonLayout.xhtml">
@@ -66,7 +65,7 @@
                                 </b:column>
                                 <b:column span="3">
                                     <h:selectManyListbox id="attendees" label="Attendees" value="#{appointmentController.attendeeUsers}" required="true">
-                                        <f:selectItems value="#{clientController.allClients}"/>
+                                        <f:selectItems value="#{clientController.itemsAvailableSelectMany}"/>
                                     </h:selectManyListbox>
                                 </b:column>
                                 <b:column span="5">

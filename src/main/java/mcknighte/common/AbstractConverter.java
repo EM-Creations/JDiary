@@ -1,12 +1,9 @@
 package mcknighte.common;
 
-// TODO: REFERENCE
+// Briggs, J. (2016). AbstractConverter.java [Computer software]. Retrieved from https://github.com/Jimbriggs/webp-examples/blob/master/jimairline/src/main/java/jim/common/converters/AbstractConverter.java
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-
-// TODO: https://github.com/Jimbriggs/webp-examples/tree/master/jimairline/src/main/java/jim/common/converters
-// Use AbstractConverter and AbstractController, all controllers should extend abstract controller, all converters should extend abstractconverter
 
 /**
  *

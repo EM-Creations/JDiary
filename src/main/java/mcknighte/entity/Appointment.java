@@ -135,6 +135,7 @@ public class Appointment implements Serializable, Convertable {
      * 
      * @return Long 
      */
+    @Override
     public Long getId() {
         return id;
     }

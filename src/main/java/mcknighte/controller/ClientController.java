@@ -48,9 +48,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     public boolean clientExists(String userName, boolean message, String element) {
         if ((this.editingClient.getId() == null && cS.clientExists(userName)) || (cS.clientExists(userName) && (!cS.getClient(userName).equals(this.editingClient)))) { // If the client already exists
             if (message) { // If a message is being output
-                FacesContext.getCurrentInstance().addMessage(element,
-                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Already exists",
-                                "A user with this username already exists.")); // Output error message
+                this.addError(element, "Already exists", "A user with this username already exists.");
             }
             return true;
         }
@@ -235,9 +233,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
             cS.createClient(this.editingClient);
         } catch (UserAlreadyExistsException ex) { // If the user already exists
             Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
-            FacesContext.getCurrentInstance().addMessage("newUserForm:userName",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Already exists",
-                            "A user with this username already exists.")); // Output error message
+            this.addError("newUserForm:userName", "Already exists", "A user with this username already exists.");
             return "addEditUser"; // Reload the page
         }
         this.clearEditingClient(); // Reset the client
@@ -260,9 +256,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
             cS.editClient(this.editingClient, currPassword);
         } catch (UserIncorrectPasswordException ex) {
             Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
-            FacesContext.getCurrentInstance().addMessage("newUserForm:currPassword",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Incorrect",
-                            "Incorrect password given.")); // Output error message
+            this.addError("newUserForm:currPassword", "Incorrect", "Incorrect password given.");
             return "addEditUser";
         }
         this.clearEditingClient();

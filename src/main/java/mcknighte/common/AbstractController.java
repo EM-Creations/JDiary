@@ -1,7 +1,6 @@
 package mcknighte.common;
 
-// TODO: REFERENCE
-
+// Briggs, J. (2016). AbstractController.java [Computer software]. Retrieved from https://github.com/Jimbriggs/webp-examples/blob/master/jimairline/src/main/java/jim/common/ctrl/AbstractController.java
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

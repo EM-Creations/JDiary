@@ -2,7 +2,6 @@ package mcknighte.business;
 
 import mcknighte.entity.Appointment;
 import mcknighte.persistence.AppointmentFacade;
-import mcknighte.entity.Client;
 import mcknighte.persistence.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
