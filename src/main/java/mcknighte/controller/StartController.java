@@ -110,6 +110,15 @@ public class StartController {
     public String goToBrowseAppointments() {
         return "browseAppointments";
     }
+    
+    /**
+     * Appointments by user button pressed
+     *
+     * @return String
+     */
+    public String goToAppointmentsByUser() {
+        return "appointmentsByUser";
+    }
 
     /**
      * Creates a new instance of StartController

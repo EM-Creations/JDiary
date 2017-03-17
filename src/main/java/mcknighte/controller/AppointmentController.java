@@ -1,6 +1,7 @@
 package mcknighte.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -29,6 +30,66 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     private AppointmentFacade aF;
     private Appointment editingAppointment;
     private List<String> attendeeUsers;
+    private String searchClient;
+    private Date searchDay;
+    private List<Appointment> searchResults;
+
+    /**
+     * Get the value of searchResults
+     *
+     * @return the value of searchResults
+     */
+    public List<Appointment> getSearchResults() {
+        return searchResults;
+    }
+
+    /**
+     * Set the value of searchResults
+     *
+     * @param searchResults new value of searchResults
+     */
+    public void setSearchResults(List<Appointment> searchResults) {
+        this.searchResults = searchResults;
+    }
+
+
+    /**
+     * Get the value of searchDay
+     *
+     * @return the value of searchDay
+     */
+    public Date getSearchDay() {
+        return searchDay;
+    }
+
+    /**
+     * Set the value of searchDay
+     *
+     * @param searchDay new value of searchDay
+     */
+    public void setSearchDay(Date searchDay) {
+        this.searchDay = searchDay;
+    }
+
+
+    /**
+     * Get the value of searchClient
+     *
+     * @return the value of searchClient
+     */
+    public String getSearchClient() {
+        return searchClient;
+    }
+
+    /**
+     * Set the value of searchClient
+     *
+     * @param searchClient new value of searchClient
+     */
+    public void setSearchClient(String searchClient) {
+        this.searchClient = searchClient;
+    }
+
 
     /**
      * Get the value of attendeeUsers
@@ -173,6 +234,43 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.setEditingAppointment(appointment);
         this.setAttendeeUsers(this.convertClientsToClientNames(this.editingAppointment.getAttendees()));
         return "createEditAppointment";
+    }
+    
+    /**
+     * Search for appointments by client
+     *
+     * @param searchText String
+     * @return String
+     */
+    public String doSearchAppointment(String searchText) {
+        // TODO: Validate inputs
+        this.setSearchClient(searchText);
+        this.setSearchResults(aS.searchAppointment(cS.getClient(searchText)));
+        return ""; // Reload the same page
+    }
+    
+    /**
+     * Cancel an appointment
+     *
+     * @param a Appointment
+     * @return String
+     */
+    public String doCancelAppointment(Appointment a) {
+        // TODO: Refresh the view properly
+        aS.removeAppointment(a);
+        this.clearEditingAppointment();
+        return ""; // Reload the same page
+    }
+    
+    /**
+     * Load the view to view an appointment
+     *
+     * @param a Appointment
+     * @return String
+     */
+    public String goToViewAppointment(Appointment a) {
+        this.setEditingAppointment(a);
+        return "viewAppointment"; // Go to the view page
     }
 
     /**

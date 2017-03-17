@@ -6,6 +6,7 @@ import mcknighte.persistence.ClientFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import mcknighte.entity.Client;
 
 /**
  * AppointmentService
@@ -60,6 +61,16 @@ public class AppointmentService {
     public Appointment removeAppointment(Appointment appointment) {
         aF.remove(appointment);
         return appointment;
+    }
+    
+    /**
+     * Search for appointments based on client
+     * 
+     * @param c Client
+     * @return List
+     */
+    public List<Appointment> searchAppointment(Client c) {
+        return aF.search(c);
     }
 
     /**
