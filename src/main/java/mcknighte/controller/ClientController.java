@@ -7,8 +7,6 @@ import javax.ejb.EJB;
 import mcknighte.entity.Client;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import mcknighte.business.ClientService;
 import mcknighte.business.ClientService.SearchType;
 import mcknighte.common.AbstractController;
@@ -34,9 +32,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     private List<Client> searchResults;
     private String searchText;
     private String searchTypeText;
-    
-    // TODO: Add new password again field
-    
+
     /**
      * Check whether a client exists and output a Faces message if it does to the specified element
      * 
@@ -225,10 +221,16 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Process adding a client
      *
+     * @param passwordAgain String
      * @return String
      */
-    public String doAddClient() {
+    public String doAddClient(String passwordAgain) {
         // TODO validation
+        if (!this.editingClient.getPassword().equals(passwordAgain)) { // If the password doesn't match the retype of the password
+            this.addError("newUserForm:passwordAgain", "Mismatch", "Passwords do not match.");
+            return "addEditUser"; // Send them back to the form
+        }
+        
         try {
             cS.createClient(this.editingClient);
         } catch (UserAlreadyExistsException ex) { // If the user already exists
@@ -245,12 +247,18 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
      *
      * @param currPassword String
      * @param newPassword String
+     * @param passwordAgain String
      * @return String
      */
-    public String doEditClient(String currPassword, String newPassword) {
+    public String doEditClient(String currPassword, String newPassword, String passwordAgain) {
         // TODO validation
-        if (!newPassword.equals("")) // If the user opted to change the password
+        if (!newPassword.equals("")) { // If the user opted to change the password
+            if (!newPassword.equals(passwordAgain)) { // If the new password doesn't match the retype of the password
+                this.addError("newUserForm:passwordAgain", "Mismatch", "Passwords do not match.");
+                return "addEditUser"; // Send them back to the form
+            }
             this.editingClient.setPassword(newPassword); // Set the new password
+        }
         
         try {
             cS.editClient(this.editingClient, currPassword);

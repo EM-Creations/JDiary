@@ -64,6 +64,29 @@
                             </b:row>
                             <b:row>
                                 <b:column offset="1" span="2">
+                                    <h:outputLabel for="passwordAgain" rendered="#{clientController.editingClient.id eq null}">Password (again)</h:outputLabel>
+                                    <h:outputLabel for="passwordAgain" rendered="#{clientController.editingClient.id ne null}">New password (again)</h:outputLabel>
+                                </b:column>
+                                <b:column span="3">
+                                    <c:choose>
+                                        <c:when test="#{clientController.editingClient.id eq null}">
+                                            <h:inputSecret id="passwordAgain" label="Password (again)">
+                                                <f:validateLength minimum="3" />
+                                            </h:inputSecret>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h:inputSecret id="passwordAgain" label="New password (again)" required="false">
+                                                <f:validator validatorId="mcknighte.NewPasswordValidator" />
+                                            </h:inputSecret>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </b:column>
+                                <b:column span="5">
+                                    <b:message for="passwordAgain"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column offset="1" span="2">
                                     <h:outputLabel for="firstName">First name</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
@@ -169,8 +192,8 @@
                             </b:row>
                             <b:row>
                                 <b:column offset="3" span="3">
-                                    <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient()}" rendered="#{clientController.editingClient.id eq null}" />
-                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient(param['newUserForm:currPassword'], param['newUserForm:password'])}" rendered="#{clientController.editingClient.id ne null}" />
+                                    <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient(param['newUserForm:passwordAgain'])}" rendered="#{clientController.editingClient.id eq null}" />
+                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient(param['newUserForm:currPassword'], param['newUserForm:password'], param['newUserForm:passwordAgain'])}" rendered="#{clientController.editingClient.id ne null}" />
                                 </b:column>
                             </b:row>
                         </h:form>
