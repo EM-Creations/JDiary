@@ -123,12 +123,12 @@ input[type=text].searchBar {
     border-radius: 3px;
 }
 
-select#searchUsers\:searchType {
+div.searchBarContainer>input[type=submit], select#searchUsers\:searchType {
     height: 30px;
 }
 
-div.searchBarContainer>input[type=submit] {
-    height: 30px;
+input[type=submit]#searchAppointmentsByDay\:searchButton {
+    height: 33px;
 }
 
 form>div.row {

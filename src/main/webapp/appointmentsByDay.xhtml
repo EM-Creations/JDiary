@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+    	<ui:composition template="./resources/template/commonLayout.xhtml">
+            <ui:define name="header">
+                <!-- Fixes problem of AJAX updated buttons not working the first time they're clicked -->
+                <h:outputScript name="js/ajaxFix.js" target="head" />
+                <h:form>
+                    <h:commandLink action="browseAppointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
+                <h1>Appointments by day</h1>
+            </ui:define>
+            <ui:define name="content">
+                <b:row>
+                    <b:column styleClass="contentBackground" span="12">
+                        <b:row>
+                            <b:column offset="1" span="1">
+                                <h2>Search</h2>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <h:form id="searchAppointmentsByDay">
+                                <b:column offset="1" span="9" styleClass="searchBarContainer">
+                                        <b:datepicker id="searchBar" mode="popup-icon" value="#{appointmentController.searchDay}" required="true"/>
+                                </b:column>
+                                <b:column span="1">
+                                    <h:commandButton id="searchButton" value="Search" action="#{appointmentController.doSearchAppointment()}"/>
+                                </b:column>
+                            </h:form>
+                        </b:row>
+                        <b:row>
+                            <b:column offset="1" span="10">
+                                <h:dataTable id="searchResults" 
+                                             value="#{appointmentController.searchResults}" 
+                                             var="appointment" 
+                                             styleClass="list" 
+                                             headerClass="headerRow"
+                                             cellspacing="0"
+                                             cellpadding="0">
+                                    <h:column>
+                                        <f:facet name="header">Description</f:facet>
+                                        #{appointment.description}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Start</f:facet>
+                                        #{appointment.startTime}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">End</f:facet>
+                                        #{appointment.endTime}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Actions</f:facet>
+                                        <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(appointment)}" styleClass="submit"/></h:form>
+                                        <td><h:form><h:commandButton value="Cancel" action="#{appointmentController.doCancelAppointment(appointment)}" styleClass="submit"/></h:form></td>
+                                    </h:column>
+                                </h:dataTable>
+                            </b:column>
+                        </b:row>
+                    </b:column>
+                </b:row>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

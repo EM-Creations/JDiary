@@ -250,6 +250,16 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
     
     /**
+     * Search for appointments by day
+     *
+     * @return String
+     */
+    public String doSearchAppointment() {
+        this.setSearchResults(aS.searchAppointment(this.searchDay));
+        return ""; // Reload the same page
+    }
+    
+    /**
      * Cancel an appointment
      *
      * @param a Appointment

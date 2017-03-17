@@ -1,5 +1,6 @@
 package mcknighte.business;
 
+import java.util.Date;
 import mcknighte.entity.Appointment;
 import mcknighte.persistence.AppointmentFacade;
 import mcknighte.persistence.ClientFacade;
@@ -71,6 +72,16 @@ public class AppointmentService {
      */
     public List<Appointment> searchAppointment(Client c) {
         return aF.search(c);
+    }
+    
+    /**
+     * Search for appointments based on date
+     * 
+     * @param d Date
+     * @return List
+     */
+    public List<Appointment> searchAppointment(Date d) {
+        return aF.search(d);
     }
 
     /**
