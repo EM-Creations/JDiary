@@ -128,6 +128,15 @@ public class StartController {
     public String goToAppointmentsByDay() {
         return "appointmentsByDay";
     }
+    
+    /**
+     * Appointments calendar button pressed
+     *
+     * @return String
+     */
+    public String goToAppointmentsCalendar() {
+        return "appointmentsCalendar";
+    }
 
     /**
      * Creates a new instance of StartController

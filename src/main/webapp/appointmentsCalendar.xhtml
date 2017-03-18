@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html ajax="false" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="./resources/template/commonLayout.xhtml">
+            <ui:define name="header">
+                <h:form>
+                    <h:commandLink action="browseAppointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                </h:form>
+                <h1>Appointments calendar</h1>
+            </ui:define>
+            <ui:define name="content">
+                <b:row>
+                    <b:column styleClass="contentBackground" span="12">
+                        <b:row>
+                            <b:column offset="1" span="10">
+                                <b:row>
+                                    <b:column span="2">
+                                        Day 1
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 2
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 3
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 4
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 5
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 6
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 7
+                                    </b:column>
+                                </b:row>
+                                <b:row>
+                                    <b:column span="2">
+                                        Day 8
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 9
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 10
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 11
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 12
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 13
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 14
+                                    </b:column>
+                                </b:row>
+                                <b:row>
+                                    <b:column span="2">
+                                        Day 15
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 16
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 17
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 18
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 19
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 20
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 21
+                                    </b:column>
+                                </b:row>
+                                <b:row>
+                                    <b:column span="2">
+                                        Day 22
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 23
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 24
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 25
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 26
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 27
+                                        <h:outputText value="#{appointmentController.getAppointmentsForDay(27)}" />
+                                    </b:column>
+                                    <b:column span="1">
+                                        Day 28
+                                    </b:column>
+                                </b:row>
+                                <b:row>
+                                    <b:column span="2">
+                                        Day 29
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 30
+                                    </b:column>
+                                    <b:column span="2">
+                                        Day 31
+                                    </b:column>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                    </b:column>
+                </b:row>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

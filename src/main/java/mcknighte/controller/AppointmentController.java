@@ -1,6 +1,7 @@
 package mcknighte.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -33,6 +34,20 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     private String searchClient;
     private Date searchDay;
     private List<Appointment> searchResults;
+    
+    /**
+     * Get the appointments for a specific day of this month
+     * 
+     * @param day int
+     * @return List
+     */
+    public List<Appointment> getAppointmentsForDay(int day) {
+        final Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        final Date date = calendar.getTime();
+        
+        return aS.searchAppointment(date);
+    }
 
     /**
      * Get the value of searchResults
