@@ -9,7 +9,11 @@
         <ui:composition>
             <b:row>
                 <b:column span="12">
-                    Copyright &#169; #{time.date} Edward McKnight - UP608985 (<h:outputLink target="blank" value="http://www.em-creations.co.uk">EM-Creations.co.uk</h:outputLink>)
+                    Copyright &#169; 
+                    <h:outputText value="#{time.time}">
+                        <f:convertDateTime pattern = "yyyy" />
+                    </h:outputText>
+                    Edward McKnight - UP608985 (<h:outputLink target="blank" value="http://www.em-creations.co.uk">EM-Creations.co.uk</h:outputLink>)
                 </b:column>
             </b:row>
         </ui:composition>

@@ -171,3 +171,26 @@ table.list>tbody>tr:nth-child(odd) {
 table.list>tbody>tr.headerRow {
     font-weight: bold;
 }
+
+/* Calendar */
+div.calendarCell {
+    border: 1px solid black;
+    border-bottom: none;
+    padding: 0;
+    min-height: 50px;
+    font-size: 9pt;
+}
+
+span.dayHeader {
+    display: inline-block;
+    background-color: white;
+    width: 100%;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    font-size: 11pt;
+}
+
+div.calendarCell>div.item {
+    background-color: #00b300;
+    margin-top: 5px;
+}

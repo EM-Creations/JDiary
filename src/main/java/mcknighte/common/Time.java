@@ -1,6 +1,7 @@
 package mcknighte.common;
 
 import java.util.Calendar;
+import java.util.Date;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -12,31 +13,31 @@ import javax.enterprise.context.RequestScoped;
 @Named(value = "time")
 @RequestScoped
 public class Time {
-    private String date;
-    
+    private Calendar time;
+
     /**
-     * Get date in YYYY format
-     * 
-     * @return String
+     * Get the value of time
+     *
+     * @return the value of time
      */
-    public String getDate() {
-        date = Calendar.getInstance().get(Calendar.YEAR) + "";
-        return date;
+    public Date getTime() {
+        return this.time.getTime(); 
     }
-    
+
     /**
-     * Set the date
-     * 
-     * @param date String
+     * Set the value of time
+     *
+     * @param time new value of time
      */
-    public void setDate(String date) {
-        this.date = date;
+    public void setTime(Calendar time) {
+        this.time = time;
     }
     
     /**
      * Creates a new instance of Time
      */
     public Time() {
+        this.time = Calendar.getInstance();
     }
     
 }
