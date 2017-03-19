@@ -18,7 +18,6 @@ import mcknighte.entity.Client;
  */
 @Stateless
 public class AppointmentFacade extends AbstractFacade<Appointment> {
-
     @PersistenceContext(unitName = "mcknighte_war_1.0PU")
     private EntityManager em;
 
@@ -75,6 +74,38 @@ public class AppointmentFacade extends AbstractFacade<Appointment> {
                 .setParameter("day", day, TemporalType.DATE)
                 .setParameter("dayAfter", cal.getTime(), TemporalType.DATE)
                 .getResultList();
+
+        if (appointments.isEmpty()) // If the list is empty
+            return null; // Return null - no appointments found
+        return appointments; // Otherwise return the list of appointments
+    }
+
+    /**
+     * Search for appointments for a specific user between a start and end time
+     *
+     * @param c Client
+     * @param app Appointment
+     * @return List
+     */
+    public List<Appointment> search(Client c, Appointment app) {
+        List<Appointment> appointments;
+
+        if (app.getId() != null) { // Searching for an existing appointment
+            appointments = this.getEntityManager().createQuery(
+                    "SELECT a FROM Appointment a WHERE (a.startTime < :end) AND (a.endTime > :start) AND :client MEMBER OF a.attendees AND a != :appointment")
+                    .setParameter("start", app.getStartTime(), TemporalType.TIMESTAMP)
+                    .setParameter("end", app.getEndTime(), TemporalType.TIMESTAMP)
+                    .setParameter("client", c)
+                    .setParameter("appointment", app)
+                    .getResultList();
+        } else { // Searching for a new appointment
+            appointments = this.getEntityManager().createQuery(
+                    "SELECT a FROM Appointment a WHERE (a.startTime < :end) AND (a.endTime > :start) AND :client MEMBER OF a.attendees")
+                    .setParameter("start", app.getStartTime(), TemporalType.TIMESTAMP)
+                    .setParameter("end", app.getEndTime(), TemporalType.TIMESTAMP)
+                    .setParameter("client", c)
+                    .getResultList();
+        }
 
         if (appointments.isEmpty()) // If the list is empty
             return null; // Return null - no appointments found

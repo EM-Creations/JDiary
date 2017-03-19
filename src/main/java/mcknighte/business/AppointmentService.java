@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import mcknighte.entity.Client;
+import mcknighte.exception.AppointmentClashException;
 
 /**
  * AppointmentService
@@ -26,8 +27,13 @@ public class AppointmentService {
      * 
      * @param appointment Appointment
      * @return Appointment
+     * @throws mcknighte.exception.AppointmentClashException
      */
-    public Appointment editAppointment(Appointment appointment) {
+    public Appointment editAppointment(Appointment appointment) throws AppointmentClashException {
+        if (!this.checkAttendeesFree(appointment)) { // If all of the attendees are not free
+            throw new AppointmentClashException(appointment);
+        }
+        
         aF.edit(appointment);
         return appointment;
     }
@@ -47,8 +53,14 @@ public class AppointmentService {
      * 
      * @param appointment Appointment
      * @return Appointment
+     * @throws mcknighte.exception.AppointmentClashException
      */
-    public Appointment createAppointment(Appointment appointment) {
+    public Appointment createAppointment(Appointment appointment) throws AppointmentClashException {
+        if (!this.checkAttendeesFree(appointment)) { // If all of the attendees are not free
+            throw new AppointmentClashException(appointment);
+        }
+        
+        // If all of the attendees are free, continue
         aF.create(appointment);
         return appointment;
     }
@@ -82,6 +94,23 @@ public class AppointmentService {
      */
     public List<Appointment> searchAppointment(Date d) {
         return aF.search(d);
+    }
+    
+    /**
+     * Check whether all attendees of an appointment are free for the duration of the appointment
+     * 
+     * @param a Appointment
+     * @return boolean
+     */
+    private boolean checkAttendeesFree(Appointment a) {
+        // Loop through the attendees and check that they're all free during this appointment
+        for (Client c : a.getAttendees()) { // For each attendee
+            if (aF.search(c, a) != null) { // If this client already has an appointment during this time
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     /**

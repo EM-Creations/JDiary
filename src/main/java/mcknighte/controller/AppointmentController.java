@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -12,6 +14,7 @@ import mcknighte.business.ClientService;
 import mcknighte.common.AbstractController;
 import mcknighte.entity.Appointment;
 import mcknighte.entity.Client;
+import mcknighte.exception.AppointmentClashException;
 import mcknighte.persistence.AppointmentFacade;
 
 /**
@@ -161,6 +164,8 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      */
     public void setEditingAppointment(Appointment editingAppointment) {
         this.editingAppointment = editingAppointment;
+        if (this.editingAppointment.getId() != null)
+            this.attendeeUsers = this.convertClientsToClientNames(this.editingAppointment.getAttendees());
     }
 
     /**
@@ -176,7 +181,15 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
         this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
-        aS.createAppointment(this.editingAppointment);
+        
+        // Try to create the appointment
+        try {
+            aS.createAppointment(this.editingAppointment);
+        } catch (AppointmentClashException ex) {
+            Logger.getLogger(AppointmentController.class.getName()).log(Level.SEVERE, null, ex);
+            this.addError("newAppointmentForm:attendees", ex.getMessage());
+            return "createEditAppointment"; // Send the user back to the createEditAppointment view
+        }
         this.clearEditingAppointment(); // Reset the appointment
         return "appointments"; // Load the appointments page
     }
@@ -194,7 +207,15 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
         this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
-        aS.editAppointment(this.editingAppointment);
+        
+        // Try to edit the appointment
+        try {
+            aS.editAppointment(this.editingAppointment);
+        } catch (AppointmentClashException ex) {
+            Logger.getLogger(AppointmentController.class.getName()).log(Level.SEVERE, null, ex);
+            this.addError("newAppointmentForm:attendees", ex.getMessage());
+            return "createEditAppointment"; // Send the user back to the createEditAppointment view
+        }
         this.clearEditingAppointment(); // Reset the appointment
         return "appointments"; // Load the appointments page
     }
@@ -241,12 +262,12 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
     
     /**
-     * Do edit appointment
+     * Go to edit appointment
      * 
      * @param appointment Appointment
      * @return String
      */
-    public String doEditAppointment(Appointment appointment) {
+    public String goToEditAppointment(Appointment appointment) {
         this.setEditingAppointment(appointment);
         this.setAttendeeUsers(this.convertClientsToClientNames(this.editingAppointment.getAttendees()));
         return "createEditAppointment";
@@ -296,17 +317,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     public String goToViewAppointment(Appointment a) {
         this.setEditingAppointment(a);
         return "viewAppointment"; // Go to the view page
-    }
-    
-    /**
-     * Load the view to edit an appointment
-     *
-     * @param a Appointment
-     * @return String
-     */
-    public String goToEditAppointment(Appointment a) {
-        this.setEditingAppointment(a);
-        return "createEditAppointment"; // Go to the edit page
     }
 
     /**
