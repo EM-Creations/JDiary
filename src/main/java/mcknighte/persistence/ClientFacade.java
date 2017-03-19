@@ -116,7 +116,7 @@ public class ClientFacade extends AbstractFacade<Client> {
      */
     public Client find(String userName) {
         List<Client> clients = this.getEntityManager().createQuery(
-                "SELECT c FROM Client c WHERE c.username = :userName")
+                "SELECT c FROM Client c WHERE LOWER(c.username) = LOWER(:userName)")
                 .setParameter("userName", userName)
                 .setMaxResults(1)
                 .getResultList();

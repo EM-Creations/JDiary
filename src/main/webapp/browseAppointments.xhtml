@@ -6,8 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-
-    	<ui:composition template="./resources/template/commonLayout.xhtml">
+        <ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form>
                     <h:commandLink action="appointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
@@ -15,24 +14,27 @@
                 <h1>Browse appointments</h1>
             </ui:define>
             <ui:define name="content">
-                    <h:form>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsByUser()}" value="Appointments by user"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsByDay()}" value="Appointments by day"/>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsCalendar()}" value="Appointments calendar"/>
-                            </b:column>
-                        </b:row>
-                    </h:form>
-    		</ui:define>
-    	</ui:composition>
+                <h:form>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsByUser()}" value="Appointments by user">
+                                <!-- OscarSan. (2012). JSF - How to pass parameters from one controller to another controller action events? Retrieved from http://stackoverflow.com/questions/12040870/jsf-how-to-pass-parameters-from-one-controller-to-another-controller-action-ev -->
+                                <f:setPropertyActionListener target="#{appointmentController.searchClient}" value="#{loginController.loggedInClient.username}" />
+                            </h:commandButton>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsByDay()}" value="Appointments by day"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsCalendar()}" value="Appointments calendar"/>
+                        </b:column>
+                    </b:row>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

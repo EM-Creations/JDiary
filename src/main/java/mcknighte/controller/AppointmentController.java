@@ -103,6 +103,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      */
     public void setSearchClient(String searchClient) {
         this.searchClient = searchClient;
+        this.setSearchResults(aS.searchAppointment(cS.getClient(this.searchClient)));
     }
 
 
@@ -260,7 +261,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     public String doSearchAppointment(String searchText) {
         // TODO: Validate inputs
         this.setSearchClient(searchText);
-        this.setSearchResults(aS.searchAppointment(cS.getClient(searchText)));
         return ""; // Reload the same page
     }
     
