@@ -297,6 +297,17 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.setEditingAppointment(a);
         return "viewAppointment"; // Go to the view page
     }
+    
+    /**
+     * Load the view to edit an appointment
+     *
+     * @param a Appointment
+     * @return String
+     */
+    public String goToEditAppointment(Appointment a) {
+        this.setEditingAppointment(a);
+        return "createEditAppointment"; // Go to the edit page
+    }
 
     /**
      * Get the facade for this object

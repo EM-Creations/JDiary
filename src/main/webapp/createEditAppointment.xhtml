@@ -75,7 +75,7 @@
                             <b:row>
                                 <b:column offset="3" span="3">
                                     <h:commandButton value="Create" styleClass="actionButton" action="#{appointmentController.doCreateAppointment(loginController.loggedInClient)}" rendered="#{appointmentController.editingAppointment.id eq null}" />
-                                    <h:commandButton value="Edit" styleClass="actionButton" action="#{appointmentController.doEditAppointment(loginController.loggedInClient)}" rendered="#{appointmentController.editingAppointment.id ne null}" />
+                                    <h:commandButton value="Edit" styleClass="actionButton" rendered="#{appointmentController.editingAppointment.creator eq loginController.loggedInClient}" action="#{appointmentController.doEditAppointment(loginController.loggedInClient)}" rendered="#{appointmentController.editingAppointment.id ne null}" />
                                 </b:column>
                             </b:row>
                         </h:form>
