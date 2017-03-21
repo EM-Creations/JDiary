@@ -31,12 +31,12 @@
                                 </b:column>
                                 <b:column span="3">
                                     <h:inputText id="userName" label="Username" value="#{clientController.editingClient.username}">
-                                        <f:validateLength minimum="6" />
+                                        <f:validateRegex pattern="^([a-zA-Z0-9]){6,}$" />
                                         <f:ajax event="keyup" execute="@this" render="newUserForm:userNameMessage" listener="#{clientController.clientExists(param['newUserForm:userName'], true, 'newUserForm:userName')}"/>
                                     </h:inputText>
                                 </b:column>
                                 <b:column span="5">
-                                    <b:message id="userNameMessage" for="userName"/>
+                                    <b:message id="userNameMessage" for="userName" show-detail="false"/>
                                 </b:column>
                             </b:row>
                             <b:row>
