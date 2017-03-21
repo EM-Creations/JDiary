@@ -63,7 +63,7 @@ public class StartController {
      * @return String
      */
     public String goToUsers() {
-        return "users";
+        return "user/users";
     }
 
     /**
@@ -90,7 +90,7 @@ public class StartController {
      * @return String
      */
     public String goToAppointments() {
-        return "appointments";
+        return "appointment/appointments";
     }
     
     /**
