@@ -78,7 +78,7 @@ public class LoginController extends AbstractController {
         
         if (c != null) { // If the login was successful
             this.loggedInClient = c;
-            this.addInfo("loginMsg", "Logged in", "Successfully logged in");
+            this.addInfo("infoMsg", "Logged in", "Successfully logged in");
             return "welcome?faces-redirect=true";
         } else { // If the login was unsuccessful
             this.addError("loginForm:userName", "Failed login", "Incorrect username / password");

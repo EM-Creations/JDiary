@@ -238,8 +238,9 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
             this.addError("newUserForm:userName", "Already exists", "A user with this username already exists.");
             return "addEditUser"; // Reload the page
         }
+        this.addInfo("infoMsg", "User added", "New user added");
         this.clearEditingClient(); // Reset the client
-        return "users"; // Load the users page
+        return "users?faces-redirect=true"; // Load the users page
     }
 
     /**
@@ -267,8 +268,9 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
             this.addError("newUserForm:currPassword", "Incorrect", "Incorrect password given.");
             return "addEditUser";
         }
+        this.addInfo("infoMsg", "User edited", "User edited");
         this.clearEditingClient();
-        return "users"; // Go back to the users page
+        return "users?faces-redirect=true"; // Go back to the users page
     }
 
     /**

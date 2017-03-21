@@ -190,8 +190,9 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
             this.addError("newAppointmentForm:attendees", ex.getMessage());
             return "createEditAppointment"; // Send the user back to the createEditAppointment view
         }
+        this.addInfo("infoMsg", "Appointment created", "New appointment created");
         this.clearEditingAppointment(); // Reset the appointment
-        return "appointments"; // Load the appointments page
+        return "appointments?faces-redirect=true"; // Load the appointments page
     }
     
     /**
@@ -216,8 +217,9 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
             this.addError("newAppointmentForm:attendees", ex.getMessage());
             return "createEditAppointment"; // Send the user back to the createEditAppointment view
         }
+        this.addInfo("infoMsg", "Appointment edited", "Appointment edited");
         this.clearEditingAppointment(); // Reset the appointment
-        return "appointments"; // Load the appointments page
+        return "appointments?faces-redirect=true"; // Load the appointments page
     }
     
     /**

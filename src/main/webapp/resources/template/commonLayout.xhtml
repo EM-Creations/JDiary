@@ -28,9 +28,14 @@
             <b:row>
                 <b:column span="10" offset="1">
                     <div id="content">
+                        <b:growl for="infoMsg" id="infoMsg" placementAlign="center" placementFrom="top" showDetail="true"
+                        showSummary="false" allowDismiss="true"
+                        animationEnter="animated fadeInDown"
+                        animationExit="animated fadeOutUp"/>
                         <ui:insert name="content">
                             Content
                         </ui:insert>
+                        <b:messages style="display: none;" />
                     </div>
                 </b:column>
             </b:row>
