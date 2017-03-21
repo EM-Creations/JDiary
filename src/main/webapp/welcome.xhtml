@@ -3,10 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-
     	<ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form>
@@ -15,6 +13,12 @@
                 <h1>Welcome back #{loginController.loggedInClient.firstName}!</h1>
             </ui:define>
             <ui:define name="content">
+                <b:growl for="loginMsg" id="loginMsg" placementAlign="center" placementFrom="top" show-detail="true"
+                        global-only="false"
+                        show-summary="false" allow-dismiss="true"
+                        animation-enter="animated bounceInDown"
+                        animation-exit="animated flipOutX"
+                        escape="true" />
                     <h:form>
                         <b:row>
                             <b:column span="12">
@@ -27,6 +31,7 @@
                             </b:column>
                         </b:row>
                     </h:form>
+                <b:messages infoStyle="display: none;" />
     		</ui:define>
     	</ui:composition>
     </h:body>

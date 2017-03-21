@@ -2,12 +2,11 @@ package mcknighte.controller;
 
 import mcknighte.business.ClientService;
 import mcknighte.entity.Client;
-import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import mcknighte.common.AbstractController;
+import mcknighte.common.AbstractFacade;
 
 /**
  * LoginController
@@ -16,7 +15,7 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "loginController")
 @SessionScoped
-public class LoginController implements Serializable {
+public class LoginController extends AbstractController {
     private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cs;
@@ -79,16 +78,10 @@ public class LoginController implements Serializable {
         
         if (c != null) { // If the login was successful
             this.loggedInClient = c;
-            /*
-            FacesContext.getCurrentInstance().addMessage("loginForm:userName", 
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged in",
-                    "Welcome " + this.loggedInClient.getFirstName() + "!"));
-            */
-            return "welcome";
+            this.addInfo("loginMsg", "Logged in", "Successfully logged in");
+            return "welcome?faces-redirect=true";
         } else { // If the login was unsuccessful
-            FacesContext.getCurrentInstance().addMessage("loginForm:userName", 
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed login",
-                    "Incorrect username / password"));
+            this.addError("loginForm:userName", "Failed login", "Incorrect username / password");
         }
         return "index";
     }
@@ -97,8 +90,19 @@ public class LoginController implements Serializable {
      * Creates a new instance of LoginController
      */
     public LoginController() {
+        super(null); // This controller doesn't have a corresponding entity
         this.userName = "";
         this.password = "adminadmin"; // TODO: DEVELOPMENT PURPOSES ONLY (pre-set the password for admin user)
+    }
+
+    /**
+     * Get the facade for this object
+     * 
+     * @return 
+     */
+    @Override
+    public AbstractFacade getFacade() {
+        return null; // This controller doesn't have a corresponding facade
     }
     
 }

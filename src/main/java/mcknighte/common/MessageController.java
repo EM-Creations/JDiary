@@ -37,12 +37,32 @@ public abstract class MessageController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(item, new FacesMessage(FacesMessage.SEVERITY_ERROR, title, errorMessage));
     }
 
-    protected void addInfo(String item, String errorMessage) {
-        FacesContext.getCurrentInstance().addMessage(item, new FacesMessage(FacesMessage.SEVERITY_INFO, errorMessage, errorMessage));
+    protected void addInfo(String s) {
+        addInfo((String) null, s);
     }
 
-    protected void addInfo(String infoMessage) {
-        addInfo(null, infoMessage);
+    /**
+     * Add info with item and message
+     * 
+     * @author Edward McKnight (UP608985)
+     * @param item String
+     * @param infoMessage String 
+     */
+    protected void addInfo(String item, String infoMessage) {
+        this.addInfo(item, infoMessage, infoMessage);
+    }
+    
+    /**
+     * Add info with item, title and message
+     * 
+     * @author Edward McKnight (UP608985)
+     * @param item String
+     * @param title String
+     * @param infoMessage String 
+     */
+    protected void addInfo(String item, String title, String infoMessage) {
+        FacesContext.getCurrentInstance().addMessage(item, new FacesMessage(FacesMessage.SEVERITY_INFO, title, infoMessage));
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
     }
 
     protected void addError(Exception ex, String defaultMsg) {

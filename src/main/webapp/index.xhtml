@@ -24,12 +24,12 @@
                                 </b:column>
                                 <b:column span="3">
                                     <h:inputText id="userName" label="Username" value="#{loginController.userName}">
-                                        <f:validateLength minimum="6" />
+                                        <f:validateRegex pattern="^([a-zA-Z0-9]){6,}$" />
                                     </h:inputText>
                                 </b:column>
                                 <b:column span="5">
                                     DEV - Use "adminadmin" as user
-                                    <b:message for="userName" />
+                                    <b:message for="userName" show-detail="false" />
                                 </b:column>
                             </b:row>
                             <b:row>
