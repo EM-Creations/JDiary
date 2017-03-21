@@ -25,7 +25,10 @@
                     </b:row>
                     <b:row>
                         <b:column span="12">
-                            <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsByDay()}" value="Appointments by day"/>
+                            <h:commandButton styleClass="navButton" action="#{startController.goToAppointmentsByDay()}" value="Appointments by day">
+                                <!-- OscarSan. (2012). JSF - How to pass parameters from one controller to another controller action events? Retrieved from http://stackoverflow.com/questions/12040870/jsf-how-to-pass-parameters-from-one-controller-to-another-controller-action-ev -->
+                                <f:setPropertyActionListener target="#{appointmentController.searchResults}" value="#{appointmentController.setSearchResults(null)}" />
+                            </h:commandButton>
                         </b:column>
                     </b:row>
                     <b:row>

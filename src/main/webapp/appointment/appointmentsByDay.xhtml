@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-    	<ui:composition template="../resources/template/commonLayout.xhtml">
+        <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <!-- Fixes problem of AJAX updated buttons not working the first time they're clicked -->
                 <h:outputScript name="js/ajaxFix.js" target="head" />
@@ -26,7 +26,7 @@
                         <b:row>
                             <h:form id="searchAppointmentsByDay">
                                 <b:column offset="1" span="9" styleClass="searchBarContainer">
-                                        <b:datepicker id="searchBar" mode="popup-icon" value="#{appointmentController.searchDay}" required="true"/>
+                                    <b:datepicker id="searchBar" mode="popup-icon" value="#{appointmentController.searchDay}" required="true"/>
                                 </b:column>
                                 <b:column span="1">
                                     <h:commandButton id="searchButton" value="Search" action="#{appointmentController.doSearchAppointment()}"/>
@@ -44,15 +44,15 @@
                                              cellpadding="0">
                                     <h:column>
                                         <f:facet name="header">Description</f:facet>
-                                        #{appointment.description}
+                                            #{appointment.description}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Start</f:facet>
-                                        #{appointment.startTime}
+                                            #{appointment.startTime}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">End</f:facet>
-                                        #{appointment.endTime}
+                                            #{appointment.endTime}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Actions</f:facet>
@@ -65,7 +65,7 @@
                         </b:row>
                     </b:column>
                 </b:row>
-    		</ui:define>
-    	</ui:composition>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
