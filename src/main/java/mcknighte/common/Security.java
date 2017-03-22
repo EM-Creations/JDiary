@@ -12,7 +12,12 @@ import java.util.Random;
  */
 public class Security {
 
-    // http://stackoverflow.com/questions/20536566/creating-a-random-string-with-a-z-and-0-9-in-java
+    // ANS. (2012). Creating a random string with A-Z and 0-9 in Java. Retrieved from http://stackoverflow.com/questions/20536566/creating-a-random-string-with-a-z-and-0-9-in-java
+    /**
+     * Generate a 64 character random salt
+     * 
+     * @return String
+     */
     public static String generateRandomSalt() {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
@@ -35,7 +40,14 @@ public class Security {
         return sha512(passwordToHash, ""); // Call the sha512 method without a salt
     }
 
-    // http://stackoverflow.com/questions/33085493/hash-a-password-with-sha-512-in-java
+    // Abhi. (2013). Hash a password with SHA-512 in Java. Retrieved from http://stackoverflow.com/questions/33085493/hash-a-password-with-sha-512-in-java
+    /**
+     * Hash a string using SHA512
+     * 
+     * @param passwordToHash String
+     * @param salt String
+     * @return String
+     */
     public static String sha512(String passwordToHash, String salt) {
         String generatedPassword = null;
         try {
