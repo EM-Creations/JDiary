@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-    	<ui:composition template="../resources/template/commonLayout.xhtml">
+        <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <!-- Fixes problem of AJAX updated buttons not working the first time they're clicked -->
                 <h:outputScript name="js/ajaxFix.js" target="head" />
@@ -26,10 +26,10 @@
                         <b:row>
                             <h:form id="searchAppointmentsByUser">
                                 <b:column offset="1" span="10" styleClass="searchBarContainer">
-                                        <h:inputText id="searchBar" value="#{appointmentController.searchClient}" styleClass="searchBar">
-                                            <f:ajax event="keyup" execute="@this" render="searchResults" listener="#{appointmentController.doSearchAppointment(param['searchAppointmentsByUser:searchBar'])}"/>
-                                        </h:inputText>
-                                        <h:commandButton value="Search" action="#{appointmentController.doSearchAppointment(param['searchAppointmentsByUser:searchBar'])}"/>
+                                    <h:inputText id="searchBar" value="#{appointmentController.searchClient}" styleClass="searchBar">
+                                        <f:ajax event="keyup" execute="@this" render="searchResults" listener="#{appointmentController.doSearchAppointment(param['searchAppointmentsByUser:searchBar'])}"/>
+                                    </h:inputText>
+                                    <h:commandButton value="Search" action="#{appointmentController.doSearchAppointment(param['searchAppointmentsByUser:searchBar'])}"/>
                                 </b:column>
                             </h:form>
                         </b:row>
@@ -44,15 +44,19 @@
                                              cellpadding="0">
                                     <h:column>
                                         <f:facet name="header">Description</f:facet>
-                                        #{appointment.description}
+                                            #{appointment.description}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Start</f:facet>
-                                        #{appointment.startTime}
+                                        <h:outputText value="#{appointment.startTime}">
+                                            <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
+                                        </h:outputText>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">End</f:facet>
-                                        #{appointment.endTime}
+                                            <h:outputText value="#{appointment.endTime}">
+                                            <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
+                                        </h:outputText>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Actions</f:facet>
@@ -65,7 +69,7 @@
                         </b:row>
                     </b:column>
                 </b:row>
-    		</ui:define>
-    	</ui:composition>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

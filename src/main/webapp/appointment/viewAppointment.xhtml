@@ -33,7 +33,9 @@
                                     <h:outputLabel for="start">Start</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
-                                    <h:outputText id="start" value="#{appointmentController.editingAppointment.startTime}"/>
+                                    <h:outputText id="start" value="#{appointmentController.editingAppointment.startTime}">
+                                        <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
+                                    </h:outputText>
                                 </b:column>
                             </b:row>
                             <b:row>
@@ -41,7 +43,9 @@
                                     <h:outputLabel for="end">End</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
-                                    <h:outputText id="end" value="#{appointmentController.editingAppointment.endTime}"/>
+                                    <h:outputText id="end" value="#{appointmentController.editingAppointment.endTime}">
+                                        <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
+                                    </h:outputText>
                                 </b:column>
                             </b:row>
                             <b:row>
