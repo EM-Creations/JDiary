@@ -12,6 +12,7 @@ import java.util.Locale;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import mcknighte.entity.Appointment;
+import mcknighte.exception.UserDoesNotExistException;
 
 /**
  * ClientService
@@ -78,8 +79,9 @@ public class ClientService {
      * @param providedPassword String
      * @return Client
      * @throws mcknighte.exception.UserIncorrectPasswordException
+     * @throws mcknighte.exception.UserDoesNotExistException
      */
-    public Client editClient(Client client, String providedPassword) throws UserIncorrectPasswordException {
+    public Client editClient(Client client, String providedPassword) throws UserIncorrectPasswordException, UserDoesNotExistException {
         if (this.checkLogin(client.getUsername(), providedPassword) != null) { // If the correct password has been provided
             cF.edit(client);
         } else { // If the incorrect password has been provided
@@ -163,14 +165,16 @@ public class ClientService {
      * @param userName String
      * @param password String
      * @return Client
+     * @throws mcknighte.exception.UserDoesNotExistException
      */
-    public Client checkLogin(String userName, String password) {
-        Client c = cF.find(userName); // First get the client with their username, TODO error out if not found
+    public Client checkLogin(String userName, String password) throws UserDoesNotExistException {
+        Client c = cF.find(userName); // First get the client with their username
 
         if (c != null) { // If a client with that username has been found
             return cF.find(userName, password, c.getSalt()); // Return whether we can find a client with that username and password or not
         }
-        return null;
+        // Otherwise
+        throw new UserDoesNotExistException(userName);
     }
 
     /**

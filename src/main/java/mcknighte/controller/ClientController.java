@@ -12,7 +12,7 @@ import mcknighte.business.ClientService.SearchType;
 import mcknighte.common.AbstractController;
 import mcknighte.exception.InvalidSearchTypeException;
 import mcknighte.exception.UserAlreadyExistsException;
-import mcknighte.exception.UserIncorrectPasswordException;
+import mcknighte.exception.UserException;
 import mcknighte.persistence.ClientFacade;
 
 /**
@@ -267,7 +267,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
 
         try {
             cS.editClient(this.editingClient, currPassword);
-        } catch (UserIncorrectPasswordException ex) {
+        } catch (UserException ex) {
             Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
             this.addError("newUserForm:currPassword", "Incorrect", "Incorrect password given.");
             return "addEditUser";

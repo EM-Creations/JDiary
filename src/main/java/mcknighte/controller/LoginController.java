@@ -1,5 +1,7 @@
 package mcknighte.controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mcknighte.business.ClientService;
 import mcknighte.entity.Client;
 import javax.ejb.EJB;
@@ -7,26 +9,28 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import mcknighte.common.AbstractController;
 import mcknighte.common.AbstractFacade;
+import mcknighte.exception.UserDoesNotExistException;
 
 /**
  * LoginController
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
 @Named(value = "loginController")
 @SessionScoped
 public class LoginController extends AbstractController {
+
     private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cs;
     private Client loggedInClient = new Client();
     private String userName;
     private String password;
-    
+
     /**
      * Get the value of loggedInClient
-     * 
-     * @return Client 
+     *
+     * @return Client
      */
     public Client getLoggedInClient() {
         return this.loggedInClient;
@@ -70,22 +74,28 @@ public class LoginController extends AbstractController {
 
     /**
      * Login button pressed
-     * 
+     *
      * @return String
      */
     public String doLogin() {
-        Client c = cs.checkLogin(this.userName, this.password);
-        
-        if (c != null) { // If the login was successful
-            this.loggedInClient = c;
-            this.addInfo("infoMsg", "Logged in", "Successfully logged in");
-            return "welcome?faces-redirect=true";
-        } else { // If the login was unsuccessful
+        Client c;
+        try {
+            c = cs.checkLogin(this.userName, this.password);
+
+            if (c != null) { // If the login was successful
+                this.loggedInClient = c;
+                this.addInfo("infoMsg", "Logged in", "Successfully logged in");
+                return "welcome?faces-redirect=true";
+            } else { // If the login was unsuccessful
+                this.addError("loginForm:userName", "Failed login", "Incorrect username / password");
+            }
+        } catch (UserDoesNotExistException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             this.addError("loginForm:userName", "Failed login", "Incorrect username / password");
         }
         return "index";
     }
-    
+
     /**
      * Creates a new instance of LoginController
      */
@@ -97,12 +107,12 @@ public class LoginController extends AbstractController {
 
     /**
      * Get the facade for this object
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public AbstractFacade getFacade() {
         return null; // This controller doesn't have a corresponding facade
     }
-    
+
 }
