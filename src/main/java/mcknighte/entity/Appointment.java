@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.TIMESTAMP;
+import javax.validation.constraints.NotNull;
 import mcknighte.common.Convertable;
 
 /**
@@ -24,13 +25,18 @@ public class Appointment implements Serializable, Convertable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
     @Temporal(TIMESTAMP)
     private Date startTime;
+    @NotNull
     @Temporal(TIMESTAMP)
     private Date endTime;
+    @NotNull
     private String description;
+    @NotNull
     @ManyToOne(targetEntity=Client.class)
     private Client creator;
+    @NotNull
     @OneToMany(targetEntity=Client.class)
     private List<Client> attendees;
     
