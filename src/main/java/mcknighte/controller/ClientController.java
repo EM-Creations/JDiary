@@ -204,9 +204,9 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
      * @return String
      */
     public String doDeleteClient(Client c) {
-        // TODO: Refresh the view properly
         cS.removeClient(c);
         this.clearEditingClient();
+        this.doSearchClient(this.searchTypeText, this.searchText);
         return ""; // Reload the same page
     }
 
