@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import mcknighte.common.Convertable;
+import mcknighte.common.Security;
 
 /**
  * Client entity class
@@ -19,6 +21,8 @@ public class Client implements Serializable, Convertable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
+    @NotNull
+    private String salt;
     private String password;
     private String firstName;
     private String lastName;
@@ -32,6 +36,24 @@ public class Client implements Serializable, Convertable {
      * Constructor
      */
     public Client() {
+    }
+    
+    /**
+     * Get the value of salt
+     *
+     * @return the value of salt
+     */
+    public String getSalt() {
+        return salt;
+    }
+
+    /**
+     * Set the value of salt
+     *
+     * @param salt new value of salt
+     */
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
     
     /**
@@ -193,7 +215,8 @@ public class Client implements Serializable, Convertable {
      * @param password new value of password
      */
     public void setPassword(String password) {
-        this.password = password;
+        this.salt = Security.generateRandomSalt();
+        this.password = Security.sha512(password, this.salt);
     }
 
     /**

@@ -35,8 +35,8 @@ public class StartController {
         c.setLastName("admin");
         c.setAddress("admin");
         c.setCountry("United Kingdom");
-        c.setPostcode("admin");
-        c.setPhone("123456789");
+        c.setPostcode("PO2 1PL");
+        c.setPhone("07530510271");
         c.setEmail("admin@admin.com");
 
         try {

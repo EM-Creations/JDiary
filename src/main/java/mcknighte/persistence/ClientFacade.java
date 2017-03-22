@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import mcknighte.common.Security;
 
 /**
  * Client facade
@@ -131,13 +132,14 @@ public class ClientFacade extends AbstractFacade<Client> {
      * 
      * @param userName String
      * @param password String
+     * @param salt String
      * @return Client
      */
-    public Client find(String userName, String password) {
+    public Client find(String userName, String password, String salt) {
         List<Client> clients = this.getEntityManager().createQuery(
                 "SELECT c FROM Client c WHERE c.username = :userName AND c.password = :password")
                 .setParameter("userName", userName)
-                .setParameter("password", password)
+                .setParameter("password", Security.sha512(password, salt))
                 .setMaxResults(1)
                 .getResultList();
         

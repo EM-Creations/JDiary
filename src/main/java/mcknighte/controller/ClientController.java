@@ -23,6 +23,7 @@ import mcknighte.persistence.ClientFacade;
 @Named(value = "clientController")
 @SessionScoped
 public class ClientController extends AbstractController<Client, ClientFacade> {
+
     private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cS;
@@ -34,8 +35,9 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     private String searchTypeText;
 
     /**
-     * Check whether a client exists and output a Faces message if it does to the specified element
-     * 
+     * Check whether a client exists and output a Faces message if it does to
+     * the specified element
+     *
      * @param userName String
      * @param message boolean
      * @param element String
@@ -146,7 +148,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
         switch (searchType) {
             case "all":
                 return SearchType.all;
-            
+
             case "username":
                 return SearchType.username;
 
@@ -221,16 +223,18 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Process adding a client
      *
+     * @param password String
      * @param passwordAgain String
      * @return String
      */
-    public String doAddClient(String passwordAgain) {
+    public String doAddClient(String password, String passwordAgain) {
         // TODO validation
-        if (!this.editingClient.getPassword().equals(passwordAgain)) { // If the password doesn't match the retype of the password
+        if (!password.equals(passwordAgain)) { // If the password doesn't match the retype of the password
             this.addError("newUserForm:passwordAgain", "Mismatch", "Passwords do not match.");
             return "addEditUser"; // Send them back to the form
         }
-        
+        this.editingClient.setPassword(password); // Set the new password
+
         try {
             cS.createClient(this.editingClient);
         } catch (UserAlreadyExistsException ex) { // If the user already exists
@@ -260,7 +264,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
             }
             this.editingClient.setPassword(newPassword); // Set the new password
         }
-        
+
         try {
             cS.editClient(this.editingClient, currPassword);
         } catch (UserIncorrectPasswordException ex) {
@@ -310,7 +314,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
 
     /**
      * Get the facade for this object
-     * 
+     *
      * @return AbstractFacade
      */
     @Override

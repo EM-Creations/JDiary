@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
 
 /**
  * ClientService
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
 @Stateless
@@ -23,31 +23,34 @@ public class ClientService {
     private ClientFacade cF;
     @EJB
     private AppointmentFacade aF;
-    public enum SearchType {all, username, firstName, lastName, address, postcode, phone, email};
+
+    public enum SearchType {
+        all, username, firstName, lastName, address, postcode, phone, email
+    };
 
     /**
      * Get a list of country names
-     * 
+     *
      * @return List
      */
     public List<String> getCountries() {
         // mkyong. (2013). Display a list of countries in Java. Retrieved from http://www.mkyong.com/java/display-a-list-of-countries-in-java/
         ArrayList<String> countries = new ArrayList<>();
         String[] countryCodes = Locale.getISOCountries();
-        
+
         for (String countryCode : countryCodes) { // For each country code
             Locale locale = new Locale("", countryCode);
             countries.add(locale.getDisplayCountry()); // Add this country's display name to the ArrayList
         }
-        
+
         Collections.sort(countries); // Sort the list of countries alphabetically
-        
+
         return countries; // Return the ArrayList of display country names
     }
-    
+
     /**
      * Search for clients based on a search type and search text
-     * 
+     *
      * @param searchType SearchType
      * @param searchText String
      * @return List
@@ -55,10 +58,10 @@ public class ClientService {
     public List<Client> searchClient(SearchType searchType, String searchText) {
         return cF.search(searchType, searchText);
     }
-    
+
     /**
      * Edit client
-     * 
+     *
      * @param client Client
      * @return Client
      */
@@ -66,10 +69,10 @@ public class ClientService {
         cF.edit(client);
         return client;
     }
-    
+
     /**
      * Edit client, requiring a password
-     * 
+     *
      * @param client Client
      * @param providedPassword String
      * @return Client
@@ -86,17 +89,17 @@ public class ClientService {
 
     /**
      * Get client
-     * 
+     *
      * @param client Client
      * @return Client
      */
     public Client getClient(Client client) {
         return cF.find(client.getId());
     }
-    
+
     /**
      * Get a client by their username
-     * 
+     *
      * @param userName String
      * @return Client
      */
@@ -106,7 +109,7 @@ public class ClientService {
 
     /**
      * Create client
-     * 
+     *
      * @param client Client
      * @return Client
      * @throws mcknighte.exception.UserAlreadyExistsException
@@ -122,7 +125,7 @@ public class ClientService {
 
     /**
      * Remove client
-     * 
+     *
      * @param client Client
      * @return Client
      */
@@ -130,31 +133,37 @@ public class ClientService {
         cF.remove(client);
         return client;
     }
-    
+
     /**
      * Check whether a client exists or not by username
-     * 
+     *
      * @param userName String
      * @return boolean
      */
     public boolean clientExists(String userName) {
         return cF.find(userName) != null;
     }
-    
+
     /**
-     * Check whether a client should be able to login with the provided credentials, returns null if failed login
-     * 
+     * Check whether a client should be able to login with the provided
+     * credentials, returns null if failed login
+     *
      * @param userName String
      * @param password String
      * @return Client
      */
     public Client checkLogin(String userName, String password) {
-        return cF.find(userName, password); // Return whether we can find a client with that username and password or not
+        Client c = cF.find(userName); // First get the client with their username, TODO error out if not found
+
+        if (c != null) { // If a client with that username has been found
+            return cF.find(userName, password, c.getSalt()); // Return whether we can find a client with that username and password or not
+        }
+        return null;
     }
 
     /**
      * Get all clients
-     * 
+     *
      * @return List
      */
     public List<Client> getAll() {

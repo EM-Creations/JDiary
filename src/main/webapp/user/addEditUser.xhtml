@@ -192,7 +192,7 @@
                             </b:row>
                             <b:row>
                                 <b:column offset="3" span="3">
-                                    <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient(param['newUserForm:passwordAgain'])}" rendered="#{clientController.editingClient.id eq null}" />
+                                    <h:commandButton value="Add" styleClass="actionButton" action="#{clientController.doAddClient(param['newUserForm:password'], param['newUserForm:passwordAgain'])}" rendered="#{clientController.editingClient.id eq null}" />
                                     <h:commandButton value="Edit" styleClass="actionButton" action="#{clientController.doEditClient(param['newUserForm:currPassword'], param['newUserForm:password'], param['newUserForm:passwordAgain'])}" rendered="#{clientController.editingClient.id ne null}" />
                                 </b:column>
                             </b:row>
