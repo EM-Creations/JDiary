@@ -62,7 +62,7 @@
                                         <f:facet name="header">Actions</f:facet>
                                         <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(appointment)}" styleClass="submit"/></h:form>
                                         <td><h:form><h:commandButton value="Edit" rendered="#{appointment.creator eq loginController.loggedInClient}" action="#{appointmentController.goToEditAppointment(appointment)}" styleClass="submit"/></h:form></td>
-                                        <td><h:form><h:commandButton value="Cancel" rendered="#{appointment.creator eq loginController.loggedInClient}" action="#{appointmentController.doCancelAppointment(appointment)}" styleClass="submit"/></h:form></td>
+                                        <td><h:form><h:commandButton value="Cancel" rendered="#{appointment.creator eq loginController.loggedInClient}" action="#{appointmentController.doCancelAppointment(appointment, 'day')}" styleClass="submit"/></h:form></td>
                                     </h:column>
                                 </h:dataTable>
                             </b:column>

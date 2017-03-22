@@ -301,12 +301,16 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      * Cancel an appointment
      *
      * @param a Appointment
+     * @param page String
      * @return String
      */
-    public String doCancelAppointment(Appointment a) {
-        // TODO: Refresh the view properly
+    public String doCancelAppointment(Appointment a, String page) {
         aS.removeAppointment(a);
         this.clearEditingAppointment();
+        if (page.equals("day")) { // If we're on the day page
+            this.doSearchAppointment(); // Re-search by day
+        }
+        this.doSearchAppointment(this.searchClient); // Otherwise re-search by user
         return ""; // Reload the same page
     }
     
