@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import mcknighte.entity.Appointment;
 
 /**
  * ClientService
@@ -130,6 +131,17 @@ public class ClientService {
      * @return Client
      */
     public Client removeClient(Client client) {
+        // Remove this client from any appointments that they may be attending
+        List<Appointment> appointments = aF.search(client);
+        if (appointments != null) { // If this client is an attendee of at least 1 appointment
+            for (Appointment a : appointments) { // For each appointment that this client is attending
+                List<Client> newAttendees = a.getAttendees();
+                newAttendees.remove(client); // Remove the client from this appointment
+                a.setAttendees(newAttendees); // Set the new list of attendees
+                aF.edit(a); // Update the appointment
+            }
+        }
+        
         cF.remove(client);
         return client;
     }
