@@ -10,7 +10,7 @@
         <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form>
-                    <h:commandLink action="browseAppointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                    <h:commandLink action="browseAppointments" onclick="history.go(-1);return false;"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
                 </h:form>
                 <h1>
                     <h:outputText value="Viewing appointment: #{appointmentController.editingAppointment.id}"/>
@@ -68,7 +68,7 @@
                             </b:row>
                             <b:row>
                                 <b:column offset="3" span="3">
-                                    <h:commandButton value="Back" styleClass="actionButton" action="#{startController.goToBrowseAppointments()}"/>
+                                    <h:commandButton value="Back" styleClass="actionButton" onclick="history.go(-1);return false;" action="#{startController.goToBrowseAppointments()}"/>
                                 </b:column>
                             </b:row>
                         </h:form>

@@ -13,7 +13,7 @@
                     <h:commandLink action="appointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
                 </h:form>
                 <h:form rendered="#{appointmentController.editingAppointment.id ne null}">
-                    <h:commandLink action="browseAppointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
+                    <h:commandLink onclick="history.go(-1);return false;" action="browseAppointments"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
                 </h:form>
                 <h1>
                     <h:outputText value="Create new appointment" rendered="#{appointmentController.editingAppointment.id eq null}" />
