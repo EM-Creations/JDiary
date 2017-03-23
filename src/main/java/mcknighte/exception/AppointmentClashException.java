@@ -3,25 +3,29 @@ package mcknighte.exception;
 import mcknighte.entity.Appointment;
 
 /**
- * AppointmentClashException
+ * AppointmentClashException, exception thrown for when an attendee 
+ * of an appointment already has an appointment at a certain time
  *
  * @author Edward McKnight (UP608985)
+ * @see AppointmentException
+ * @since 2017
+ * @version 1.0
  */
 public class AppointmentClashException extends AppointmentException {
 
     /**
      * Constructor
      *
-     * @param appointment Appointment
+     * @param appointment the appointment which this exception has been thrown for
      */
     public AppointmentClashException(Appointment appointment) {
         super(appointment);
     }
 
     /**
-     * Get message
+     * Get the message generated for this exception
      *
-     * @return String
+     * @return the message
      */
     @Override
     public String getMessage() {

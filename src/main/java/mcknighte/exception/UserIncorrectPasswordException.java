@@ -6,15 +6,17 @@ import mcknighte.entity.Client;
  * UserIncorrectPasswordException
  *
  * @author Edward McKnight (UP608985)
+ * @see UserException
+ * @since 2017
+ * @version 1.0
  */
 public class UserIncorrectPasswordException extends UserException {
-
     private final Client client;
 
     /**
      * Constructor
      *
-     * @param c Client
+     * @param c the client who provided an incorrect password
      */
     public UserIncorrectPasswordException(Client c) {
         super();
@@ -22,9 +24,9 @@ public class UserIncorrectPasswordException extends UserException {
     }
 
     /**
-     * Get message
+     * Get the message generated for this exception
      *
-     * @return String
+     * @return the message
      */
     @Override
     public String getMessage() {

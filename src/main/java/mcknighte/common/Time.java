@@ -6,36 +6,37 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
 /**
- * Time class
+ * Time class to be used when outputting the current time
  *
  * @author Edward McKnight (UP608985)
+ * @since 2017
+ * @version 1.0
  */
 @Named(value = "time")
 @RequestScoped
 public class Time {
-
     private Calendar time;
 
     /**
-     * Get the value of time
+     * Get the the current time as a Date
      *
-     * @return the value of time
+     * @return the Date value of the current time
      */
     public Date getTime() {
         return this.time.getTime();
     }
 
     /**
-     * Set the value of time
+     * Set the current time
      *
-     * @param time new value of time
+     * @param time the new value for the current time
      */
     public void setTime(Calendar time) {
         this.time = time;
     }
 
     /**
-     * Creates a new instance of Time
+     * Constructor, defaulting the reference time to the current time
      */
     public Time() {
         this.time = Calendar.getInstance();

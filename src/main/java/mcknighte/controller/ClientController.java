@@ -16,14 +16,17 @@ import mcknighte.exception.UserException;
 import mcknighte.persistence.ClientFacade;
 
 /**
- * ClientController
+ * ClientController, controller class to act as middle man between Client views and the business logic
  *
  * @author Edward McKnight (UP608985)
+ * @see AbstractController
+ * @see AppointmentController
+ * @since 2017
+ * @version 1.0
  */
 @Named(value = "clientController")
 @SessionScoped
 public class ClientController extends AbstractController<Client, ClientFacade> {
-
     private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cS;
@@ -38,10 +41,10 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
      * Check whether a client exists and output a Faces message if it does to
      * the specified element
      *
-     * @param userName String
-     * @param message boolean
-     * @param element String
-     * @return boolean
+     * @param userName the username of the client to check whether exists
+     * @param message whether or not to display an error message if the client doesn't exist
+     * @param element the UIComponent to display the error message on (if being used)
+     * @return whether or not the client exists
      */
     public boolean clientExists(String userName, boolean message, String element) {
         if ((this.editingClient.getId() == null && cS.clientExists(userName)) || (cS.clientExists(userName) && (!cS.getClient(userName).equals(this.editingClient)))) { // If the client already exists
@@ -54,63 +57,63 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     }
 
     /**
-     * Get the value of countries
+     * Get the list of countries from the business logic
      *
-     * @return List
+     * @return a list of ISO countries
      */
     public List<String> getCountries() {
         return cS.getCountries();
     }
 
     /**
-     * Get the value of searchTypeText
+     * Get the current search type textual value
      *
-     * @return the value of searchTypeText
+     * @return the textual value of the search type
      */
     public String getSearchTypeText() {
         return searchTypeText;
     }
 
     /**
-     * Set the value of searchTypeText
+     * Set the text value of the search type
      *
-     * @param searchTypeText String
+     * @param searchTypeText the text value of the search type
      */
     public void setSearchTypeText(String searchTypeText) {
         this.searchTypeText = searchTypeText;
     }
 
     /**
-     * Get the value of searchText
+     * Get the search text
      *
-     * @return the value of searchText
+     * @return the search text
      */
     public String getSearchText() {
         return searchText;
     }
 
     /**
-     * Set the value of searchText
+     * Set the search text to be used
      *
-     * @param searchText new value of searchText
+     * @param searchText the search text to be used
      */
     public void setSearchText(String searchText) {
         this.searchText = searchText;
     }
 
     /**
-     * Get the value of searchResults
+     * Get the list of search results
      *
-     * @return the value of searchResults
+     * @return the list of search results
      */
     public List<Client> getSearchResults() {
         return searchResults;
     }
 
     /**
-     * Set the value of searchResults
+     * Set the search results
      *
-     * @param searchResults new value of searchResults
+     * @param searchResults a list of clients resulting from a search
      */
     public void setSearchResults(List<Client> searchResults) {
         this.searchResults = searchResults;
@@ -119,9 +122,9 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Search for clients by search type and search text
      *
-     * @param searchType String
-     * @param searchText String
-     * @return String
+     * @param searchType the type of search being performed
+     * @param searchText the text to search by
+     * @return the view displayed
      */
     public String doSearchClient(String searchType, String searchText) {
         // TODO: Validate inputs
@@ -139,10 +142,10 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     }
 
     /**
-     * Convert strings from the view to valid SearchType values
+     * Convert strings from the view to valid enumerated SearchType values
      *
-     * @param searchType String
-     * @return SearchType
+     * @param searchType the string representation of a SearchType
+     * @return the corresponding enumerated SearchType value
      */
     private SearchType getSearchTypeFromString(String searchType) throws InvalidSearchTypeException {
         switch (searchType) {
@@ -178,8 +181,8 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Load the view to edit a client
      *
-     * @param c Client
-     * @return String
+     * @param c the client to edit
+     * @return the view displayed
      */
     public String goToEditClient(Client c) {
         this.setEditingClient(c);
@@ -189,8 +192,8 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Load the view to view a client
      *
-     * @param c Client
-     * @return String
+     * @param c the client to view
+     * @return the view displayed
      */
     public String goToViewClient(Client c) {
         this.setEditingClient(c);
@@ -200,8 +203,8 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Delete a client
      *
-     * @param c Client
-     * @return String
+     * @param c the client to delete
+     * @return the view displayed
      */
     public String doDeleteClient(Client c) {
         cS.removeClient(c);
@@ -213,7 +216,7 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     /**
      * Clear data concerning the client currently being edited
      *
-     * @return Client
+     * @return the new editing client
      */
     public Client clearEditingClient() {
         this.editingClient = new Client(); // Instantiate new client object (clears any existing data)
@@ -221,11 +224,12 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     }
 
     /**
-     * Process adding a client
+     * Process adding a client, checking that the new password has been correctly
+     * entered twice and that the username isn't already taken
      *
-     * @param password String
-     * @param passwordAgain String
-     * @return String
+     * @param password the password for the new client
+     * @param passwordAgain the repeated password for the new client
+     * @return the view displayed
      */
     public String doAddClient(String password, String passwordAgain) {
         // TODO validation
@@ -248,12 +252,13 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     }
 
     /**
-     * Processing editing a client
+     * Processing editing a client, ensuring that the new password (if used)
+     * has been correctly entered twice
      *
-     * @param currPassword String
-     * @param newPassword String
-     * @param passwordAgain String
-     * @return String
+     * @param currPassword the client's current password
+     * @param newPassword the client's new password
+     * @param passwordAgain the repeated client's new password
+     * @return the view displayed
      */
     public String doEditClient(String currPassword, String newPassword, String passwordAgain) {
         // TODO validation
@@ -278,25 +283,25 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     }
 
     /**
-     * Get the value of editingClient
+     * Get the client which is currently being edited
      *
-     * @return the value of editingClient
+     * @return the client which is currently being edited
      */
     public Client getEditingClient() {
         return this.editingClient;
     }
 
     /**
-     * Set the value of editingClient
+     * Set the client which is currently being edited
      *
-     * @param editingClient new value of editingClient
+     * @param editingClient the client which is currently being edited
      */
     public void setEditingClient(Client editingClient) {
         this.editingClient = editingClient;
     }
 
     /**
-     * Creates a new instance of ClientController
+     * Constructor
      */
     public ClientController() {
         super(Client.class);
@@ -304,18 +309,18 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
     }
 
     /**
-     * Get all clients
+     * Get all clients held by the system from the business logic
      *
-     * @return List
+     * @return a list of all clients held by the system
      */
     public List<Client> getAllClients() {
         return cS.getAll();
     }
 
     /**
-     * Get the facade for this object
+     * Get the corresponding facade object for this controller
      *
-     * @return AbstractFacade
+     * @return the corresponding facade object for this controller
      */
     @Override
     public ClientFacade getFacade() {

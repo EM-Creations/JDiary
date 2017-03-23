@@ -10,13 +10,19 @@ import mcknighte.common.Convertable;
 import mcknighte.common.Security;
 
 /**
- * Client entity class
+ * Client entity class, to represent a Client within the database
+ * and throughout the application
  *
  * @author Edward McKnight (UP608985)
+ * @see Appointment
+ * @see ClientFacade
+ * @see ClientService
+ * @see ClientController
+ * @since 2017
+ * @version 1.0
  */
 @Entity
 public class Client implements Serializable, Convertable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,180 +53,180 @@ public class Client implements Serializable, Convertable {
     }
 
     /**
-     * Get the value of salt
+     * Get the security salt for the client
      *
-     * @return the value of salt
+     * @return the security salt for the client
      */
     public String getSalt() {
         return salt;
     }
 
     /**
-     * Set the value of salt
+     * Set the security salt for the client
      *
-     * @param salt new value of salt
+     * @param salt the security salt for the client
      */
     public void setSalt(String salt) {
         this.salt = salt;
     }
 
     /**
-     * Get the value of country
+     * Get the country for the client
      *
-     * @return the value of country
+     * @return the country for the client
      */
     public String getCountry() {
         return country;
     }
 
     /**
-     * Set the value of country
+     * Set the country for the client
      *
-     * @param country new value of country
+     * @param country the country for the client
      */
     public void setCountry(String country) {
         this.country = country;
     }
 
     /**
-     * Get the value of email
+     * Get the email address for the client
      *
-     * @return the value of email
+     * @return the email address for the client
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Set the value of email
+     * Set the email address for the client
      *
-     * @param email new value of email
+     * @param email the email address for the client
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * Get the value of phone
+     * Get the phone number for the client
      *
-     * @return the value of phone
+     * @return the phone number for the client
      */
     public String getPhone() {
         return phone;
     }
 
     /**
-     * Set the value of phone
+     * Set the phone number for the client
      *
-     * @param phone new value of phone
+     * @param phone the phone number for the client
      */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
     /**
-     * Get the value of postcode
+     * Get the postcode for the client
      *
-     * @return the value of postcode
+     * @return the postcode for the client
      */
     public String getPostcode() {
         return postcode;
     }
 
     /**
-     * Set the value of postcode
+     * Set the postcode for the client
      *
-     * @param postcode new value of postcode
+     * @param postcode the postcode for the client
      */
     public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 
     /**
-     * Get the value of address
+     * Get the address for the client
      *
-     * @return the value of address
+     * @return the address for the client
      */
     public String getAddress() {
         return address;
     }
 
     /**
-     * Set the value of address
+     * Set the address for the client
      *
-     * @param address new value of address
+     * @param address the address for the client
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
     /**
-     * Get the value of lastName
+     * Get the last name for the client
      *
-     * @return the value of lastName
+     * @return the last name for the client
      */
     public String getLastName() {
         return lastName;
     }
 
     /**
-     * Set the value of lastName
+     * Set the last name for the client
      *
-     * @param lastName new value of lastName
+     * @param lastName the last name for the client
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     * Get the value of firstName
+     * Get the first name for the client
      *
-     * @return the value of firstName
+     * @return the first name for the client
      */
     public String getFirstName() {
         return firstName;
     }
 
     /**
-     * Set the value of firstName
+     * Set the first name for the client
      *
-     * @param firstName new value of firstName
+     * @param firstName the first name for the client
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
-     * Get the value of username
+     * Get the username for the client
      *
-     * @return the value of username
+     * @return the username for the client
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * Set the value of username
+     * Set the username for the client
      *
-     * @param username new value of username
+     * @param username the username for the client
      */
     public void setUsername(String username) {
         this.username = username;
     }
 
     /**
-     * Get the value of password
+     * Get the hashed and salted password for the client
      *
-     * @return the value of password
+     * @return the hashed and salted password for the client
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * Set the value of password
+     * Set the password for the client, this password is then hashed and salted
      *
-     * @param password new value of password
+     * @param password the password for the client
      */
     public void setPassword(String password) {
         this.salt = Security.generateRandomSalt();
@@ -228,9 +234,9 @@ public class Client implements Serializable, Convertable {
     }
 
     /**
-     * Get ID
+     * Get the ID for the client
      *
-     * @return Long
+     * @return the ID for the client
      */
     @Override
     public Long getId() {
@@ -238,9 +244,9 @@ public class Client implements Serializable, Convertable {
     }
 
     /**
-     * Set ID
+     * Set the ID for the client
      *
-     * @param id Long
+     * @param id the ID for the client
      */
     public void setId(Long id) {
         this.id = id;
@@ -261,8 +267,8 @@ public class Client implements Serializable, Convertable {
     /**
      * Equals
      *
-     * @param object Object
-     * @return boolean
+     * @param object the object to compare to
+     * @return whether or not this equals the object being compared to
      */
     @Override
     public boolean equals(Object object) {
@@ -273,10 +279,10 @@ public class Client implements Serializable, Convertable {
         return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
-    /**
-     * To string
-     *
-     * @return String
+   /**
+     * Represent this object as a string
+     * 
+     * @return a string representation of this object
      */
     @Override
     public String toString() {

@@ -18,23 +18,28 @@ import mcknighte.exception.UserDoesNotExistException;
  * ClientService
  *
  * @author Edward McKnight (UP608985)
+ * @see AppointmentService
+ * @since 2017
+ * @version 1.0
  */
 @Stateless
 public class ClientService {
-
     @EJB
     private ClientFacade cF;
     @EJB
     private AppointmentFacade aF;
 
+    /**
+     * An enumerated type representing all of the search methods available for clients
+     */
     public enum SearchType {
         all, username, firstName, lastName, address, postcode, phone, email
     };
 
     /**
-     * Get a list of country names
+     * Get an alphabetically sorted list of all ISO country names
      *
-     * @return List
+     * @return a list of all country names
      */
     public List<String> getCountries() {
         // mkyong. (2013). Display a list of countries in Java. Retrieved from http://www.mkyong.com/java/display-a-list-of-countries-in-java/
@@ -54,19 +59,19 @@ public class ClientService {
     /**
      * Search for clients based on a search type and search text
      *
-     * @param searchType SearchType
-     * @param searchText String
-     * @return List
+     * @param searchType the type of search to perform
+     * @param searchText the search input to be used
+     * @return a list of clients returned by the search; if no results null
      */
     public List<Client> searchClient(SearchType searchType, String searchText) {
         return cF.search(searchType, searchText);
     }
 
     /**
-     * Edit client
+     * Edit a client
      *
-     * @param client Client
-     * @return Client
+     * @param client the client to edit
+     * @return the client which was edited
      */
     public Client editClient(Client client) {
         cF.edit(client);
@@ -74,13 +79,13 @@ public class ClientService {
     }
 
     /**
-     * Edit client, requiring a password
+     * Edit a client, requiring a password
      *
-     * @param client Client
-     * @param providedPassword String
-     * @return Client
-     * @throws mcknighte.exception.UserIncorrectPasswordException
-     * @throws mcknighte.exception.UserDoesNotExistException
+     * @param client the client to edit
+     * @param providedPassword the password to use
+     * @return the client which was edited
+     * @throws mcknighte.exception.UserIncorrectPasswordException if the password provided is incorrect
+     * @throws mcknighte.exception.UserDoesNotExistException if the user/client does not exist
      */
     public Client editClient(Client client, String providedPassword) throws UserIncorrectPasswordException, UserDoesNotExistException {
         if (this.checkLogin(client.getUsername(), providedPassword) != null) { // If the correct password has been provided
@@ -92,10 +97,10 @@ public class ClientService {
     }
 
     /**
-     * Get client
+     * Get a client from a Client object
      *
-     * @param client Client
-     * @return Client
+     * @param client the client to get
+     * @return the found client; otherwise null
      */
     public Client getClient(Client client) {
         return cF.find(client.getId());
@@ -104,19 +109,19 @@ public class ClientService {
     /**
      * Get a client by their username
      *
-     * @param userName String
-     * @return Client
+     * @param userName the username of the client to get
+     * @return the found client; otherwise null
      */
     public Client getClient(String userName) {
         return cF.find(userName);
     }
 
     /**
-     * Create client
+     * Create a client
      *
-     * @param client Client
-     * @return Client
-     * @throws mcknighte.exception.UserAlreadyExistsException
+     * @param client the client to create
+     * @return the client which has been created
+     * @throws mcknighte.exception.UserAlreadyExistsException if a client with that username already exists
      */
     public Client createClient(Client client) throws UserAlreadyExistsException {
         if (!this.clientExists(client.getUsername())) { // If this client doesn't already exist
@@ -128,10 +133,11 @@ public class ClientService {
     }
 
     /**
-     * Remove client
+     * Remove a client, ensuring that they have also been removed
+     * from their relevant appointments
      *
-     * @param client Client
-     * @return Client
+     * @param client the client to remove
+     * @return the client which has been removed
      */
     public Client removeClient(Client client) {
         // Remove this client from any appointments that they may be attending
@@ -152,8 +158,8 @@ public class ClientService {
     /**
      * Check whether a client exists or not by username
      *
-     * @param userName String
-     * @return boolean
+     * @param userName the client's username to check for
+     * @return whether or not the client exists
      */
     public boolean clientExists(String userName) {
         return cF.find(userName) != null;
@@ -163,10 +169,10 @@ public class ClientService {
      * Check whether a client should be able to login with the provided
      * credentials, returns null if failed login
      *
-     * @param userName String
-     * @param password String
-     * @return Client
-     * @throws mcknighte.exception.UserDoesNotExistException
+     * @param userName the client's username to check for
+     * @param password the client's password to try to login with
+     * @return the corresponding client; if incorrect password null
+     * @throws mcknighte.exception.UserDoesNotExistException if the client/user does not exist
      */
     public Client checkLogin(String userName, String password) throws UserDoesNotExistException {
         Client c = cF.find(userName); // First get the client with their username
@@ -179,9 +185,9 @@ public class ClientService {
     }
 
     /**
-     * Get all clients
+     * Get all clients held by the system
      *
-     * @return List
+     * @return a list of all clients held by the system
      */
     public List<Client> getAll() {
         return cF.findAll();

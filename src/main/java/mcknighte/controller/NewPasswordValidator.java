@@ -8,13 +8,15 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 /**
- * New password validator
+ * New password validator, to ensure that if a new password is being used,
+ * that it meets the relevant criteria
  *
  * @author Edward McKnight (UP608985)
+ * @since 2017
+ * @version 1.0
  */
 @FacesValidator("mcknighte.NewPasswordValidator")
 public class NewPasswordValidator implements Validator {
-
     /**
      * Constructor
      */
@@ -24,10 +26,10 @@ public class NewPasswordValidator implements Validator {
     /**
      * Validate the new password
      *
-     * @param context FacesContext
-     * @param component UIComponent
-     * @param value Object
-     * @throws ValidatorException
+     * @param context the JSF context
+     * @param component the component this validator is being called from
+     * @param value the object to validate
+     * @throws ValidatorException if the validation fails
      */
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {

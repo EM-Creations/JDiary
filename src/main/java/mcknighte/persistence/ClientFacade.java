@@ -10,20 +10,23 @@ import javax.persistence.PersistenceContext;
 import mcknighte.common.Security;
 
 /**
- * Client facade
+ * Client facade, to manage the persistence of Client objects
  *
  * @author Edward McKnight (UP608985)
+ * @see Client
+ * @see AbstractFacade
+ * @since 2017
+ * @version 1.0
  */
 @Stateless
 public class ClientFacade extends AbstractFacade<Client> {
-
     @PersistenceContext(unitName = "mcknighte_war_1.0PU")
     private EntityManager em;
 
     /**
-     * Get entity manager
+     * Get the entity manager for the facade
      *
-     * @return EntityManager
+     * @return the entity manager for the facade
      */
     @Override
     protected EntityManager getEntityManager() {
@@ -31,11 +34,11 @@ public class ClientFacade extends AbstractFacade<Client> {
     }
 
     /**
-     * Search for clients based on search type and search text
+     * Search for clients based on the specified search type and search text
      *
-     * @param searchType SearchType
-     * @param searchText String
-     * @return List
+     * @param searchType the type of search being performed
+     * @param searchText the text to search for
+     * @return a list of clients which meet the search criteria; if none found null
      */
     public List<Client> search(SearchType searchType, String searchText) {
         List<Client> clients;
@@ -113,8 +116,8 @@ public class ClientFacade extends AbstractFacade<Client> {
     /**
      * Find a client by username
      *
-     * @param userName String
-     * @return Client
+     * @param userName the username to search by
+     * @return the client found; if not found null
      */
     public Client find(String userName) {
         List<Client> clients = this.getEntityManager().createQuery(
@@ -129,12 +132,13 @@ public class ClientFacade extends AbstractFacade<Client> {
     }
 
     /**
-     * Find a client by username and password
+     * Find a client by username and password, 
+     * used to check that a user can login
      *
-     * @param userName String
-     * @param password String
-     * @param salt String
-     * @return Client
+     * @param userName the username to search by
+     * @param password the password to search by
+     * @param salt the salt used on the client's password
+     * @return the client found; if not found null
      */
     public Client find(String userName, String password, String salt) {
         List<Client> clients = this.getEntityManager().createQuery(

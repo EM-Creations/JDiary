@@ -12,20 +12,23 @@ import javax.persistence.TemporalType;
 import mcknighte.entity.Client;
 
 /**
- * Appointment facade
+ * Appointment facade, to manage the persistence of Appointment objects
  *
  * @author Edward McKnight (UP608985)
+ * @see Appointment
+ * @see AbstractFacade
+ * @since 2017
+ * @version 1.0
  */
 @Stateless
 public class AppointmentFacade extends AbstractFacade<Appointment> {
-
     @PersistenceContext(unitName = "mcknighte_war_1.0PU")
     private EntityManager em;
 
     /**
-     * Get entity manager
+     * Get the entity manager for the facade
      *
-     * @return EntityManager
+     * @return the entity manager for the facade
      */
     @Override
     protected EntityManager getEntityManager() {
@@ -40,10 +43,10 @@ public class AppointmentFacade extends AbstractFacade<Appointment> {
     }
 
     /**
-     * Search for appointments by client
+     * Search for appointments attended by a specified client
      *
-     * @param c Client
-     * @return List
+     * @param c client who's appointments to search for
+     * @return list of appointments for the client; otherwise null
      */
     public List<Appointment> search(Client c) {
         List<Appointment> appointments;
@@ -59,10 +62,10 @@ public class AppointmentFacade extends AbstractFacade<Appointment> {
     }
 
     /**
-     * Search for appointments by day
+     * Search for appointments on a specified day
      *
-     * @param day Date
-     * @return List
+     * @param day day to search for appointments by
+     * @return a list of appointments on the specified day; otherwise null
      */
     public List<Appointment> search(Date day) {
         List<Appointment> appointments;
@@ -84,9 +87,9 @@ public class AppointmentFacade extends AbstractFacade<Appointment> {
     /**
      * Search for appointments for a specific user between a start and end time
      *
-     * @param c Client
-     * @param app Appointment
-     * @return List
+     * @param c client who's appointments to search for
+     * @param app appointment who's start and end time to search by
+     * @return a list of appointments for the specified user between the given appointment's start and end time; otherwise null
      */
     public List<Appointment> search(Client c, Appointment app) {
         List<Appointment> appointments;

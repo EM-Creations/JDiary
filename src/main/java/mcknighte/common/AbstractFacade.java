@@ -4,12 +4,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
- * Abstract facade
+ * Abstract facade class to act as the superclass to the Client and Appointment facades
  *
  * @author Edward McKnight (UP608985)
+ * @see AbstractController
+ * @see AbstractConverter
+ * @see ClientFacade
+ * @see AppointmentFacade
+ * @since 2017
+ * @version 1.0
  */
 public abstract class AbstractFacade<T> {
-
     private Class<T> entityClass;
 
     protected abstract EntityManager getEntityManager();
@@ -17,7 +22,7 @@ public abstract class AbstractFacade<T> {
     /**
      * Constructor
      *
-     * @param entityClass Class
+     * @param entityClass the corresponding entity class of this facade
      */
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -26,7 +31,7 @@ public abstract class AbstractFacade<T> {
     /**
      * Create
      *
-     * @param entity T
+     * @param entity the object to persist
      */
     public void create(T entity) {
         getEntityManager().persist(entity);
@@ -35,7 +40,7 @@ public abstract class AbstractFacade<T> {
     /**
      * Edit
      *
-     * @param entity T
+     * @param entity the object to edit
      */
     public void edit(T entity) {
         getEntityManager().merge(entity);
@@ -44,7 +49,7 @@ public abstract class AbstractFacade<T> {
     /**
      * Remove
      *
-     * @param entity T
+     * @param entity the object to remove
      */
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
@@ -53,17 +58,17 @@ public abstract class AbstractFacade<T> {
     /**
      * Find by ID
      *
-     * @param id Object
-     * @return T
+     * @param id the object to find
+     * @return the found object; otherwise null
      */
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
     /**
-     * Find all
+     * Find all objects
      *
-     * @return List
+     * @return a list of all objects held by the system
      */
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -74,8 +79,8 @@ public abstract class AbstractFacade<T> {
     /**
      * Find range
      *
-     * @param range int[]
-     * @return List
+     * @param range integer array of the range to find
+     * @return a list of all objects within the specified range
      */
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -87,9 +92,9 @@ public abstract class AbstractFacade<T> {
     }
 
     /**
-     * Count
+     * Count of the number of objects held by the system
      *
-     * @return int
+     * @return the number of objects held by the system
      */
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();

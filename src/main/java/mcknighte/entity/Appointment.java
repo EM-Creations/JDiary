@@ -16,13 +16,19 @@ import javax.validation.constraints.NotNull;
 import mcknighte.common.Convertable;
 
 /**
- * Appointment entity class
+ * Appointment entity class, to represent an Appointment within the database
+ * and throughout the application
  *
  * @author Edward McKnight (UP608985)
+ * @see Client
+ * @see AppointmentFacade
+ * @see AppointmentService
+ * @see AppointmentController
+ * @since 2017
+ * @version 1.0
  */
 @Entity
 public class Appointment implements Serializable, Convertable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,99 +55,99 @@ public class Appointment implements Serializable, Convertable {
     }
 
     /**
-     * Get the value of attendees
+     * Get the attendees for the appointment
      *
-     * @return the value of attendees
+     * @return a list of attendees for the appointment
      */
     public List<Client> getAttendees() {
         return attendees;
     }
 
     /**
-     * Set the value of attendees
+     * Set the attendees for the appointment
      *
-     * @param attendees new value of attendees
+     * @param attendees a list of attendees for the appointment
      */
     public void setAttendees(List<Client> attendees) {
         this.attendees = attendees;
     }
 
     /**
-     * Get the value of creator
+     * Get the creator of the appointment
      *
-     * @return the value of creator
+     * @return the creator of the appointment
      */
     public Client getCreator() {
         return creator;
     }
 
     /**
-     * Set the value of creator
+     * Set the creator of the appointment
      *
-     * @param creator new value of creator
+     * @param creator the creator of the appointment
      */
     public void setCreator(Client creator) {
         this.creator = creator;
     }
 
     /**
-     * Get the value of description
+     * Get the description for the appointment
      *
-     * @return the value of description
+     * @return the description for the appointment
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Set the value of description
+     * Set the description for the appointment
      *
-     * @param description new value of description
+     * @param description the description for the appointment
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * Get the value of end
+     * Get the end time of the appointment as a Date object
      *
-     * @return the value of end
+     * @return the end time of the appointment
      */
     public Date getEndTime() {
         return endTime.getTime();
     }
 
     /**
-     * Set the value of end
+     * Set the end time of the appointment
      *
-     * @param end new value of end
+     * @param end the end time of the appointment
      */
     public void setEndTime(Date end) {
         this.endTime.setTime(end);
     }
 
     /**
-     * Get the value of start
+     * Get the start time of the appointment as a Date object
      *
-     * @return the value of start
+     * @return the start time of the appointment
      */
     public Date getStartTime() {
         return startTime.getTime();
     }
 
     /**
-     * Set the value of start
+     * Set the start time of the appointment
      *
-     * @param start new value of start
+     * @param start the start time of the appointment
      */
     public void setStartTime(Date start) {
         this.startTime.setTime(start);
     }
 
     /**
-     * Get ID
+     * Get the ID for the appointment
      *
-     * @return Long
+     * @return the ID for the appointment
      */
     @Override
     public Long getId() {
@@ -149,9 +155,9 @@ public class Appointment implements Serializable, Convertable {
     }
 
     /**
-     * Set ID
+     * Set the ID for the appointment
      *
-     * @param id Long
+     * @param id the ID for the appointment
      */
     public void setId(Long id) {
         this.id = id;
@@ -172,8 +178,8 @@ public class Appointment implements Serializable, Convertable {
     /**
      * Equals
      *
-     * @param object Object
-     * @return boolean
+     * @param object the object to compare to
+     * @return whether or not this equals the object being compared to
      */
     @Override
     public boolean equals(Object object) {
@@ -185,7 +191,9 @@ public class Appointment implements Serializable, Convertable {
     }
 
     /**
-     * To string
+     * Represent this object as a string
+     * 
+     * @return a string representation of this object
      */
     @Override
     public String toString() {

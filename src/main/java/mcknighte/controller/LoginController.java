@@ -12,14 +12,17 @@ import mcknighte.common.AbstractFacade;
 import mcknighte.exception.UserDoesNotExistException;
 
 /**
- * LoginController
+ * LoginController, controller class to handle logging into the application,
+ * some navigation and keeping track of the logged in client
  *
  * @author Edward McKnight (UP608985)
+ * @see AbstractController
+ * @since 2017
+ * @version 1.0
  */
 @Named(value = "loginController")
 @SessionScoped
 public class LoginController extends AbstractController {
-
     private static final long serialVersionUID = 1L;
     @EJB
     private ClientService cs;
@@ -28,54 +31,55 @@ public class LoginController extends AbstractController {
     private String password;
 
     /**
-     * Get the value of loggedInClient
+     * Get the currently logged in client
      *
-     * @return Client
+     * @return the currently logged in client
      */
     public Client getLoggedInClient() {
         return this.loggedInClient;
     }
 
     /**
-     * Get the value of userName
+     * Get the username being used to login with
      *
-     * @return the value of userName
+     * @return the username being used to login with
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * Set the value of userName
+     * Set the username to use when logging in
      *
-     * @param userName new value of userName
+     * @param userName the username to use to login with
      */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
     /**
-     * Get the value of password
+     * Get the password being used to login with
      *
-     * @return the value of password
+     * @return the password being used to login with
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * Set the value of password
+     * Set the password to use when logging in
      *
-     * @param password new value of password
+     * @param password the password to use to login with
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * Login button pressed
+     * Handle the login form being submitted, check that the user has the 
+     * correct username and password and if not handle it appropriately
      *
-     * @return String
+     * @return the view to display
      */
     public String doLogin() {
         Client c;
@@ -97,7 +101,7 @@ public class LoginController extends AbstractController {
     }
 
     /**
-     * Creates a new instance of LoginController
+     * Constructor
      */
     public LoginController() {
         super(null); // This controller doesn't have a corresponding entity
@@ -106,9 +110,9 @@ public class LoginController extends AbstractController {
     }
 
     /**
-     * Get the facade for this object
+     * Get the corresponding facade object for this controller
      *
-     * @return
+     * @return the corresponding facade object for this controller
      */
     @Override
     public AbstractFacade getFacade() {

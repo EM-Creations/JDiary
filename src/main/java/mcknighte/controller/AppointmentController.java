@@ -18,14 +18,17 @@ import mcknighte.exception.AppointmentClashException;
 import mcknighte.persistence.AppointmentFacade;
 
 /**
- * AppointmentController
+ * AppointmentController, controller class to act as middle man between Appointment views and the business logic
  *
  * @author Edward McKnight (UP608985)
+ * @see AbstractController
+ * @see ClientController
+ * @since 2017
+ * @version 1.0
  */
 @Named(value = "appointmentController")
 @SessionScoped
 public class AppointmentController extends AbstractController<Appointment, AppointmentFacade> {
-
     private static final long serialVersionUID = 1L;
     @EJB
     private AppointmentService aS;
@@ -40,10 +43,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     private List<Appointment> searchResults;
 
     /**
-     * Get the appointments for a specific day of this month
+     * Get all of the appointments for a specific day of this current month
      *
-     * @param day int
-     * @return List
+     * @param day the day of the month to get appointments for
+     * @return a list of the appointments for the specified day of the current month
      */
     public List<Appointment> getAppointmentsForDay(int day) {
         final Calendar calendar = Calendar.getInstance();
@@ -54,54 +57,54 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Get the value of searchResults
+     * Get the current search results
      *
-     * @return the value of searchResults
+     * @return a list of the search results
      */
     public List<Appointment> getSearchResults() {
         return searchResults;
     }
 
     /**
-     * Set the value of searchResults
+     * Set the current search results
      *
-     * @param searchResults new value of searchResults
+     * @param searchResults a list of search results
      */
     public void setSearchResults(List<Appointment> searchResults) {
         this.searchResults = searchResults;
     }
 
     /**
-     * Get the value of searchDay
+     * Get current day appointments are being searched for
      *
-     * @return the value of searchDay
+     * @return the current day being searched for
      */
     public Date getSearchDay() {
         return searchDay;
     }
 
     /**
-     * Set the value of searchDay
+     * Set the current day appointments are being searched for
      *
-     * @param searchDay new value of searchDay
+     * @param searchDay a day to search for appointments
      */
     public void setSearchDay(Date searchDay) {
         this.searchDay = searchDay;
     }
 
     /**
-     * Get the value of searchClient
+     * Get the username of the client being searched appointments for
      *
-     * @return the value of searchClient
+     * @return the client being searched appointments for
      */
     public String getSearchClient() {
         return searchClient;
     }
 
     /**
-     * Set the value of searchClient
+     * Set the username of the client appointments are being searched for
      *
-     * @param searchClient new value of searchClient
+     * @param searchClient the username of the client appointments are being searched for
      */
     public void setSearchClient(String searchClient) {
         this.searchClient = searchClient;
@@ -109,25 +112,25 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Get the value of attendeeUsers
+     * Get a list of strings of attendees for the current appointment
      *
-     * @return the value of attendeeUsers
+     * @return a list of strings of attendees for the current appointment
      */
     public List<String> getAttendeeUsers() {
         return attendeeUsers;
     }
 
     /**
-     * Set the value of attendeeUsers
+     * Set the string list of attendees for this appointment
      *
-     * @param attendeeUsers new value of attendeeUsers
+     * @param attendeeUsers a string list of attendees for this appointment
      */
     public void setAttendeeUsers(List<String> attendeeUsers) {
         this.attendeeUsers = attendeeUsers;
     }
 
     /**
-     * Constructor
+     * AppointmentController constructor
      */
     public AppointmentController() {
         super(Appointment.class);
@@ -138,7 +141,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     /**
      * Clear data concerning the appointment currently being edited
      *
-     * @return Appointment
+     * @return the cleared appointment which is currently being edited
      */
     public Appointment clearEditingAppointment() {
         this.editingAppointment = new Appointment(); // Instantiate new appointment object (clears any existing data)
@@ -147,18 +150,18 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Get the value of editingAppointment
+     * Get appointment which is currently being edited
      *
-     * @return the value of editingAppointment
+     * @return the appointment which is currently being edited
      */
     public Appointment getEditingAppointment() {
         return editingAppointment;
     }
 
     /**
-     * Set the value of editingAppointment
+     * Set the currently edited appointment
      *
-     * @param editingAppointment new value of editingAppointment
+     * @param editingAppointment an appointment to edit
      */
     public void setEditingAppointment(Appointment editingAppointment) {
         this.editingAppointment = editingAppointment;
@@ -168,10 +171,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Process creating an appointment
+     * Process creating a new appointment, checking that none of the attendees have other appointments during this time
      *
-     * @param creator Client
-     * @return String
+     * @param creator the creator of the appointment
+     * @return the view to display
      */
     public String doCreateAppointment(Client creator) {
         // TODO validation
@@ -195,10 +198,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Process editing an appointment
+     * Process editing an appointment, checking that none of the attendees have other appointments during this time
      *
-     * @param creator Client
-     * @return String
+     * @param creator the creator of the appointment
+     * @return the view to display
      */
     public String doEditAppointment(Client creator) {
         // TODO validation
@@ -222,10 +225,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Convert an array of client user names to client objects
+     * Convert an array of client usernames to client objects
      *
-     * @param userNames List
-     * @return List
+     * @param userNames a list of client usernames
+     * @return a list of client objects
      */
     public List<Client> convertClientNamesToClients(List<String> userNames) {
         ArrayList<Client> clients = new ArrayList<>();
@@ -238,10 +241,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Convert an array of client user names to client objects
+     * Convert an array of client objects to client usernames
      *
-     * @param clients List
-     * @return List
+     * @param clients a list of client objects
+     * @return a list of client usernames
      */
     public List<String> convertClientsToClientNames(List<Client> clients) {
         ArrayList<String> names = new ArrayList<>();
@@ -254,19 +257,19 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Get all appointments
+     * Get all appointments held by the system
      *
-     * @return List
+     * @return a list of all appointments held by the system
      */
     public List<Appointment> getAllAppointments() {
         return aS.getAll();
     }
 
     /**
-     * Go to edit appointment
+     * Load the edit appointment view with the specified appointment
      *
-     * @param appointment Appointment
-     * @return String
+     * @param appointment the appointment to edit
+     * @return the view to display
      */
     public String goToEditAppointment(Appointment appointment) {
         this.setEditingAppointment(appointment);
@@ -275,10 +278,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Search for appointments by client
+     * Search for appointments for a specified client's username
      *
-     * @param searchText String
-     * @return String
+     * @param searchText the username of the client who's appointments to search for
+     * @return the view to display
      */
     public String doSearchAppointment(String searchText) {
         // TODO: Validate inputs
@@ -289,7 +292,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     /**
      * Search for appointments by day
      *
-     * @return String
+     * @return the view to display
      */
     public String doSearchAppointment() {
         this.setSearchResults(aS.searchAppointment(this.searchDay));
@@ -299,9 +302,9 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     /**
      * Cancel an appointment
      *
-     * @param a Appointment
-     * @param page String
-     * @return String
+     * @param a the appointment to cancel
+     * @param page the view that this method call originated from
+     * @return the view to display
      */
     public String doCancelAppointment(Appointment a, String page) {
         aS.removeAppointment(a);
@@ -316,8 +319,8 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     /**
      * Load the view to view an appointment
      *
-     * @param a Appointment
-     * @return String
+     * @param a the appointment to view
+     * @return the view to display
      */
     public String goToViewAppointment(Appointment a) {
         this.setEditingAppointment(a);
@@ -325,9 +328,9 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     }
 
     /**
-     * Get the facade for this object
+     * Get the corresponding facade object for this controller
      *
-     * @return AppointmentFacade
+     * @return the corresponding facade object for this controller
      */
     @Override
     public AppointmentFacade getFacade() {

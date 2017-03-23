@@ -1,18 +1,21 @@
 package mcknighte.exception;
 
 /**
- * UserDoesNotExistException
+ * UserDoesNotExistException, exception thrown for when a user is found to 
+ * not exist
  *
  * @author Edward McKnight (UP608985)
+ * @see UserException
+ * @since 2017
+ * @version 1.0
  */
 public class UserDoesNotExistException extends UserException {
-
     private final String userName;
 
     /**
      * Constructor
      *
-     * @param userName String
+     * @param userName the username which has been found to not exist
      */
     public UserDoesNotExistException(String userName) {
         super();
@@ -20,9 +23,9 @@ public class UserDoesNotExistException extends UserException {
     }
 
     /**
-     * Get message
+     * Get the message generated for this exception
      *
-     * @return String
+     * @return the message
      */
     @Override
     public String getMessage() {

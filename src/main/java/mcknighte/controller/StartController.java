@@ -10,21 +10,25 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
 /**
- * StartController
+ * StartController, used to handle navigation and the setup feature 
+ * (which will create all necessary data to run the application while in
+ * development)
  *
  * @author Edward McKnight (UP608985)
+ * @since 2017
+ * @version 1.0
  */
 @Named(value = "startController")
 @RequestScoped
 public class StartController {
-
     @EJB
     private ClientService cs;
 
     /**
-     * Run the setup
+     * Run the setup, creating all necessary database entries in order to start
+     * using the application
      *
-     * @return String
+     * @return view to display
      */
     public String doSetup() {
         // Create client(s)
@@ -51,7 +55,7 @@ public class StartController {
     /**
      * Home button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToHome() {
         return "index";
@@ -60,7 +64,7 @@ public class StartController {
     /**
      * Users button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToUsers() {
         return "user/users";
@@ -69,7 +73,7 @@ public class StartController {
     /**
      * Add new user button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToAddUser() {
         return "addEditUser";
@@ -78,7 +82,7 @@ public class StartController {
     /**
      * Browse users button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToBrowseUsers() {
         return "browseUsers";
@@ -87,7 +91,7 @@ public class StartController {
     /**
      * Appointments button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToAppointments() {
         return "appointment/appointments";
@@ -96,7 +100,7 @@ public class StartController {
     /**
      * Create appointment button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToCreateAppointment() {
         return "createEditAppointment";
@@ -105,7 +109,7 @@ public class StartController {
     /**
      * Browse appointments button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToBrowseAppointments() {
         return "browseAppointments";
@@ -114,7 +118,7 @@ public class StartController {
     /**
      * Appointments by user button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToAppointmentsByUser() {
         return "appointmentsByUser";
@@ -123,7 +127,7 @@ public class StartController {
     /**
      * Appointments by day button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToAppointmentsByDay() {
         return "appointmentsByDay";
@@ -132,14 +136,14 @@ public class StartController {
     /**
      * Appointments calendar button pressed
      *
-     * @return String
+     * @return view to display
      */
     public String goToAppointmentsCalendar() {
         return "appointmentsCalendar";
     }
 
     /**
-     * Creates a new instance of StartController
+     * Constructor
      */
     public StartController() {
     }

@@ -1,18 +1,21 @@
 package mcknighte.exception;
 
 /**
- * UserAlreadyExistsException
+ * UserAlreadyExistsException, exception thrown for when an attempt is made 
+ * to create a user to the system which already exists
  *
  * @author Edward McKnight (UP608985)
+ * @see UserException
+ * @since 2017
+ * @version 1.0
  */
 public class UserAlreadyExistsException extends UserException {
-
     private final String userName;
 
     /**
      * Constructor
      *
-     * @param userName String
+     * @param userName the username of the user which was attempted to be created
      */
     public UserAlreadyExistsException(String userName) {
         super();
@@ -20,9 +23,9 @@ public class UserAlreadyExistsException extends UserException {
     }
 
     /**
-     * Get message
+     * Get the message generated for this exception
      *
-     * @return String
+     * @return the message
      */
     @Override
     public String getMessage() {
