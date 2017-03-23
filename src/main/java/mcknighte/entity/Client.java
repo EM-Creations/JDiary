@@ -11,11 +11,12 @@ import mcknighte.common.Security;
 
 /**
  * Client entity class
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
 @Entity
 public class Client implements Serializable, Convertable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,13 +39,13 @@ public class Client implements Serializable, Convertable {
     private String phone;
     @NotNull
     private String email;
-    
+
     /**
      * Constructor
      */
     public Client() {
     }
-    
+
     /**
      * Get the value of salt
      *
@@ -62,7 +63,7 @@ public class Client implements Serializable, Convertable {
     public void setSalt(String salt) {
         this.salt = salt;
     }
-    
+
     /**
      * Get the value of country
      *
@@ -80,7 +81,7 @@ public class Client implements Serializable, Convertable {
     public void setCountry(String country) {
         this.country = country;
     }
-    
+
     /**
      * Get the value of email
      *
@@ -228,8 +229,8 @@ public class Client implements Serializable, Convertable {
 
     /**
      * Get ID
-     * 
-     * @return Long 
+     *
+     * @return Long
      */
     @Override
     public Long getId() {
@@ -238,7 +239,7 @@ public class Client implements Serializable, Convertable {
 
     /**
      * Set ID
-     * 
+     *
      * @param id Long
      */
     public void setId(Long id) {
@@ -247,7 +248,7 @@ public class Client implements Serializable, Convertable {
 
     /**
      * Hash code
-     * 
+     *
      * @return int
      */
     @Override
@@ -259,7 +260,7 @@ public class Client implements Serializable, Convertable {
 
     /**
      * Equals
-     * 
+     *
      * @param object Object
      * @return boolean
      */
@@ -274,7 +275,7 @@ public class Client implements Serializable, Convertable {
 
     /**
      * To string
-     * 
+     *
      * @return String
      */
     @Override

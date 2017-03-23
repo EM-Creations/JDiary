@@ -15,7 +15,7 @@ public class Security {
     // ANS. (2012). Creating a random string with A-Z and 0-9 in Java. Retrieved from http://stackoverflow.com/questions/20536566/creating-a-random-string-with-a-z-and-0-9-in-java
     /**
      * Generate a 64 character random salt
-     * 
+     *
      * @return String
      */
     public static String generateRandomSalt() {
@@ -43,7 +43,7 @@ public class Security {
     // Abhi. (2013). Hash a password with SHA-512 in Java. Retrieved from http://stackoverflow.com/questions/33085493/hash-a-password-with-sha-512-in-java
     /**
      * Hash a string using SHA512
-     * 
+     *
      * @param passwordToHash String
      * @param salt String
      * @return String

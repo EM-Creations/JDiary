@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-    	<ui:composition template="./resources/template/commonLayout.xhtml">
+        <ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form>
                     <h:commandLink action="index"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
@@ -13,19 +13,19 @@
                 <h1>Welcome back #{loginController.loggedInClient.firstName}!</h1>
             </ui:define>
             <ui:define name="content">
-                    <h:form>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToUsers()}" value="Users" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToAppointments()}" value="Appointments"/>
-                            </b:column>
-                        </b:row>
-                    </h:form>
-    		</ui:define>
-    	</ui:composition>
+                <h:form>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToUsers()}" value="Users" />
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToAppointments()}" value="Appointments"/>
+                        </b:column>
+                    </b:row>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

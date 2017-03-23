@@ -21,6 +21,7 @@ import mcknighte.exception.UserDoesNotExistException;
  */
 @Stateless
 public class ClientService {
+
     @EJB
     private ClientFacade cF;
     @EJB
@@ -143,7 +144,7 @@ public class ClientService {
                 aF.edit(a); // Update the appointment
             }
         }
-        
+
         cF.remove(client);
         return client;
     }

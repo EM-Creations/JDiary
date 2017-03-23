@@ -6,5 +6,6 @@ package mcknighte.common;
  * @author BriggsJ
  */
 public interface Convertable {
+
     public Long getId();
 }

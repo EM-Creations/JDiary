@@ -25,6 +25,7 @@ import mcknighte.persistence.AppointmentFacade;
 @Named(value = "appointmentController")
 @SessionScoped
 public class AppointmentController extends AbstractController<Appointment, AppointmentFacade> {
+
     private static final long serialVersionUID = 1L;
     @EJB
     private AppointmentService aS;
@@ -37,10 +38,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     private String searchClient;
     private Date searchDay;
     private List<Appointment> searchResults;
-    
+
     /**
      * Get the appointments for a specific day of this month
-     * 
+     *
      * @param day int
      * @return List
      */
@@ -48,7 +49,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         final Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, day);
         final Date date = calendar.getTime();
-        
+
         return aS.searchAppointment(date);
     }
 
@@ -70,7 +71,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.searchResults = searchResults;
     }
 
-
     /**
      * Get the value of searchDay
      *
@@ -88,7 +88,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     public void setSearchDay(Date searchDay) {
         this.searchDay = searchDay;
     }
-
 
     /**
      * Get the value of searchClient
@@ -109,7 +108,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.setSearchResults(aS.searchAppointment(cS.getClient(this.searchClient)));
     }
 
-
     /**
      * Get the value of attendeeUsers
      *
@@ -127,7 +125,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     public void setAttendeeUsers(List<String> attendeeUsers) {
         this.attendeeUsers = attendeeUsers;
     }
-    
+
     /**
      * Constructor
      */
@@ -147,7 +145,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.attendeeUsers.clear();
         return this.editingAppointment;
     }
-    
+
     /**
      * Get the value of editingAppointment
      *
@@ -164,8 +162,9 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      */
     public void setEditingAppointment(Appointment editingAppointment) {
         this.editingAppointment = editingAppointment;
-        if (this.editingAppointment.getId() != null)
+        if (this.editingAppointment.getId() != null) {
             this.attendeeUsers = this.convertClientsToClientNames(this.editingAppointment.getAttendees());
+        }
     }
 
     /**
@@ -181,7 +180,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
         this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
-        
+
         // Try to create the appointment
         try {
             aS.createAppointment(this.editingAppointment);
@@ -194,7 +193,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.clearEditingAppointment(); // Reset the appointment
         return "appointments?faces-redirect=true"; // Load the appointments page
     }
-    
+
     /**
      * Process editing an appointment
      *
@@ -208,7 +207,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
         this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
-        
+
         // Try to edit the appointment
         try {
             aS.editAppointment(this.editingAppointment);
@@ -221,39 +220,39 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.clearEditingAppointment(); // Reset the appointment
         return "appointments?faces-redirect=true"; // Load the appointments page
     }
-    
+
     /**
      * Convert an array of client user names to client objects
-     * 
+     *
      * @param userNames List
      * @return List
      */
     public List<Client> convertClientNamesToClients(List<String> userNames) {
         ArrayList<Client> clients = new ArrayList<>();
-        
+
         for (String userName : userNames) { // For each user
             clients.add(cS.getClient(userName)); // Get them and add them to the array of clients
         }
-        
+
         return clients;
     }
-    
+
     /**
      * Convert an array of client user names to client objects
-     * 
+     *
      * @param clients List
      * @return List
      */
     public List<String> convertClientsToClientNames(List<Client> clients) {
         ArrayList<String> names = new ArrayList<>();
-        
+
         for (Client client : clients) { // For each user
             names.add(client.toString());
         }
-        
+
         return names;
     }
-    
+
     /**
      * Get all appointments
      *
@@ -262,10 +261,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
     public List<Appointment> getAllAppointments() {
         return aS.getAll();
     }
-    
+
     /**
      * Go to edit appointment
-     * 
+     *
      * @param appointment Appointment
      * @return String
      */
@@ -274,7 +273,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.setAttendeeUsers(this.convertClientsToClientNames(this.editingAppointment.getAttendees()));
         return "createEditAppointment";
     }
-    
+
     /**
      * Search for appointments by client
      *
@@ -286,7 +285,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.setSearchClient(searchText);
         return ""; // Reload the same page
     }
-    
+
     /**
      * Search for appointments by day
      *
@@ -296,7 +295,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.setSearchResults(aS.searchAppointment(this.searchDay));
         return ""; // Reload the same page
     }
-    
+
     /**
      * Cancel an appointment
      *
@@ -313,7 +312,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         this.doSearchAppointment(this.searchClient); // Otherwise re-search by user
         return ""; // Reload the same page
     }
-    
+
     /**
      * Load the view to view an appointment
      *
@@ -327,7 +326,7 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
 
     /**
      * Get the facade for this object
-     * 
+     *
      * @return AppointmentFacade
      */
     @Override

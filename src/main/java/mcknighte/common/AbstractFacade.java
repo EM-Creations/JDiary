@@ -5,16 +5,18 @@ import javax.persistence.EntityManager;
 
 /**
  * Abstract facade
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
 public abstract class AbstractFacade<T> {
+
     private Class<T> entityClass;
+
     protected abstract EntityManager getEntityManager();
 
     /**
      * Constructor
-     * 
+     *
      * @param entityClass Class
      */
     public AbstractFacade(Class<T> entityClass) {
@@ -23,7 +25,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Create
-     * 
+     *
      * @param entity T
      */
     public void create(T entity) {
@@ -32,7 +34,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Edit
-     * 
+     *
      * @param entity T
      */
     public void edit(T entity) {
@@ -41,7 +43,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Remove
-     * 
+     *
      * @param entity T
      */
     public void remove(T entity) {
@@ -50,7 +52,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Find by ID
-     * 
+     *
      * @param id Object
      * @return T
      */
@@ -60,7 +62,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Find all
-     * 
+     *
      * @return List
      */
     public List<T> findAll() {
@@ -71,7 +73,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Find range
-     * 
+     *
      * @param range int[]
      * @return List
      */
@@ -86,7 +88,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Count
-     * 
+     *
      * @return int
      */
     public int count() {
@@ -96,5 +98,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

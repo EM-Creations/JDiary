@@ -83,7 +83,7 @@ public class StartController {
     public String goToBrowseUsers() {
         return "browseUsers";
     }
-    
+
     /**
      * Appointments button pressed
      *
@@ -92,7 +92,7 @@ public class StartController {
     public String goToAppointments() {
         return "appointment/appointments";
     }
-    
+
     /**
      * Create appointment button pressed
      *
@@ -101,7 +101,7 @@ public class StartController {
     public String goToCreateAppointment() {
         return "createEditAppointment";
     }
-    
+
     /**
      * Browse appointments button pressed
      *
@@ -110,7 +110,7 @@ public class StartController {
     public String goToBrowseAppointments() {
         return "browseAppointments";
     }
-    
+
     /**
      * Appointments by user button pressed
      *
@@ -119,7 +119,7 @@ public class StartController {
     public String goToAppointmentsByUser() {
         return "appointmentsByUser";
     }
-    
+
     /**
      * Appointments by day button pressed
      *
@@ -128,7 +128,7 @@ public class StartController {
     public String goToAppointmentsByDay() {
         return "appointmentsByDay";
     }
-    
+
     /**
      * Appointments calendar button pressed
      *

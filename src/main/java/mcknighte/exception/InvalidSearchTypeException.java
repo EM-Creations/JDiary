@@ -2,25 +2,26 @@ package mcknighte.exception;
 
 /**
  * InvalidSearchTypeException
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
 public class InvalidSearchTypeException extends InvalidInputException {
+
     private final String inputProvided;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param inputProvided String
      */
     public InvalidSearchTypeException(String inputProvided) {
         super();
         this.inputProvided = inputProvided;
     }
-    
+
     /**
      * Get message
-     * 
+     *
      * @return String
      */
     @Override

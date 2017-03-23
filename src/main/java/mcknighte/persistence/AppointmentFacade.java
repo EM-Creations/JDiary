@@ -18,6 +18,7 @@ import mcknighte.entity.Client;
  */
 @Stateless
 public class AppointmentFacade extends AbstractFacade<Appointment> {
+
     @PersistenceContext(unitName = "mcknighte_war_1.0PU")
     private EntityManager em;
 

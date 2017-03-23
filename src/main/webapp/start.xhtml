@@ -3,28 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-
-    	<ui:composition template="./resources/template/commonLayout.xhtml">
+        <ui:composition template="./resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h1>Start</h1>
-    		</ui:define>
+            </ui:define>
             <ui:define name="content">
-                    <h:form>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton class="navButton" value="Home" action="#{startController.goToHome()}" />
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column span="6" offset="3">
-                                <h:commandButton class="navButton" action="#{startController.doSetup()}" value="Setup" />
-                            </b:column>
-                        </b:row>
-                    </h:form>
-    		</ui:define>
-    	</ui:composition>
+                <h:form>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton class="navButton" value="Home" action="#{startController.goToHome()}" />
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="6" offset="3">
+                            <h:commandButton class="navButton" action="#{startController.doSetup()}" value="Setup" />
+                        </b:column>
+                    </b:row>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

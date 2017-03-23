@@ -45,7 +45,7 @@ public abstract class AbstractConverter<T extends Convertable, Facade extends Ab
         } else if (object instanceof String) {
             return (String) object;
         } else if (object instanceof Long) {
-            return ((Long)object).toString();
+            return ((Long) object).toString();
         } else if (object instanceof Convertable) {
             T o = (T) object;
             return getStringKey(o.getId());

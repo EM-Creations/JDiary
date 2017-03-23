@@ -1,5 +1,5 @@
 // BalusC. (2016). h:commandButton/h:commandLink does not work on first click, works only on second click. Retrieved from http://stackoverflow.com/questions/11408130/hcommandbutton-hcommandlink-does-not-work-on-first-click-works-only-on-second
-jsf.ajax.addOnEvent(function(data) {
+jsf.ajax.addOnEvent(function (data) {
     if (data.status == "success") {
         fixViewState(data.responseXML);
     }
@@ -16,8 +16,7 @@ function fixViewState(responseXML) {
                 if (!hasViewState(form)) {
                     createViewState(form, viewState);
                 }
-            }
-            else { // PrimeFaces also adds them to GET forms!
+            } else { // PrimeFaces also adds them to GET forms!
                 removeViewState(form);
             }
         }
@@ -53,7 +52,7 @@ function createViewState(form, viewState) {
 
     try {
         hidden = document.createElement("<input name='javax.faces.ViewState'>"); // IE6-8.
-    } catch(e) {
+    } catch (e) {
         hidden = document.createElement("input");
         hidden.setAttribute("name", "javax.faces.ViewState");
     }

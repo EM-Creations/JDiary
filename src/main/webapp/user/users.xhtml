@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
 
-    	<ui:composition template="../resources/template/commonLayout.xhtml">
+        <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form>
                     <h:commandLink action="/welcome"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
@@ -15,22 +15,22 @@
                 <h1>Users</h1>
             </ui:define>
             <ui:define name="content">
-                    <h:form>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToAddUser()}" value="Add new user" immediate="true">
-                                    <!-- OscarSan. (2012). JSF - How to pass parameters from one controller to another controller action events? Retrieved from http://stackoverflow.com/questions/12040870/jsf-how-to-pass-parameters-from-one-controller-to-another-controller-action-ev -->
-                                    <f:setPropertyActionListener target="#{clientController.editingClient}" value="#{clientController.clearEditingClient()}" />
-                                </h:commandButton>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column span="12">
-                                <h:commandButton styleClass="navButton" action="#{startController.goToBrowseUsers()}" value="Browse users" />
-                            </b:column>
-                        </b:row>
-                    </h:form>
-    		</ui:define>
-    	</ui:composition>
+                <h:form>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToAddUser()}" value="Add new user" immediate="true">
+                                <!-- OscarSan. (2012). JSF - How to pass parameters from one controller to another controller action events? Retrieved from http://stackoverflow.com/questions/12040870/jsf-how-to-pass-parameters-from-one-controller-to-another-controller-action-ev -->
+                                <f:setPropertyActionListener target="#{clientController.editingClient}" value="#{clientController.clearEditingClient()}" />
+                            </h:commandButton>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <h:commandButton styleClass="navButton" action="#{startController.goToBrowseUsers()}" value="Browse users" />
+                        </b:column>
+                    </b:row>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

@@ -10,28 +10,29 @@ import javax.faces.context.FacesContext;
  * @author briggsj
  */
 public abstract class MessageController implements Serializable {
+
     protected void addError(String s) {
         addError((String) null, s);
     }
 
     /**
      * Add error with item and message
-     * 
+     *
      * @author Edward McKnight (UP608985)
      * @param item String
-     * @param errorMessage String 
+     * @param errorMessage String
      */
     protected void addError(String item, String errorMessage) {
         this.addError(item, errorMessage, errorMessage);
     }
-    
+
     /**
      * Add error with item, title and message
-     * 
+     *
      * @author Edward McKnight (UP608985)
      * @param item String
      * @param title String
-     * @param errorMessage String 
+     * @param errorMessage String
      */
     protected void addError(String item, String title, String errorMessage) {
         FacesContext.getCurrentInstance().addMessage(item, new FacesMessage(FacesMessage.SEVERITY_ERROR, title, errorMessage));
@@ -43,22 +44,22 @@ public abstract class MessageController implements Serializable {
 
     /**
      * Add info with item and message
-     * 
+     *
      * @author Edward McKnight (UP608985)
      * @param item String
-     * @param infoMessage String 
+     * @param infoMessage String
      */
     protected void addInfo(String item, String infoMessage) {
         this.addInfo(item, infoMessage, infoMessage);
     }
-    
+
     /**
      * Add info with item, title and message
-     * 
+     *
      * @author Edward McKnight (UP608985)
      * @param item String
      * @param title String
-     * @param infoMessage String 
+     * @param infoMessage String
      */
     protected void addInfo(String item, String title, String infoMessage) {
         FacesContext.getCurrentInstance().addMessage(item, new FacesMessage(FacesMessage.SEVERITY_INFO, title, infoMessage));

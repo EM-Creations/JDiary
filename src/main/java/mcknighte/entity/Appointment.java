@@ -17,11 +17,12 @@ import mcknighte.common.Convertable;
 
 /**
  * Appointment entity class
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
 @Entity
 public class Appointment implements Serializable, Convertable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,12 +36,12 @@ public class Appointment implements Serializable, Convertable {
     @NotNull
     private String description;
     @NotNull
-    @ManyToOne(targetEntity=Client.class)
+    @ManyToOne(targetEntity = Client.class)
     private Client creator;
     @NotNull
-    @OneToMany(targetEntity=Client.class)
+    @OneToMany(targetEntity = Client.class)
     private List<Client> attendees;
-    
+
     /**
      * Constructor
      */
@@ -139,8 +140,8 @@ public class Appointment implements Serializable, Convertable {
 
     /**
      * Get ID
-     * 
-     * @return Long 
+     *
+     * @return Long
      */
     @Override
     public Long getId() {
@@ -149,7 +150,7 @@ public class Appointment implements Serializable, Convertable {
 
     /**
      * Set ID
-     * 
+     *
      * @param id Long
      */
     public void setId(Long id) {
@@ -158,7 +159,7 @@ public class Appointment implements Serializable, Convertable {
 
     /**
      * Hash code
-     * 
+     *
      * @return int
      */
     @Override
@@ -170,7 +171,7 @@ public class Appointment implements Serializable, Convertable {
 
     /**
      * Equals
-     * 
+     *
      * @param object Object
      * @return boolean
      */
@@ -190,5 +191,5 @@ public class Appointment implements Serializable, Convertable {
     public String toString() {
         return "mcknighte.entity.Appointment[ id=" + id + " ]";
     }
-    
+
 }

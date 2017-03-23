@@ -11,6 +11,7 @@ public class AppointmentClashException extends AppointmentException {
 
     /**
      * Constructor
+     *
      * @param appointment Appointment
      */
     public AppointmentClashException(Appointment appointment) {

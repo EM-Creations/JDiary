@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-    	<ui:composition template="../resources/template/commonLayout.xhtml">
+        <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <!-- Fixes problem of AJAX updated buttons not working the first time they're clicked -->
                 <h:outputScript name="js/ajaxFix.js" target="head" />
@@ -26,21 +26,21 @@
                         <b:row>
                             <h:form id="searchUsers">
                                 <b:column offset="1" span="10" styleClass="searchBarContainer">
-                                        <h:inputText id="searchBar" value="#{clientController.searchText}" styleClass="searchBar">
-                                            <f:ajax event="keyup" execute="@this" render="searchResults" listener="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
-                                        </h:inputText>
-                                        <h:selectOneMenu id="searchType" value="#{clientController.searchTypeText}">
-                                            <f:selectItem itemValue="all" itemLabel="All" />
-                                            <f:selectItem itemValue="username" itemLabel="Username" />
-                                            <f:selectItem itemValue="firstName" itemLabel="First Name" />
-                                            <f:selectItem itemValue="lastName" itemLabel="Last Name" />
-                                            <f:selectItem itemValue="address" itemLabel="Address" />
-                                            <f:selectItem itemValue="postcode" itemLabel="Postcode" />
-                                            <f:selectItem itemValue="phone" itemLabel="Phone" />
-                                            <f:selectItem itemValue="email" itemLabel="Email" />
-                                            <f:ajax event='change' execute='@this' render="searchResults" listener="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
-                                        </h:selectOneMenu>
-                                        <h:commandButton value="Search" action="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
+                                    <h:inputText id="searchBar" value="#{clientController.searchText}" styleClass="searchBar">
+                                        <f:ajax event="keyup" execute="@this" render="searchResults" listener="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
+                                    </h:inputText>
+                                    <h:selectOneMenu id="searchType" value="#{clientController.searchTypeText}">
+                                        <f:selectItem itemValue="all" itemLabel="All" />
+                                        <f:selectItem itemValue="username" itemLabel="Username" />
+                                        <f:selectItem itemValue="firstName" itemLabel="First Name" />
+                                        <f:selectItem itemValue="lastName" itemLabel="Last Name" />
+                                        <f:selectItem itemValue="address" itemLabel="Address" />
+                                        <f:selectItem itemValue="postcode" itemLabel="Postcode" />
+                                        <f:selectItem itemValue="phone" itemLabel="Phone" />
+                                        <f:selectItem itemValue="email" itemLabel="Email" />
+                                        <f:ajax event='change' execute='@this' render="searchResults" listener="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
+                                    </h:selectOneMenu>
+                                    <h:commandButton value="Search" action="#{clientController.doSearchClient(param['searchUsers:searchType'], param['searchUsers:searchBar'])}"/>
                                 </b:column>
                             </h:form>
                         </b:row>
@@ -55,15 +55,15 @@
                                              cellpadding="0">
                                     <h:column>
                                         <f:facet name="header">User</f:facet>
-                                        #{client.username}
+                                            #{client.username}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">First Name</f:facet>
-                                        #{client.firstName}
+                                            #{client.firstName}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Last Name</f:facet>
-                                        #{client.lastName}
+                                            #{client.lastName}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Email Address</f:facet>
@@ -80,7 +80,7 @@
                         </b:row>
                     </b:column>
                 </b:row>
-    		</ui:define>
-    	</ui:composition>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

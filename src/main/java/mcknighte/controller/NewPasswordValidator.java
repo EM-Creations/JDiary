@@ -23,19 +23,21 @@ public class NewPasswordValidator implements Validator {
 
     /**
      * Validate the new password
-     * 
+     *
      * @param context FacesContext
      * @param component UIComponent
      * @param value Object
-     * @throws ValidatorException 
+     * @throws ValidatorException
      */
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        if (value == null || value.toString().equals("")) return; // If there is no new password set, let it through!
+        if (value == null || value.toString().equals("")) {
+            return; // If there is no new password set, let it through!
+        }
         // Otherwise
         if (value.toString().length() < 3) { // If the length isn't longer than 3
             FacesMessage msg = new FacesMessage("Regex invalid",
-                            "Regex invalid");
+                    "Regex invalid");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }

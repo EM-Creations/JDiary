@@ -7,15 +7,15 @@ import mcknighte.persistence.ClientFacade;
 
 /**
  * ClientConverter
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
-@FacesConverter(forClass=Client.class)
+@FacesConverter(forClass = Client.class)
 public class ClientConverter extends AbstractConverter<Client, ClientFacade, ClientController> {
 
     /**
      * Constructor
-     * 
+     *
      * @param entityClass Class
      * @param facade Class
      * @param controller Class

@@ -7,15 +7,15 @@ import mcknighte.persistence.AppointmentFacade;
 
 /**
  * AppointmentConverter
- * 
+ *
  * @author Edward McKnight (UP608985)
  */
-@FacesConverter(forClass=Appointment.class)
+@FacesConverter(forClass = Appointment.class)
 public class AppointmentConverter extends AbstractConverter<Appointment, AppointmentFacade, AppointmentController> {
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param entityClass Class
      * @param facade Class
      * @param controller Class

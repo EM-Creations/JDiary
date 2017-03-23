@@ -3,16 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="css/default.css" position="last"/>
         <h:outputStylesheet name="css/cssLayout.css" position="last"/>
         <title>JDiary</title>
     </h:head>
-
     <h:body>
         <b:container layout="fluid">
             <b:row>
@@ -24,14 +21,13 @@
                     </div>
                 </b:column>
             </b:row>
-
             <b:row>
                 <b:column span="10" offset="1">
                     <div id="content">
                         <b:growl for="infoMsg" id="infoMsg" placementAlign="center" placementFrom="top" showDetail="true"
-                        showSummary="false" allowDismiss="true"
-                        animationEnter="animated fadeInDown"
-                        animationExit="animated fadeOutUp"/>
+                                 showSummary="false" allowDismiss="true"
+                                 animationEnter="animated fadeInDown"
+                                 animationExit="animated fadeOutUp"/>
                         <ui:insert name="content">
                             Content
                         </ui:insert>
@@ -39,7 +35,6 @@
                     </div>
                 </b:column>
             </b:row>
-
             <b:row>
                 <b:column span="12">
                     <div id="footer">
@@ -51,5 +46,4 @@
             </b:row>
         </b:container>
     </h:body>
-
 </html>
