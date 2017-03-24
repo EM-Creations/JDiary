@@ -6,7 +6,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-
         <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form>
@@ -14,6 +13,11 @@
                 </h:form>
                 <h1>
                     <h:outputText value="Viewing appointment: #{appointmentController.editingAppointment.id}"/>
+                    (
+                    <h:outputText id="start" value="#{appointmentController.editingAppointment.startTime.time}">
+                        <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
+                    </h:outputText>
+                    )
                 </h1>
             </ui:define>
             <ui:define name="content">
