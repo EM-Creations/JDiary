@@ -4,7 +4,8 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
@@ -23,512 +24,53 @@
                                         <f:convertDateTime pattern = "MMMM yyyy" />
                                     </h:outputText>
                                 </h2>
-                                <b:row>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">1</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(1)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">2</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(2)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">3</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(3)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">4</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(4)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">5</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(5)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">6</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(6)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">7</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(7)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">8</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(8)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">9</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(9)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">10</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(10)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">11</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(11)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">12</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(12)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">13</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(13)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">14</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(14)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">15</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(15)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">16</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(16)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">17</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(17)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">18</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(18)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">19</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(19)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">20</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(20)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">21</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(21)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">22</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(22)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">23</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(23)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">24</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(24)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">25</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(25)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">26</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(26)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">27</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(27)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">28</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(28)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column styleClass="calendarCell" span="2">
-                                        <span class="dayHeader">29</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(29)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">30</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(30)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                    <b:column styleClass="calendarCell" span="1">
-                                        <span class="dayHeader">31</span>
-                                        <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(31)}">
-                                            <div class="item">
-                                                <h:outputText value="#{a.startTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                -
-                                                <h:outputText value="#{a.endTime}">
-                                                    <f:convertDateTime pattern = "HH:mm" />
-                                                </h:outputText>
-                                                #{a.description}
-                                                <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
-                                            </div>
-                                        </ui:repeat>
-                                    </b:column>
-                                </b:row>
+                                <c:set var="day" value="1" />
+                                <c:forEach begin="1" end="5">
+                                    <b:row>
+                                        <c:forEach begin="1" end="5">
+                                            <c:if test="#{day le time.maxDaysInCurrentMonth}">
+                                                <b:column styleClass="calendarCell" span="2">
+                                                    <span class="dayHeader">#{day}</span>
+                                                    <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(day)}">
+                                                        <div class="item">
+                                                            <h:outputText value="#{a.startTime}">
+                                                                <f:convertDateTime pattern = "HH:mm" />
+                                                            </h:outputText>
+                                                            -
+                                                            <h:outputText value="#{a.endTime}">
+                                                                <f:convertDateTime pattern = "HH:mm" />
+                                                            </h:outputText>
+                                                            #{a.description}
+                                                            <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
+                                                        </div>
+                                                    </ui:repeat>
+                                                    <c:set var="day" value="#{day + 1}" />
+                                                </b:column>
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:forEach begin="1" end="2">
+                                            <c:if test="#{day le time.maxDaysInCurrentMonth}">
+                                                <b:column styleClass="calendarCell" span="1">
+                                                    <span class="dayHeader">#{day}</span>
+                                                    <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(day)}">
+                                                        <div class="item">
+                                                            <h:outputText value="#{a.startTime}">
+                                                                <f:convertDateTime pattern = "HH:mm" />
+                                                            </h:outputText>
+                                                            -
+                                                            <h:outputText value="#{a.endTime}">
+                                                                <f:convertDateTime pattern = "HH:mm" />
+                                                            </h:outputText>
+                                                            #{a.description}
+                                                            <h:form><h:commandButton value="View" action="#{appointmentController.goToViewAppointment(a)}" styleClass="submit"/></h:form>
+                                                        </div>
+                                                    </ui:repeat>
+                                                    <c:set var="day" value="#{day + 1}" />
+                                                </b:column>
+                                            </c:if>
+                                        </c:forEach>
+                                    </b:row>
+                                </c:forEach>
                             </b:column>
                         </b:row>
                     </b:column>

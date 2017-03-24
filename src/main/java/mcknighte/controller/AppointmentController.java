@@ -177,7 +177,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      * @return the view to display
      */
     public String doCreateAppointment(Client creator) {
-        // TODO validation
         if (creator == null || creator.getId() == null) { // Temp
             creator = cS.getClient("adminadmin");
         }
@@ -204,7 +203,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      * @return the view to display
      */
     public String doEditAppointment(Client creator) {
-        // TODO validation
         if (creator == null || creator.getId() == null) { // Temp
             creator = cS.getClient("adminadmin");
         }
@@ -284,7 +282,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      * @return the view to display
      */
     public String doSearchAppointment(String searchText) {
-        // TODO: Validate inputs
         this.setSearchClient(searchText);
         return ""; // Reload the same page
     }

@@ -127,7 +127,6 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
      * @return the view displayed
      */
     public String doSearchClient(String searchType, String searchText) {
-        // TODO: Validate inputs
         this.setSearchText(searchText);
         this.setSearchTypeText(searchType);
         SearchType sT;
@@ -232,7 +231,6 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
      * @return the view displayed
      */
     public String doAddClient(String password, String passwordAgain) {
-        // TODO validation
         if (!password.equals(passwordAgain)) { // If the password doesn't match the retype of the password
             this.addError("newUserForm:passwordAgain", "Mismatch", "Passwords do not match.");
             return "addEditUser"; // Send them back to the form
@@ -261,7 +259,6 @@ public class ClientController extends AbstractController<Client, ClientFacade> {
      * @return the view displayed
      */
     public String doEditClient(String currPassword, String newPassword, String passwordAgain) {
-        // TODO validation
         if (!newPassword.equals("")) { // If the user opted to change the password
             if (!newPassword.equals(passwordAgain)) { // If the new password doesn't match the retype of the password
                 this.addError("newUserForm:passwordAgain", "Mismatch", "Passwords do not match.");

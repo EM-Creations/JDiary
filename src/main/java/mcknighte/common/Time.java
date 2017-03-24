@@ -18,6 +18,15 @@ public class Time {
     private Calendar time;
 
     /**
+     * Get the max number of days in the current month
+     * 
+     * @return the max number of days in the current month
+     */
+    public int getMaxDaysInCurrentMonth() {
+        return this.time.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+    
+    /**
      * Get the the current time as a Date
      *
      * @return the Date value of the current time

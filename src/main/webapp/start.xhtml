@@ -21,6 +21,26 @@
                             <h:commandButton class="navButton" action="#{startController.doSetup()}" value="Setup" />
                         </b:column>
                     </b:row>
+                    <b:row>
+                        <b:column span="6" offset="3">
+                            <h:button class="navButtonSmall" value="Javadoc" outcome="/internal/javadoc/index.html" />
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="6" offset="3">
+                            <h:button class="navButtonSmall" value="Report (Doc)" outcome="/internal/report/Report.docx" />
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="6" offset="3">
+                            <h:button class="navButtonSmall" value="Requirements Specification (Doc)" outcome="/internal/RequirementsSpecification.docx" />
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="6" offset="3">
+                            <h:button class="navButtonSmall" value="UI Specification (Doc)" outcome="/internal/UISpecification.docx" />
+                        </b:column>
+                    </b:row>
                 </h:form>
             </ui:define>
         </ui:composition>

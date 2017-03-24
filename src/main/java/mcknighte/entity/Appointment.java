@@ -52,6 +52,8 @@ public class Appointment implements Serializable, Convertable {
      * Constructor
      */
     public Appointment() {
+        this.startTime = Calendar.getInstance();
+        this.endTime = this.startTime;
     }
 
     /**
