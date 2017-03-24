@@ -6,7 +6,6 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-
         <ui:composition template="../resources/template/commonLayout.xhtml">
             <ui:define name="header">
                 <h:form rendered="#{appointmentController.editingAppointment.id eq null}">
@@ -29,7 +28,7 @@
                                     <h:outputLabel for="startTime">Start</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
-                                    <b:dateTimePicker id="startTime" label="Start" renderLabel="false" value="#{appointmentController.editingAppointment.startTime}" required="true" />
+                                    <b:dateTimePicker id="startTime" label="Start" renderLabel="false" value="#{appointmentController.editingAppointment.startTime.time}" required="true" />
                                 </b:column>
                                 <b:column span="5">
                                     <b:message for="startTime"/>
@@ -40,7 +39,7 @@
                                     <h:outputLabel for="endTime">End</h:outputLabel>
                                 </b:column>
                                 <b:column span="3">
-                                    <b:dateTimePicker id="endTime" label="End" renderLabel="false" value="#{appointmentController.editingAppointment.endTime}" required="true" />
+                                    <b:dateTimePicker id="endTime" label="End" renderLabel="false" value="#{appointmentController.editingAppointment.endTime.time}" required="true" />
                                 </b:column>
                                 <b:column span="5">
                                     <b:message for="endTime"/>

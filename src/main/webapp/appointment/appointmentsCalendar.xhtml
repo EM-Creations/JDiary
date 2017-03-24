@@ -33,11 +33,11 @@
                                                     <span class="dayHeader">#{day}</span>
                                                     <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(day)}">
                                                         <div class="item">
-                                                            <h:outputText value="#{a.startTime}">
+                                                            <h:outputText value="#{a.startTime.time}">
                                                                 <f:convertDateTime pattern = "HH:mm" />
                                                             </h:outputText>
                                                             -
-                                                            <h:outputText value="#{a.endTime}">
+                                                            <h:outputText value="#{a.endTime.time}">
                                                                 <f:convertDateTime pattern = "HH:mm" />
                                                             </h:outputText>
                                                             #{a.description}
@@ -54,11 +54,11 @@
                                                     <span class="dayHeader">#{day}</span>
                                                     <ui:repeat var="a" value="#{appointmentController.getAppointmentsForDay(day)}">
                                                         <div class="item">
-                                                            <h:outputText value="#{a.startTime}">
+                                                            <h:outputText value="#{a.startTime.time}">
                                                                 <f:convertDateTime pattern = "HH:mm" />
                                                             </h:outputText>
                                                             -
-                                                            <h:outputText value="#{a.endTime}">
+                                                            <h:outputText value="#{a.endTime.time}">
                                                                 <f:convertDateTime pattern = "HH:mm" />
                                                             </h:outputText>
                                                             #{a.description}

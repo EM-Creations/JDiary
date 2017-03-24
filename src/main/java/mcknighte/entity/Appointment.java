@@ -2,7 +2,6 @@ package mcknighte.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,7 +52,7 @@ public class Appointment implements Serializable, Convertable {
      */
     public Appointment() {
         this.startTime = Calendar.getInstance();
-        this.endTime = this.startTime;
+        this.endTime = Calendar.getInstance();
     }
 
     /**
@@ -115,17 +114,17 @@ public class Appointment implements Serializable, Convertable {
      *
      * @return the end time of the appointment
      */
-    public Date getEndTime() {
-        return endTime.getTime();
+    public Calendar getEndTime() {
+        return endTime;
     }
-
+    
     /**
      * Set the end time of the appointment
      *
      * @param end the end time of the appointment
      */
-    public void setEndTime(Date end) {
-        this.endTime.setTime(end);
+    public void setEndTime(Calendar end) {
+        this.endTime = end;
     }
 
     /**
@@ -133,17 +132,17 @@ public class Appointment implements Serializable, Convertable {
      *
      * @return the start time of the appointment
      */
-    public Date getStartTime() {
-        return startTime.getTime();
+    public Calendar getStartTime() {
+        return startTime;
     }
-
+    
     /**
      * Set the start time of the appointment
      *
      * @param start the start time of the appointment
      */
-    public void setStartTime(Date start) {
-        this.startTime.setTime(start);
+    public void setStartTime(Calendar start) {
+        this.startTime = start;
     }
 
     /**

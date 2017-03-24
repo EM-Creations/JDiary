@@ -48,13 +48,13 @@
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Start</f:facet>
-                                        <h:outputText value="#{appointment.startTime}">
+                                        <h:outputText value="#{appointment.startTime.time}">
                                             <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
                                         </h:outputText>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">End</f:facet>
-                                        <h:outputText value="#{appointment.endTime}">
+                                        <h:outputText value="#{appointment.endTime.time}">
                                             <f:convertDateTime pattern = "HH:mm dd/MM/YYYY" />
                                         </h:outputText>
                                     </h:column>
