@@ -88,7 +88,7 @@ public class ClientService {
      * @throws mcknighte.exception.UserDoesNotExistException if the user/client does not exist
      */
     public Client editClient(Client client, String providedPassword) throws UserIncorrectPasswordException, UserDoesNotExistException {
-        if (this.checkLogin(client.getUsername(), providedPassword) != null) { // If the correct password has been provided
+        if (this.checkLogin(client, providedPassword) != null) { // If the correct password has been provided
             cF.edit(client);
         } else { // If the incorrect password has been provided
             throw new UserIncorrectPasswordException(client);
@@ -166,8 +166,8 @@ public class ClientService {
     }
 
     /**
-     * Check whether a client should be able to login with the provided
-     * credentials, returns null if failed login
+     * Check whether a client should be able to login by a username and 
+     * password, returns null if failed login
      *
      * @param userName the client's username to check for
      * @param password the client's password to try to login with
@@ -182,6 +182,26 @@ public class ClientService {
         }
         // Otherwise
         throw new UserDoesNotExistException(userName);
+    }
+    
+    /**
+     * Check whether a client should be able to login by client object and
+     * password, returns null if failed login
+     *
+     * @param user the client to check for
+     * @param password the client's password to try to login with
+     * @return the corresponding client; if incorrect password null
+     * @throws mcknighte.exception.UserDoesNotExistException if the client/user does not exist
+     */
+    public Client checkLogin(Client user, String password) throws UserDoesNotExistException {
+        Client c = cF.find(user.getId()); // First get the client with their username
+
+        // Get's the non-detached version of this client so we can check against the original password
+        if (c != null) { // If a client with that username has been found
+            return cF.find(c.getUsername(), password, c.getSalt()); // Return whether we can find a client with that username and password or not
+        }
+        // Otherwise
+        throw new UserDoesNotExistException(user.getUsername());
     }
 
     /**

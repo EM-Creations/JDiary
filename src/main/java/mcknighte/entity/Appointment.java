@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import static javax.persistence.TemporalType.TIMESTAMP;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import mcknighte.common.Convertable;
 
@@ -33,10 +33,10 @@ public class Appointment implements Serializable, Convertable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
-    @Temporal(TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar startTime;
     @NotNull
-    @Temporal(TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar endTime;
     @NotNull
     private String description;
