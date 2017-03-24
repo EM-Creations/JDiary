@@ -51,6 +51,7 @@ public class Appointment implements Serializable, Convertable {
      * Constructor
      */
     public Appointment() {
+        // TODO: Fix problem of start and end time not updating when appointments are edited
         this.startTime = Calendar.getInstance();
         this.endTime = Calendar.getInstance();
     }
@@ -110,7 +111,7 @@ public class Appointment implements Serializable, Convertable {
     }
 
     /**
-     * Get the end time of the appointment as a Date object
+     * Get the end time of the appointment
      *
      * @return the end time of the appointment
      */
@@ -128,7 +129,7 @@ public class Appointment implements Serializable, Convertable {
     }
 
     /**
-     * Get the start time of the appointment as a Date object
+     * Get the start time of the appointment
      *
      * @return the start time of the appointment
      */
