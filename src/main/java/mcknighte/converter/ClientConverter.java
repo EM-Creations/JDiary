@@ -1,7 +1,8 @@
-package mcknighte.controller;
+package mcknighte.converter;
 
 import javax.faces.convert.FacesConverter;
 import mcknighte.common.AbstractConverter;
+import mcknighte.controller.ClientController;
 import mcknighte.entity.Client;
 import mcknighte.persistence.ClientFacade;
 

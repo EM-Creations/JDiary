@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import mcknighte.entity.Client;
 import mcknighte.exception.AppointmentClashException;
+import mcknighte.exception.AppointmentEndBeforeStartException;
 
 /**
  * This class is the business logic for appointments
@@ -28,8 +29,13 @@ public class AppointmentService {
      * @param appointment the appointment to edit
      * @return the appointment which has been edited
      * @throws mcknighte.exception.AppointmentClashException if any of the attendees are not free at this time
+     * @throws mcknighte.exception.AppointmentEndBeforeStartException if the end time of the appointment is before the start time
      */
-    public Appointment editAppointment(Appointment appointment) throws AppointmentClashException {
+    public Appointment editAppointment(Appointment appointment) throws AppointmentClashException, AppointmentEndBeforeStartException {
+        if (appointment.getEndTime().before(appointment.getStartTime())) {
+            throw new AppointmentEndBeforeStartException(appointment);
+        }
+        
         if (!this.checkAttendeesFree(appointment)) { // If all of the attendees are not free
             throw new AppointmentClashException(appointment);
         }
@@ -54,8 +60,13 @@ public class AppointmentService {
      * @param appointment the appointment to persist
      * @return the appointment that has been persisted
      * @throws mcknighte.exception.AppointmentClashException if any of the attendees are not free at this time
+     * @throws mcknighte.exception.AppointmentEndBeforeStartException if the end time of the appointment is before the start time
      */
-    public Appointment createAppointment(Appointment appointment) throws AppointmentClashException {
+    public Appointment createAppointment(Appointment appointment) throws AppointmentClashException, AppointmentEndBeforeStartException {
+        if (appointment.getEndTime().before(appointment.getStartTime())) {
+            throw new AppointmentEndBeforeStartException(appointment);
+        }
+        
         if (!this.checkAttendeesFree(appointment)) { // If all of the attendees are not free
             throw new AppointmentClashException(appointment);
         }

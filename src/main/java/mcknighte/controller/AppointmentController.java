@@ -15,6 +15,7 @@ import mcknighte.common.AbstractController;
 import mcknighte.entity.Appointment;
 import mcknighte.entity.Client;
 import mcknighte.exception.AppointmentClashException;
+import mcknighte.exception.AppointmentEndBeforeStartException;
 import mcknighte.persistence.AppointmentFacade;
 
 /**
@@ -190,6 +191,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
             Logger.getLogger(AppointmentController.class.getName()).log(Level.SEVERE, null, ex);
             this.addError("newAppointmentForm:attendees", ex.getMessage());
             return "createEditAppointment"; // Send the user back to the createEditAppointment view
+        } catch (AppointmentEndBeforeStartException ex) {
+            Logger.getLogger(AppointmentController.class.getName()).log(Level.SEVERE, null, ex);
+            this.addError("newAppointmentForm:endTime", ex.getMessage());
+            return "createEditAppointment"; // Send the user back to the createEditAppointment view
         }
         this.addInfo("infoMsg", "Appointment created", "New appointment created");
         this.clearEditingAppointment(); // Reset the appointment
@@ -215,6 +220,10 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
         } catch (AppointmentClashException ex) {
             Logger.getLogger(AppointmentController.class.getName()).log(Level.SEVERE, null, ex);
             this.addError("newAppointmentForm:attendees", ex.getMessage());
+            return "createEditAppointment"; // Send the user back to the createEditAppointment view
+        } catch (AppointmentEndBeforeStartException ex) {
+            Logger.getLogger(AppointmentController.class.getName()).log(Level.SEVERE, null, ex);
+            this.addError("newAppointmentForm:endTime", ex.getMessage());
             return "createEditAppointment"; // Send the user back to the createEditAppointment view
         }
         this.addInfo("infoMsg", "Appointment edited", "Appointment edited");
