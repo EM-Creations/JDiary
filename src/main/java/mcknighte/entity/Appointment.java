@@ -12,7 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import mcknighte.business.AppointmentService;
 import mcknighte.common.Convertable;
+import mcknighte.controller.AppointmentController;
+import mcknighte.persistence.AppointmentFacade;
+import org.eclipse.persistence.annotations.Mutable;
 
 /**
  * Appointment entity class, to represent an Appointment within the database
@@ -34,9 +38,11 @@ public class Appointment implements Serializable, Convertable {
     private Long id;
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
+    @Mutable
     private Calendar startTime;
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
+    @Mutable
     private Calendar endTime;
     @NotNull
     private String description;
