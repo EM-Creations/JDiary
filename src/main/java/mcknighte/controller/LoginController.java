@@ -1,5 +1,6 @@
 package mcknighte.controller;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mcknighte.business.ClientService;
@@ -7,6 +8,8 @@ import mcknighte.entity.Client;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import mcknighte.common.AbstractController;
 import mcknighte.common.AbstractFacade;
 import mcknighte.exception.UserDoesNotExistException;
@@ -23,10 +26,11 @@ import mcknighte.exception.UserDoesNotExistException;
 @Named(value = "loginController")
 @SessionScoped
 public class LoginController extends AbstractController {
+
     private static final long serialVersionUID = 1L;
     @EJB
-    private ClientService cs;
-    private Client loggedInClient = new Client();
+    private ClientService cS;
+    private Client loggedInClient;
     private String userName;
     private String password;
 
@@ -76,7 +80,7 @@ public class LoginController extends AbstractController {
     }
 
     /**
-     * Handle the login form being submitted, check that the user has the 
+     * Handle the login form being submitted, check that the user has the
      * correct username and password and if not handle it appropriately
      *
      * @return the view to display
@@ -84,7 +88,7 @@ public class LoginController extends AbstractController {
     public String doLogin() {
         Client c;
         try {
-            c = cs.checkLogin(this.userName, this.password);
+            c = cS.checkLogin(this.userName, this.password);
 
             if (c != null) { // If the login was successful
                 this.loggedInClient = c;
@@ -99,6 +103,30 @@ public class LoginController extends AbstractController {
         }
         return "index";
     }
+    
+    /**
+     * Handle the login logout button being clicked
+     *
+     * @return the view to display
+     */
+    public String doLogout() {
+        this.loggedInClient = null; // Set the logged in client to null (logged out state)
+        this.addInfo("infoMsg", "Logged out", "Successfully logged out");
+        return "index"; // Redirect them back to login
+    }
+
+    /**
+     * The check performed on every "private" page of the application, to ensure
+     * that a user is logged in being seeing those views
+     * 
+     * @throws IOException if an input/output error occurs
+     */
+    public void viewLoginCheck() throws IOException {
+        if (this.loggedInClient == null) { // If the user isn't logged in
+            ExternalContext eC = FacesContext.getCurrentInstance().getExternalContext();
+            eC.redirect(eC.getRequestContextPath() + "/faces/index.xhtml");
+        }
+    }
 
     /**
      * Constructor
@@ -106,7 +134,7 @@ public class LoginController extends AbstractController {
     public LoginController() {
         super(null); // This controller doesn't have a corresponding entity
         this.userName = "";
-        this.password = "adminadmin"; // TODO: DEVELOPMENT PURPOSES ONLY (pre-set the password for admin user)
+        this.password = "";
     }
 
     /**

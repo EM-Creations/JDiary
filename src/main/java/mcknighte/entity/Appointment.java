@@ -57,7 +57,6 @@ public class Appointment implements Serializable, Convertable {
      * Constructor
      */
     public Appointment() {
-        // TODO: Fix problem of start and end time not updating when appointments are edited
         this.startTime = Calendar.getInstance();
         this.endTime = Calendar.getInstance();
     }

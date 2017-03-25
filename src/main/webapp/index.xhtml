@@ -27,8 +27,22 @@
                                     </h:inputText>
                                 </b:column>
                                 <b:column span="5">
-                                    DEV - Use "adminadmin" as user
+                                    DEMO: Use "adminadmin"
                                     <b:message for="userName" show-detail="false" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column offset="1" span="2">
+                                    <h:outputLabel for="password">Password</h:outputLabel>
+                                </b:column>
+                                <b:column span="3">
+                                    <h:inputSecret id="password" label="Password" value="#{loginController.password}">
+                                        <f:validateLength minimum="3" />
+                                    </h:inputSecret>
+                                </b:column>
+                                <b:column span="5">
+                                    DEMO: Use "adminadmin"
+                                    <b:message for="password" />
                                 </b:column>
                             </b:row>
                             <b:row>

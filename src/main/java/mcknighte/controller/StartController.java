@@ -51,6 +51,7 @@ public class StartController extends AbstractController {
                 Logger.getLogger(StartController.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.addInfo("infoMsg", "Setup completed");
+            return "start"; // Go back to the start view
         }
         this.addInfo("infoMsg", "Setup already run");
         return "start"; // Go back to the start view

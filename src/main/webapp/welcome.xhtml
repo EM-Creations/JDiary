@@ -5,11 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-        <ui:composition template="./resources/template/commonLayout.xhtml">
+        <ui:composition template="./resources/template/commonPrivateLayout.xhtml">
             <ui:define name="header">
-                <h:form>
-                    <h:commandLink action="index"><b:icon name="glyphicon-arrow-up" /></h:commandLink>
-                </h:form>
                 <h1>Welcome back #{loginController.loggedInClient.firstName}!</h1>
             </ui:define>
             <ui:define name="content">
@@ -22,6 +19,11 @@
                     <b:row>
                         <b:column span="12">
                             <h:commandButton styleClass="navButton" action="#{startController.goToAppointments()}" value="Appointments"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="6" offset="3">
+                            <h:commandButton class="navButton" action="#{loginController.doLogout()}" value="Logout" />
                         </b:column>
                     </b:row>
                 </h:form>

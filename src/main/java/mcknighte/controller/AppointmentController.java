@@ -178,9 +178,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      * @return the view to display
      */
     public String doCreateAppointment(Client creator) {
-        if (creator == null || creator.getId() == null) { // Temp
-            creator = cS.getClient("adminadmin");
-        }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
         this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
 
@@ -208,9 +205,6 @@ public class AppointmentController extends AbstractController<Appointment, Appoi
      * @return the view to display
      */
     public String doEditAppointment(Client creator) {
-        if (creator == null || creator.getId() == null) { // Temp
-            creator = cS.getClient("adminadmin");
-        }
         this.editingAppointment.setCreator(creator); // Set the creator for this appointment
         this.editingAppointment.setAttendees(this.convertClientNamesToClients(this.attendeeUsers));
 
