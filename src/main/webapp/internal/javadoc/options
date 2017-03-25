@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Edward/.m2/repository/org/eclipse/persistence/javax.persistence/2.1.1/javax.persistence-2.1.1.jar;C:/Users/Edward/.m2/repository/net/bootsfaces/bootsfaces/1.0.2/bootsfaces-1.0.2.jar;C:/Users/Edward/.m2/repository/org/eclipse/persistence/eclipselink/2.6.4/eclipselink-2.6.4.jar;C:/Users/Edward/.m2/repository/javax/javaee-web-api/7.0/javaee-web-api-7.0.jar;C:/Users/Edward/.m2/repository/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar;C:/Users/Edward/.m2/repository/org/eclipse/persistence/commonj.sdo/2.1.1/commonj.sdo-2.1.1.jar;C:/Users/Edward/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/Edward/Documents/University/Year 3/ENTWA/code/CourseworkUP608985/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2017. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Edward/Documents/University/Year 3/ENTWA/code/CourseworkUP608985/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'mcknighte 1.0 API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' 'C:/Users/Edward/Documents/University/Year 3/ENTWA/code/CourseworkUP608985/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'mcknighte 1.0 API'
