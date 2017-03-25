@@ -181,6 +181,10 @@ table.list>tbody>tr.headerRow {
 }
 
 /* Calendar */
+div.calendarRow {
+    display: flex;
+}
+
 div.calendarCell {
     border: 1px solid black;
     border-bottom: none;
